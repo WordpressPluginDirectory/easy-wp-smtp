@@ -53,17 +53,15 @@ class Area {
 	 *
 	 * @since 2.0.0
 	 */
-	public function __construct() {
-
-		$this->hooks();
-	}
+	public function __construct() {}
 
 	/**
 	 * Assign all hooks to proper places.
 	 *
 	 * @since 2.0.0
+	 * @since 2.3.0 Changed visibility to public.
 	 */
-	protected function hooks() {
+	public function hooks() {
 
 		// Redirect from deprecated settings page.
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'swpsmtp_settings' && WP::in_wp_admin() ) {
@@ -158,7 +156,7 @@ class Area {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			return;
 		}
 
@@ -237,7 +235,7 @@ class Area {
 	public function add_admin_options_page() {
 
 		// Options pages access capability.
-		$access_capability = 'manage_options';
+		$access_capability = easy_wp_smtp()->get_capability_manage_options();
 
 		if ( $this->is_top_level_menu_hidden() ) {
 			$this->hook = add_options_page(
@@ -661,7 +659,10 @@ class Area {
 		 *
 		 * @param string $capability Email logs access capability.
 		 */
-		return apply_filters( 'easy_wp_smtp_admin_area_get_logs_access_capability', 'manage_options' );
+		return apply_filters(
+			'easy_wp_smtp_admin_area_get_logs_access_capability',
+			easy_wp_smtp()->get_capability_manage_options()
+		);
 	}
 
 	/**
@@ -956,7 +957,7 @@ class Area {
 		$data = [];
 
 		// Only admins can fire these ajax requests.
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( $data );
 		}
 

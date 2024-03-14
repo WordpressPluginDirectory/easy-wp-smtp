@@ -10,6 +10,7 @@ use EasyWPSMTP\UsageTracking\UsageTracking;
 use EasyWPSMTP\WP;
 use EasyWPSMTP\Reports\Emails\Summary as SummaryReportEmail;
 use EasyWPSMTP\Tasks\Reports\SummaryEmailTask as SummaryReportEmailTask;
+use Plugin_Upgrader;
 
 /**
  * Class for the plugin's Setup Wizard.
@@ -78,7 +79,7 @@ class SetupWizard {
 				isset( $_GET['page'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				Area::SLUG . '-setup-wizard' === $_GET['page'] && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$this->should_setup_wizard_load() &&
-				current_user_can( 'manage_options' )
+				current_user_can( easy_wp_smtp()->get_capability_manage_options() )
 			)
 		) {
 			return;
@@ -93,6 +94,10 @@ class SetupWizard {
 
 		// Remove an action in the Gutenberg plugin ( not core Gutenberg ) which throws an error.
 		remove_action( 'admin_print_styles', 'gutenberg_block_editor_admin_print_styles' );
+
+		// Remove hooks for deprecated functions in WordPress 6.4.0.
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_head', 'wp_admin_bar_header' );
 
 		$this->load_setup_wizard();
 	}
@@ -152,7 +157,7 @@ class SetupWizard {
 			return;
 		}
 
-		add_submenu_page( '', '', '', 'manage_options', Area::SLUG . '-setup-wizard', '' );
+		add_submenu_page( '', '', '', easy_wp_smtp()->get_capability_manage_options(), Area::SLUG . '-setup-wizard', '' );
 	}
 
 	/**
@@ -552,7 +557,7 @@ class SetupWizard {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have permission to change options for this WP site!', 'easy-wp-smtp' ) );
 		}
 
@@ -570,7 +575,7 @@ class SetupWizard {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have permission to change options for this WP site!', 'easy-wp-smtp' ) );
 		}
 
@@ -592,7 +597,7 @@ class SetupWizard {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -660,7 +665,7 @@ class SetupWizard {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -693,7 +698,7 @@ class SetupWizard {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -748,7 +753,15 @@ class SetupWizard {
 		}
 
 		$url   = esc_url_raw( WP::admin_url( 'admin.php?page=' . Area::SLUG . '-setup-wizard' ) );
+
+		/*
+		 * The `request_filesystem_credentials` function will output a credentials form in case of failure.
+		 * We don't want that, since it will break AJAX response. So just hide output with a buffer.
+		 */
+		ob_start();
+		// phpcs:ignore WPForms.Formatting.EmptyLineAfterAssigmentVariables.AddEmptyLine
 		$creds = request_filesystem_credentials( $url, '', false, false, null );
+		ob_end_clean();
 
 		// Check for file system permissions.
 		if ( false === $creds ) {
@@ -762,8 +775,11 @@ class SetupWizard {
 		// Do not allow WordPress to search/download translations, as this will break JS output.
 		remove_action( 'upgrader_process_complete', [ 'Language_Pack_Upgrader', 'async_upgrade' ], 20 );
 
+		// Import the plugin upgrader.
+		Helpers::include_plugin_upgrader();
+
 		// Create the plugin upgrader with our custom skin.
-		$installer = new PluginsInstallUpgrader( new PluginsInstallSkin() );
+		$installer = new Plugin_Upgrader( new PluginsInstallSkin() );
 
 		// Error check.
 		if ( ! method_exists( $installer, 'install' ) || empty( $slug ) ) {
@@ -844,14 +860,12 @@ class SetupWizard {
 	 * AJAX callback for getting all partner's plugin information.
 	 *
 	 * @since 2.1.0
-	 * @since 2.2.0 Check if a SEO toolkit plugin is installed.
 	 */
 	public function get_partner_plugins_info() {
 
 		check_ajax_referer( 'easywpsmtp-admin-nonce', 'nonce' );
 
 		$contact_form_plugin_already_installed = false;
-		$seo_toolkit_plugin_already_installed  = false;
 
 		$contact_form_basenames = [
 			'wpforms-lite/wpforms.php',
@@ -862,22 +876,12 @@ class SetupWizard {
 			'ninja-forms/ninja-forms.php',
 		];
 
-		$seo_toolkit_basenames = [
-			'all-in-one-seo-pack/all_in_one_seo_pack.php',
-			'all-in-one-seo-pack-pro/all_in_one_seo_pack.php',
-			'seo-by-rank-math/rank-math.php',
-			'seo-by-rank-math-pro/rank-math-pro.php',
-			'wordpress-seo/wp-seo.php',
-			'wordpress-seo-premium/wp-seo-premium.php',
-		];
-
 		$installed_plugins = get_plugins();
 
 		foreach ( $installed_plugins as $basename => $plugin_info ) {
 			if ( in_array( $basename, $contact_form_basenames, true ) ) {
 				$contact_form_plugin_already_installed = true;
-			} elseif ( in_array( $basename, $seo_toolkit_basenames, true ) ) {
-				$seo_toolkit_plugin_already_installed = true;
+				break;
 			}
 		}
 
@@ -889,7 +893,6 @@ class SetupWizard {
 		$data = [
 			'plugins'                               => [],
 			'contact_form_plugin_already_installed' => $contact_form_plugin_already_installed,
-			'seo_toolkit_plugin_already_installed'  => $seo_toolkit_plugin_already_installed,
 		];
 
 		wp_send_json_success( $data );
@@ -1090,10 +1093,9 @@ class SetupWizard {
 		global $wp_version;
 
 		return [
-			'php_version'          => phpversion(),
-			'php_version_below_56' => apply_filters( 'easy_wp_smtp_temporarily_hide_php_under_55_upgrade_warnings', version_compare( phpversion(), '5.6', '<' ) ),
-			'wp_version'           => $wp_version,
-			'wp_version_below_52'  => version_compare( $wp_version, '5.2', '<' ),
+			'php_version'         => phpversion(),
+			'wp_version'          => $wp_version,
+			'wp_version_below_52' => version_compare( $wp_version, '5.2', '<' ),
 		];
 	}
 
@@ -1217,6 +1219,8 @@ class SetupWizard {
 			'EasyWPSMTP_OUTLOOK_CLIENT_SECRET'         => [ 'outlook', 'client_secret' ],
 			'EasyWPSMTP_SENDGRID_API_KEY'              => [ 'sendgrid', 'api_key' ],
 			'EasyWPSMTP_SENDGRID_DOMAIN'               => [ 'sendgrid', 'domain' ],
+			'EasyWPSMTP_POSTMARK_SERVER_API_TOKEN'     => [ 'postmark', 'server_api_token' ],
+			'EasyWPSMTP_POSTMARK_MESSAGE_STREAM'       => [ 'postmark', 'message_stream' ],
 			'EasyWPSMTP_SMTP_HOST'                     => [ 'smtp', 'host' ],
 			'EasyWPSMTP_SMTP_PORT'                     => [ 'smtp', 'port' ],
 			'EasyWPSMTP_SSL'                           => [ 'smtp', 'encryption' ],

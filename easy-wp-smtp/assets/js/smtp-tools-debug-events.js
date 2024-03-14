@@ -250,6 +250,8 @@ var EasyWPSMTPDebugEvents = window.EasyWPSMTPDebugEvents || ( function( document
 					popup.setTitle( response.data.title );
 					popup.setContent( response.data.content );
 				} else {
+					popup.setIcon( EasyWPSMTP.Admin.Settings.getModalIcon( 'exclamation-circle-red' ) );
+					popup.setType( 'red' );
 					popup.setContent( response.data );
 				}
 			} ).fail( function() {

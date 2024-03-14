@@ -75,6 +75,10 @@ class Options {
 		'sendlayer'  => [
 			'api_key',
 		],
+		'postmark'   => [
+			'server_api_token',
+			'message_stream',
+		],
 		'license'    => [
 			'key',
 		],
@@ -96,6 +100,7 @@ class Options {
 		'mailgun',
 		'outlook',
 		'sendgrid',
+		'postmark',
 		'smtp',
 	];
 
@@ -553,6 +558,20 @@ class Options {
 
 				break;
 
+			case 'postmark':
+				switch ( $key ) {
+					case 'server_api_token':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_POSTMARK_SERVER_API_TOKEN : $value;
+						break;
+					case 'message_stream':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_POSTMARK_MESSAGE_STREAM : $value;
+						break;
+				}
+
+				break;
+
 			case 'smtpcom':
 				switch ( $key ) {
 					case 'api_key':
@@ -768,6 +787,18 @@ class Options {
 						break;
 					case 'domain':
 						$return = defined( 'EasyWPSMTP_SENDGRID_DOMAIN' ) && EasyWPSMTP_SENDGRID_DOMAIN;
+						break;
+				}
+
+				break;
+
+			case 'postmark':
+				switch ( $key ) {
+					case 'server_api_token':
+						$return = defined( 'EasyWPSMTP_POSTMARK_SERVER_API_TOKEN' ) && EasyWPSMTP_POSTMARK_SERVER_API_TOKEN;
+						break;
+					case 'message_stream':
+						$return = defined( 'EasyWPSMTP_POSTMARK_MESSAGE_STREAM' ) && EasyWPSMTP_POSTMARK_MESSAGE_STREAM;
 						break;
 				}
 
@@ -1001,6 +1032,8 @@ class Options {
 					case 'client_id': // outlook/amazonses.
 					case 'client_secret': // outlook/amazonses.
 					case 'auth_code': // outlook.
+					case 'server_api_token': // postmark.
+					case 'message_stream': // postmark.
 						$options[ $mailer ][ $option_name ] = $this->is_const_defined( $mailer, $option_name ) ? '' : sanitize_text_field( $option_value );
 						break;
 					case 'port': // smtp.

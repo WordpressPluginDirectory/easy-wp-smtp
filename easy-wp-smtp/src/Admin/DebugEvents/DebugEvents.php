@@ -90,8 +90,12 @@ class DebugEvents {
 			wp_send_json_error( esc_html__( 'Access rejected.', 'easy-wp-smtp' ) );
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have the capability to perform this action.', 'easy-wp-smtp' ) );
+		}
+
+		if ( ! self::is_valid_db() ) {
+			wp_send_json_error( esc_html__( 'For some reason the database table was not installed correctly. Please contact plugin support team to diagnose and fix the issue.', 'easy-wp-smtp' ) );
 		}
 
 		global $wpdb;
@@ -129,8 +133,12 @@ class DebugEvents {
 			wp_send_json_error( esc_html__( 'Access rejected.', 'easy-wp-smtp' ) );
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have the capability to perform this action.', 'easy-wp-smtp' ) );
+		}
+
+		if ( ! self::is_valid_db() ) {
+			wp_send_json_error( esc_html__( 'For some reason the database table was not installed correctly. Please contact plugin support team to diagnose and fix the issue.', 'easy-wp-smtp' ) );
 		}
 
 		$event_id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : false;
@@ -160,6 +168,10 @@ class DebugEvents {
 	 * @return bool|int
 	 */
 	public static function add( $message = '', $type = 0 ) {
+
+		if ( ! self::is_valid_db() ) {
+			return false;
+		}
 
 		if ( ! in_array( $type, array_keys( Event::get_types() ), true ) ) {
 			return false;

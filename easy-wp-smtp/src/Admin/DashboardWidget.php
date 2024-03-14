@@ -29,15 +29,7 @@ class DashboardWidget {
 	 *
 	 * @since 2.1.0
 	 */
-	public function __construct() {
-
-		// Prevent the class initialization, if the dashboard widget hidden setting is enabled.
-		if ( Options::init()->get( 'general', 'dashboard_widget_hidden' ) ) {
-			return;
-		}
-
-		add_action( 'admin_init', [ $this, 'init' ] );
-	}
+	public function __construct() {}
 
 	/**
 	 * Init class.
@@ -46,23 +38,33 @@ class DashboardWidget {
 	 */
 	public function init() {
 
-		// This widget should be displayed for certain high-level users only.
-		if ( ! current_user_can( 'manage_options' ) ) {
+		// Prevent the class initialization, if the dashboard widget hidden setting is enabled.
+		if ( Options::init()->get( 'general', 'dashboard_widget_hidden' ) ) {
 			return;
 		}
 
-		/**
-		 * Filters whether the initialization of the dashboard widget should be allowed.
-		 *
-		 * @since 2.1.0
-		 *
-		 * @param bool $var If the dashboard widget should be initialized.
-		 */
-		if ( ! apply_filters( 'easy_wp_smtp_admin_dashboard_widget', '__return_true' ) ) {
-			return;
-		}
+		add_action(
+			'admin_init',
+			function() {
+				// This widget should be displayed for certain high-level users only.
+				if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
+					return;
+				}
 
-		$this->hooks();
+				/**
+				 * Filters whether the initialization of the dashboard widget should be allowed.
+				 *
+				 * @since 2.1.0
+				 *
+				 * @param bool $var If the dashboard widget should be initialized.
+				 */
+				if ( ! apply_filters( 'easy_wp_smtp_admin_dashboard_widget', '__return_true' ) ) {
+					return;
+				}
+
+				$this->hooks();
+			}
+		);
 	}
 
 	/**
@@ -108,14 +110,6 @@ class DashboardWidget {
 			EasyWPSMTP_PLUGIN_VERSION
 		);
 
-		wp_enqueue_script(
-			'easy-wp-smtp-moment',
-			easy_wp_smtp()->assets_url . '/js/vendor/moment.min.js',
-			[],
-			'2.29.4',
-			true
-		);
-
 		wp_enqueue_style(
 			'easy-wp-smtp-chart',
 			easy_wp_smtp()->assets_url . '/css/vendor/apexcharts.css',
@@ -133,7 +127,7 @@ class DashboardWidget {
 		wp_enqueue_script(
 			'easy-wp-smtp-dashboard-widget',
 			easy_wp_smtp()->assets_url . "/js/smtp-dashboard-widget{$min}.js",
-			[ 'jquery', 'easy-wp-smtp-chart' ],
+			[ 'jquery', 'moment', 'easy-wp-smtp-chart' ],
 			EasyWPSMTP_PLUGIN_VERSION,
 			true
 		);
@@ -183,7 +177,7 @@ class DashboardWidget {
 
 		check_admin_referer( 'easy_wp_smtp_' . static::SLUG . '_nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -204,7 +198,7 @@ class DashboardWidget {
 
 		check_admin_referer( 'easy_wp_smtp_' . static::SLUG . '_nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 

@@ -93,6 +93,24 @@ class ConnectionSettings {
 								?>
 							<?php endif; ?>
 						</p>
+
+						<p>
+							<?php
+							printf(
+								wp_kses( /* translators: %s - URL to suggest a mailer form. */
+									__( 'Don\'t see what you\'re looking for? <a href="%s" target="_blank" rel="noopener noreferrer">Suggest a mailer</a>.', 'easy-wp-smtp' ),
+									[
+										'a' => [
+											'href'   => [],
+											'rel'    => [],
+											'target' => [],
+										],
+									]
+								),
+								esc_url( easy_wp_smtp()->get_utm_url( 'https://easywpsmtp.com/suggest-a-mailer/', 'Suggest a Mailer' ) )
+							);
+							?>
+						</p>
 					</div>
 					<div class="easy-wp-smtp-mailers-picker">
 						<?php foreach ( easy_wp_smtp()->get_providers()->get_options_all( $this->connection ) as $provider ) : ?>
@@ -128,18 +146,7 @@ class ConnectionSettings {
 								</label>
 							</div>
 						<?php endforeach; ?>
-						<div class="easy-wp-smtp-mailers-picker__item easy-wp-smtp-mailers-picker__item--double">
-							<div class="easy-wp-smtp-mailers-picker__suggest-mailer">
-								<?php esc_html_e( 'Don\'t see what you\'re looking for?', 'easy-wp-smtp' ); ?>
-								<?php
-								printf(
-									'<a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
-									esc_url( easy_wp_smtp()->get_utm_url( 'https://easywpsmtp.com/suggest-a-mailer/', 'Suggest a Mailer' ) ),
-									esc_html__( 'Suggest a Mailer', 'easy-wp-smtp' )
-								);
-								?>
-							</div>
-						</div>
+						<div class="easy-wp-smtp-mailers-picker__item"></div>
 					</div>
 				</div>
 

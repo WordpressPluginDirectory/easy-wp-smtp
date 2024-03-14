@@ -1,10 +1,10 @@
 === Easy WP SMTP by SendLayer - WordPress SMTP and Email Log Plugin ===
 Contributors: sendlayer, jaredatch, smub, capuderg
-Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, google, g-suite, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp, mailer, sendlayer, brevo, sendinblue, mailgun, smtp.com, sendgrid
+Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
-Tested up to: 6.3
-Requires PHP: 5.6
-Stable tag: 2.2.0
+Tested up to: 6.4
+Requires PHP: 7.2
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,6 +226,20 @@ And we will try to help out as soon as possible.
 6. Debug Events page
 
 == Changelog ==
+
+= 2.3.0 - 2024-03-13 =
+* IMPORTANT: Support for PHP 5.6, 7.0, and 7.1 has been discontinued. If you are running one of those versions, you MUST upgrade PHP before installing or upgrading to Easy WP SMTP v2.3. Failure to do that will disable Easy WP SMTP functionality.
+* Added: New Postmark transactional mailer.
+* Added: Filter to customize the capability required for managing the plugin.
+* Added: Database migrations execution after plugin update.
+* Changed: Replaced our moment.js library with the WP Core's bundled one.
+* Changed: Updated Action Scheduler library to 3.7.1.
+* Changed: Removed `EasyWPSMTP\Admin\PluginsInstallUpgrader` class and switched to the WordPress Core `Plugin_Upgrader` class.
+* Fixed: Dropdown field styles in the Firefox browser.
+* Fixed: PHP deprecation notices in the Setup Wizard on WordPress 6.4 and above.
+* Fixed: Compatibility issue with Action Scheduler lower than 3.3.0.
+* Fixed: Compatibility for List-Unsubscribe header.
+* Fixed: Database error while adding debug events if the `easywpsmtp_debug_events` table does not exist.
 
 = 2.2.0 - 2023-10-18 =
 * Added: SendGrid email provider integration.

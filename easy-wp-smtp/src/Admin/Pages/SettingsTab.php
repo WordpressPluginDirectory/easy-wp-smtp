@@ -218,7 +218,7 @@ class SettingsTab extends PageAbstract {
 				</div>
 
 				<p class="desc">
-					<?php esc_html_e( 'Already purchased? Simply enter your license key below to connect with Easy WP SMTP Pro!', 'easy-wp-smtp' ); ?>
+					<?php esc_html_e( 'Already purchased? Simply enter your license key above to connect with Easy WP SMTP Pro!', 'easy-wp-smtp' ); ?>
 				</p>
 			</div>
 		</div>

@@ -28,6 +28,7 @@ class Loader {
 		'mailgun'    => 'EasyWPSMTP\Providers\Mailgun\\',
 		'outlook'    => 'EasyWPSMTP\Providers\Outlook\\',
 		'sendgrid'   => 'EasyWPSMTP\Providers\Sendgrid\\',
+		'postmark'   => 'EasyWPSMTP\Providers\Postmark\\',
 		'sendinblue' => 'EasyWPSMTP\Providers\Sendinblue\\',
 		'smtpcom'    => 'EasyWPSMTP\Providers\SMTPcom\\',
 		'smtp'       => 'EasyWPSMTP\Providers\SMTP\\',
