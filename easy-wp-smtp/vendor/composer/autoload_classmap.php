@@ -155,6 +155,7 @@ return array(
     'EasyWPSMTP\\Helpers\\DB' => $baseDir . '/src/Helpers/DB.php',
     'EasyWPSMTP\\Helpers\\Geo' => $baseDir . '/src/Helpers/Geo.php',
     'EasyWPSMTP\\Helpers\\Helpers' => $baseDir . '/src/Helpers/Helpers.php',
+    'EasyWPSMTP\\Helpers\\UI' => $baseDir . '/src/Helpers/UI.php',
     'EasyWPSMTP\\MailCatcher' => $baseDir . '/src/MailCatcher.php',
     'EasyWPSMTP\\MailCatcherInterface' => $baseDir . '/src/MailCatcherInterface.php',
     'EasyWPSMTP\\MailCatcherTrait' => $baseDir . '/src/MailCatcherTrait.php',

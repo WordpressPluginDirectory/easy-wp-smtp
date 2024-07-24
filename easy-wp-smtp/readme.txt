@@ -2,13 +2,13 @@
 Contributors: sendlayer, jaredatch, smub, capuderg
 Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
-Tested up to: 6.4
+Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.3.0
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Improve email delivery for WordPress. Configure SendLayer, Mailgun, Sendinblue, Gmail or connect to an SMTP server.
+Improve email delivery for WordPress with SMTP. Configure SendLayer, Mailgun, Brevo, Gmail or connect to an SMTP server.
 
 == Description ==
 
@@ -24,28 +24,29 @@ You can resolve your email deliverability issues by configuring one of these mai
 
 * SendLayer (recommended)
 * Amazon SES <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=amazon-ses-readme" rel="friend">[Pro]</a>
-* Gmail or Google Workspace <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=gmail-readme" rel="friend">[Pro]</a>
+* Gmail / Google Mail / Google Workspace <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=gmail-readme" rel="friend">[Pro]</a>
 * Mailgun
 * Microsoft 365 / Outlook <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=outlook-readme" rel="friend">[Pro]</a>
 * SendGrid
 * Brevo (formerly Sendinblue)
 * SMTP.com
-* Other SMTP - configure any SMTP server
+* Other SMTP - configure any SMTP mail server
 
 ### Easy WP SMTP Features
 
 * Send WordPress emails using one of the transactional mailers or an SMTP server.
 * Our Setup Wizard helps you configure your mailer or SMTP provider in no time.
-* The fastest Gmail / Google integration on the market (configure it in just a couple of clicks).
-* You can use different transactional mailers: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
-* Log all emails sent from your WordPress site, resent emails, store attachments, and more with our Email Logs <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
-* Generate reports in your WordPress dashboard to check how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
+* The fastest Gmail / Google mail integration on the market (configure it in just a couple of clicks).
+* You can use different transactional mailers or SMTP: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
+* Powerful Email Logging - log all mail sent from your WordPress site, resend emails, store attachments, and more. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
+* Generate email and delivery reports in your WordPress dashboard - see how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
 * The Dashboard Widget shows you sent, delivered, failed, opened and clicked stats at a glance. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=dashboard-widget-readme" rel="friend">[Pro]</a>
 * You can use Gmail, Outlook, Yahoo, Hotmail, Zoho, or any other SMTP server.
-* Seamlessly connect your WordPress site with a reliable mailer to handle all outgoing emails.
+* Seamlessly connect your WordPress site with a reliable mailer or SMTP provider to handle all outgoing emails.
 * Securely deliver emails to your recipients.
 * Debug Events that log any failed email sending attempts and the error that caused them.
 * Ability to specify a Reply-to or BCC email address.
+* All features supported regardless of mailer or SMTP configuration!
 
 ### Mailer Options
 
@@ -53,9 +54,10 @@ Easy WP SMTP plugin includes different SMTP mailers, so you can choose the one t
 
 #### SendLayer
 
-SendLayer is our recommended transactional email service.
+SendLayer is our recommended transactional SMTP email service.
 
 SendLayer is very affordable, reliable, and fast, plus it has a simple setup. You can configure it in a few minutes.
+
 It offers 30 days of email logs history, with email open and click tracking. SendLayer offers hundreds of emails for free when you sign up for their trial.
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sendlayer-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SendLayer documentation</a> for more details.
@@ -66,7 +68,7 @@ Amazon SES is a great mailer for advanced or technical users who want to take ad
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-amazon-ses-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=amazon-ses-docs-readme" rel="friend">Amazon SES documentation</a> for more details.
 
-#### Gmail / Google Workspace
+#### Gmail / Google Mail / Google Workspace
 
 With our Gmail integration you will be able to send emails from your Gmail or Google Workspace account. There is no technical setup required. All you need to do is log into your Gmail/Google Workspace account and allow Easy WP SMTP to send emails on your behalf. That's it! It really is that easy.
 
@@ -78,13 +80,11 @@ Read our <a href="https://easywpsmtp.com/docs/setting-up-the-gmail-mailer/?utm_s
 
 Easy WP SMTP uses Mailgun API to reliably and quickly send out your WordPress emails.
 
-Mailgun provides a 3-month trial period, where you can send 5000 emails per month.
-
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-mailgun-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Mailgun documentation</a> for more details.
 
 #### Microsoft 365 (Outlook and Office 365)
 
-If your business utilizes Outlook.com or Microsoft 365 for email, our Microsoft 365 / Outlook mailer integration can help you enhance your email deliverability by enabling you to send emails from WordPress using your existing Outlook.com or Microsoft 365 account.
+If your business utilizes Outlook.com, Microsoft Office 365, or Azure for email, our Microsoft 365 / Outlook mailer integration can help you enhance your email deliverability by enabling you to send emails from WordPress using your existing Outlook.com or Microsoft 365 account.
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-outlook-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Microsoft 365 / Outlook documentation</a> for more details.
 
@@ -92,7 +92,7 @@ Read our <a href="https://easywpsmtp.com/docs/setting-up-the-outlook-mailer/?utm
 
 Easy WP SMTP uses SendGrid's API to send your WordPress emails. If you have an SendGrid account, all you'll need is the API key to connect your account with our plugin.
 
-They offer a free account, so you can test it's reliabitlity.
+They offer a free account, so you can test its reliability.
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sendgrid-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SendGrid documentation</a> for more details.
 
@@ -102,7 +102,7 @@ Our plugin offers native integration with Brevo (formerly Sendinblue). All you h
 
 They offer a free account with 300 emails per day.
 
-Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sendinblue-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Sendinblue documentation</a> for more details.
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sendinblue-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Brevo documentation</a> for more details.
 
 #### SMTP.com
 
@@ -122,7 +122,7 @@ Read our <a href="https://easywpsmtp.com/docs/setting-up-the-other-smtp-mailer/?
 
 Debug Events is a feature that will log all your failed email sending attempts and provide additional information on why it failed and from which plugin the email was sent from.
 
-You can enabled the Debug Email Sending option and all email sending attempts will be logged (not just the failing ones), so you can debug any delivery issues.
+You can enable the Debug Email Sending option and all email sending attempts will be logged (not just the failing ones), so you can debug any delivery issues.
 
 ### Easy WP SMTP Pro
 
@@ -158,7 +158,7 @@ Our email logging feature allows you to easily print any email in a clear and ea
 
 #### Email Reports
 
-Track email deliverability and engagement with our email reports feature, which displays open and click-through rates grouped by subject line. The reports also include information on sent and failed emails each week, ensuring that you're always aware of potential issues. Plus, you can view an email report chart right in your WordPress dashboard for quick and easy access.
+Track email deliverability and engagement with our email reports feature, which displays open and click-through rates grouped by subject line, regardless of mailer or SMTP service. The reports also include information on sent and failed emails each week, ensuring that you're always aware of potential issues. Plus, you can view an email report chart right in your WordPress dashboard for quick and easy access.
 
 #### Weekly Email Summary
 
@@ -189,7 +189,7 @@ For more information on how you can configure all plugin settings, please visit 
 
 #### Easy WP SMTP Email Test
 
-On the Email Test page you can send a test email to your own email address, to make sure that your WordPress site is ready to send all outgoing emails.
+On the Email Test page you can send a test email to your own email address, using your configured mailer or SMTP service, to make sure that your WordPress site is ready to send all outgoing emails.
 
 Once you click the "Send Test Email" button, by default a predefined email template (HTML or plain text) will be sent. But if you prefer, you can also define your own subject and email content in the Email Test settings.
 
@@ -226,6 +226,12 @@ And we will try to help out as soon as possible.
 6. Debug Events page
 
 == Changelog ==
+
+= 2.3.2 - 2024-07-23 =
+* Changed: Bumped tested WP version to 6.6.
+
+= 2.3.1 - 2024-06-11 =
+* Changed: Improved SMTP password security in the Other SMTP mailer.
 
 = 2.3.0 - 2024-03-13 =
 * IMPORTANT: Support for PHP 5.6, 7.0, and 7.1 has been discontinued. If you are running one of those versions, you MUST upgrade PHP before installing or upgrading to Easy WP SMTP v2.3. Failure to do that will disable Easy WP SMTP functionality.
@@ -371,7 +377,7 @@ And we will try to help out as soon as possible.
 
 = 1.3.3 =
 * Added option to allow insecure SSL certificate usage on SMTP server (thanks to ravipatel and bradclarke365).
-* Changing fields on Test Email tab is no longer shows "you have unsaved settings" notice.
+* Changing fields on Test Email tab no longer shows "you have unsaved settings" notice.
 * Plugin is compatible again with WP version 4.3+ (thanks to lucrus for reporting).
 
 = 1.3.2 =

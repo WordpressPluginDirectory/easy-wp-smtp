@@ -3,6 +3,7 @@
 namespace EasyWPSMTP\Providers;
 
 use EasyWPSMTP\ConnectionInterface;
+use EasyWPSMTP\Helpers\UI;
 use EasyWPSMTP\Options;
 
 /**
@@ -461,10 +462,21 @@ abstract class OptionsAbstract implements OptionsInterface {
 						<?php esc_html_e( 'All the defined constants will stop working and you will be able to change all the values on this page.', 'easy-wp-smtp' ); ?>
 					</p>
 				<?php else : ?>
-					<input name="easy-wp-smtp[<?php echo esc_attr( $this->get_slug() ); ?>][pass]" type="password"
-						value="<?php echo esc_attr( $this->connection_options->get( $this->get_slug(), 'pass' ) ); ?>"
-						id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-pass" spellcheck="false" autocomplete="new-password"
-					/>
+
+					<?php
+					$slug  = $this->get_slug();
+					$value = $this->connection_options->get( $slug, 'pass' );
+
+					UI::hidden_password_field(
+						[
+							'name'       => "easy-wp-smtp[{$slug}][pass]",
+							'id'         => "easy-wp-smtp-setting-{$slug}-pass",
+							'value'      => $value,
+							'clear_text' => esc_html__( 'Remove Password', 'easy-wp-smtp' ),
+						]
+					);
+					?>
+
 					<p class="desc">
 						<?php esc_html_e( 'The password to log in to your mail server. The password will be encrypted in the database.', 'easy-wp-smtp' ); ?>
 					</p>

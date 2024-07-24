@@ -308,6 +308,19 @@ EasyWPSMTP.Admin.Settings = EasyWPSMTP.Admin.Settings || ( function( document, w
 			$( '#easy-wp-smtp-setting-domain_check' ).on( 'change', function() {
 				$( '#easy-wp-smtp-setting-domain_check_allowed_domains, #easy-wp-smtp-setting-domain_check_do_not_send' ).prop( 'disabled', ! $( this ).is( ':checked' ) )
 			} );
+
+			// Obfuscated fields
+			$( '.easy-wp-smtp-btn[data-clear-field]' ).on( 'click', function( e ) {
+				var $button = $( this );
+				var fieldId = $button.attr( 'data-clear-field' );
+				var $field = $( `#${fieldId}` );
+
+				$field.prop( 'disabled', false );
+				$field.attr( 'name', $field.attr( 'data-name' ) );
+				$field.removeAttr( 'value' );
+				$field.focus();
+				$button.remove();
+			} );
 		},
 
 		education: {

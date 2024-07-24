@@ -185,6 +185,7 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Helpers\\DB' => __DIR__ . '/../..' . '/src/Helpers/DB.php',
         'EasyWPSMTP\\Helpers\\Geo' => __DIR__ . '/../..' . '/src/Helpers/Geo.php',
         'EasyWPSMTP\\Helpers\\Helpers' => __DIR__ . '/../..' . '/src/Helpers/Helpers.php',
+        'EasyWPSMTP\\Helpers\\UI' => __DIR__ . '/../..' . '/src/Helpers/UI.php',
         'EasyWPSMTP\\MailCatcher' => __DIR__ . '/../..' . '/src/MailCatcher.php',
         'EasyWPSMTP\\MailCatcherInterface' => __DIR__ . '/../..' . '/src/MailCatcherInterface.php',
         'EasyWPSMTP\\MailCatcherTrait' => __DIR__ . '/../..' . '/src/MailCatcherTrait.php',
