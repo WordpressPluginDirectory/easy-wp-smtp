@@ -24,13 +24,14 @@ class Loader {
 	protected $providers = [
 		'sendlayer'  => 'EasyWPSMTP\Providers\Sendlayer\\',
 		'amazonses'  => 'EasyWPSMTP\Providers\AmazonSES\\',
+		'sendinblue' => 'EasyWPSMTP\Providers\Sendinblue\\',
 		'gmail'      => 'EasyWPSMTP\Providers\Gmail\\',
 		'mailgun'    => 'EasyWPSMTP\Providers\Mailgun\\',
 		'outlook'    => 'EasyWPSMTP\Providers\Outlook\\',
-		'sendgrid'   => 'EasyWPSMTP\Providers\Sendgrid\\',
 		'postmark'   => 'EasyWPSMTP\Providers\Postmark\\',
-		'sendinblue' => 'EasyWPSMTP\Providers\Sendinblue\\',
+		'sendgrid'   => 'EasyWPSMTP\Providers\Sendgrid\\',
 		'smtpcom'    => 'EasyWPSMTP\Providers\SMTPcom\\',
+		'sparkpost'  => 'EasyWPSMTP\Providers\SparkPost\\',
 		'smtp'       => 'EasyWPSMTP\Providers\SMTP\\',
 		'mail'       => 'EasyWPSMTP\Providers\Mail\\',
 	];

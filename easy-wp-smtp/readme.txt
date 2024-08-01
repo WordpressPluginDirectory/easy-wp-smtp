@@ -1,14 +1,14 @@
-=== Easy WP SMTP by SendLayer - WordPress SMTP and Email Log Plugin ===
+=== Easy WP SMTP – WordPress SMTP and Email Logs: Gmail, Office 365, Outlook, Custom SMTP, and more ===
 Contributors: sendlayer, jaredatch, smub, capuderg
 Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.3.2
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Improve email delivery for WordPress with SMTP. Configure SendLayer, Mailgun, Brevo, Gmail or connect to an SMTP server.
+Make SMTP email sending and delivery easy. Configure Gmail, Outlook, Brevo, SendGrid, Mailgun, SendLayer or connect to any SMTP server.
 
 == Description ==
 
@@ -30,6 +30,8 @@ You can resolve your email deliverability issues by configuring one of these mai
 * SendGrid
 * Brevo (formerly Sendinblue)
 * SMTP.com
+* Postmark
+* SparkPost
 * Other SMTP - configure any SMTP mail server
 
 ### Easy WP SMTP Features
@@ -39,6 +41,7 @@ You can resolve your email deliverability issues by configuring one of these mai
 * The fastest Gmail / Google mail integration on the market (configure it in just a couple of clicks).
 * You can use different transactional mailers or SMTP: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
 * Powerful Email Logging - log all mail sent from your WordPress site, resend emails, store attachments, and more. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
+* Email Alerts - receive notifications via email, Slack, Microsoft Teams, SMS, or custom webhooks, when email fails to send from your site. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=alerts-readme" rel="friend">[Pro]</a>
 * Generate email and delivery reports in your WordPress dashboard - see how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
 * The Dashboard Widget shows you sent, delivered, failed, opened and clicked stats at a glance. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=dashboard-widget-readme" rel="friend">[Pro]</a>
 * You can use Gmail, Outlook, Yahoo, Hotmail, Zoho, or any other SMTP server.
@@ -112,6 +115,22 @@ You can get started with a 30-day trial account, where you can send up to 50,000
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-smtp-com-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SMTP.com documentation</a> for more details.
 
+#### Postmark
+
+Postmark is a transactional email service with great deliverability and budget-friendly pricing.
+
+You can start out with their free trial option, which allows you to send up to 100 emails per month through their secure API.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-postmark-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Postmark documentation</a> for more details.
+
+#### SparkPost
+
+SparkPost is a transactional email provider, designed to provide high-speed, reliable, and secure email delivery.
+
+You can get started with the free test account that lets you send up to 500 emails per month.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sparkpost-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SparkPost documentation</a> for more details.
+
 #### Other SMTP
 
 With our Other SMTP mailer, you can configure any SMTP server to send your WordPress emails. You can use your own SMTP server, or any of the popular email providers: Gmail, Outlook, Yahoo, Zoho, Hotmail, ...
@@ -155,6 +174,12 @@ Export your WordPress emails to CSV, EML, or Excel with ease using our intuitive
 #### Print Emails
 
 Our email logging feature allows you to easily print any email in a clear and easy-to-read format, making it simple to keep track of important email communications. Additionally, you can export email logs to PDF format for convenient digital archiving.
+
+#### Email Alerts
+
+If an email fails to be sent from your site, get notified instantly via Slack, Microsoft Teams, SMS (Twilio), webhooks, or email (via our secure API).
+
+In combination with our email logging and resending features, Email Alerts ensure that no important email will ever be lost.
 
 #### Email Reports
 
@@ -226,6 +251,9 @@ And we will try to help out as soon as possible.
 6. Debug Events page
 
 == Changelog ==
+
+= 2.4.0 - 2024-08-01 =
+* Added: New SparkPost transactional mailer.
 
 = 2.3.2 - 2024-07-23 =
 * Changed: Bumped tested WP version to 6.6.

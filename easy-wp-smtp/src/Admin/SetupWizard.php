@@ -1221,6 +1221,8 @@ class SetupWizard {
 			'EasyWPSMTP_SENDGRID_DOMAIN'               => [ 'sendgrid', 'domain' ],
 			'EasyWPSMTP_POSTMARK_SERVER_API_TOKEN'     => [ 'postmark', 'server_api_token' ],
 			'EasyWPSMTP_POSTMARK_MESSAGE_STREAM'       => [ 'postmark', 'message_stream' ],
+			'EasyWPSMTP_SPARKPOST_API_KEY'             => [ 'sparkpost', 'api_key' ],
+			'EasyWPSMTP_SPARKPOST_REGION'              => [ 'sparkpost', 'region' ],
 			'EasyWPSMTP_SMTP_HOST'                     => [ 'smtp', 'host' ],
 			'EasyWPSMTP_SMTP_PORT'                     => [ 'smtp', 'port' ],
 			'EasyWPSMTP_SSL'                           => [ 'smtp', 'encryption' ],

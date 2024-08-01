@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'awesomemotive/easy-wp-smtp',
-        'pretty_version' => 'dev-2.3.0-release',
-        'version' => 'dev-2.3.0-release',
-        'reference' => '53cb0863224775018ae520c2050aff2294a4b4f7',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'reference' => '59d5f2e42989e7a43a5b31ee104d83c5a4fbc3ed',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'awesomemotive/easy-wp-smtp' => array(
-            'pretty_version' => 'dev-2.3.0-release',
-            'version' => 'dev-2.3.0-release',
-            'reference' => '53cb0863224775018ae520c2050aff2294a4b4f7',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => '59d5f2e42989e7a43a5b31ee104d83c5a4fbc3ed',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -59,9 +59,9 @@
             'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-normalizer' => array(
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'bc45c394692b948b4d383a08d7753968bed9a83d',
+            'pretty_version' => 'v1.30.0',
+            'version' => '1.30.0.0',
+            'reference' => 'a95281b0be0d9ab48050ebd988b967875cdb9fdb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-normalizer',
             'aliases' => array(),
@@ -77,9 +77,9 @@
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php72' => array(
-            'pretty_version' => 'v1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => '861391a8da9a04cbad2d232ddd9e4893220d6e25',
+            'pretty_version' => 'v1.30.0',
+            'version' => '1.30.0.0',
+            'reference' => '10112722600777e02d2745716b70c5db4ca70442',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php72',
             'aliases' => array(),

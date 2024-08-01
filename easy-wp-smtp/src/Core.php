@@ -681,6 +681,8 @@ class Core {
 			update_option( 'easy_wp_smtp_activated', $activated );
 		}
 
+		set_transient( 'easy_wp_smtp_just_activated', true, 60 );
+
 		// Add transient to trigger redirect to the Setup Wizard.
 		set_transient( 'easy_wp_smtp_activation_redirect', true, 30 );
 	}

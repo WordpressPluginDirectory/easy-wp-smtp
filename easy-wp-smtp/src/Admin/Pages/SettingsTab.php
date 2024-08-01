@@ -348,7 +348,7 @@ class SettingsTab extends PageAbstract {
 								<ul>
 									<li><?php esc_html_e( 'Open and click tracking', 'easy-wp-smtp' ); ?></li>
 									<li><?php esc_html_e( 'Status (was the email delivered, sent, pending, or failed)', 'easy-wp-smtp' ); ?></li>
-									<li><?php esc_html_e( 'Email log export (.eml, .csv, .xlsl) and bulk exporter', 'easy-wp-smtp' ); ?></li>
+									<li><?php esc_html_e( 'Email log export (.eml, .csv, .xlsx) and bulk exporter', 'easy-wp-smtp' ); ?></li>
 									<li><?php esc_html_e( 'Source (which plugin/theme sent the email and it\'s path location)', 'easy-wp-smtp' ); ?></li>
 								</ul>
 							</li>

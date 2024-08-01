@@ -324,7 +324,7 @@ class WP {
 		}
 
 		foreach ( $translations->entries as $msgid => $entry ) {
-			$locale[ $msgid ] = $entry->translations;
+			$locale[ $entry->singular ] = $entry->translations;
 		}
 
 		return $locale;

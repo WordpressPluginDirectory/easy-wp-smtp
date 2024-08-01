@@ -146,7 +146,6 @@ class ConnectionSettings {
 								</label>
 							</div>
 						<?php endforeach; ?>
-						<div class="easy-wp-smtp-mailers-picker__item"></div>
 					</div>
 				</div>
 

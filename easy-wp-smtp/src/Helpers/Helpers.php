@@ -30,6 +30,7 @@ class Helpers {
 				'sendinblue',
 				'mailgun',
 				'postmark',
+				'sparkpost',
 			],
 			true
 		);

@@ -5,14 +5,14 @@ namespace EasyWPSMTP\Helpers;
 /**
  * Admin interface helpers.
  *
- * @since {VERSION}
+ * @since 2.4.0
  */
 class UI {
 
 	/**
 	 * Output an obfuscated password field.
 	 *
-	 * @since {VERSION}
+	 * @since 2.4.0
 	 *
 	 * @param array $args Field attributes.
 	 *
