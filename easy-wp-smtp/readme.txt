@@ -4,7 +4,7 @@ Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -251,6 +251,9 @@ And we will try to help out as soon as possible.
 6. Debug Events page
 
 == Changelog ==
+
+= 2.4.1 - 2024-08-05 =
+* Fixed: the undefined array key `hide_email_alerts_banner`.
 
 = 2.4.0 - 2024-08-01 =
 * Added: New SparkPost transactional mailer.

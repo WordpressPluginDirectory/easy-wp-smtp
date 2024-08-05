@@ -647,6 +647,7 @@ class DashboardWidget {
 		$defaults = [
 			'hide_graph'                      => 0,
 			'hide_summary_report_email_block' => 0,
+			'hide_email_alerts_banner'        => 0,
 		];
 
 		$meta_value = get_user_meta( get_current_user_id(), $this->get_widget_meta_key( $meta ), true );
