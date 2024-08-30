@@ -125,7 +125,11 @@ class Area {
 				global $pagenow;
 
 				// Redirect from `options-general.php`.
-				if ( WP::in_wp_admin() && $pagenow === 'options-general.php' ) {
+				if (
+					WP::in_wp_admin() &&
+					$pagenow === 'options-general.php' &&
+					$this->get_current_tab() !== 'auth'
+				) {
 					wp_safe_redirect( $this->get_admin_page_url() );
 					exit();
 				}
@@ -812,11 +816,13 @@ class Area {
 
 		if ( empty( $this->pages ) ) {
 			$this->pages = [
-				'settings' => new Pages\SettingsTab(),
-				'logs'     => new Pages\LogsTab(),
-				'alerts'   => new Pages\AlertsTab(),
-				'misc'     => new Pages\MiscTab(),
-				'auth'     => new Pages\AuthTab(),
+				'settings'    => new Pages\SettingsTab(),
+				'logs'        => new Pages\LogsTab(),
+				'alerts'      => new Pages\AlertsTab(),
+				'connections' => new Pages\AdditionalConnectionsTab(),
+				'routing'     => new Pages\SmartRoutingTab(),
+				'misc'        => new Pages\MiscTab(),
+				'auth'        => new Pages\AuthTab(),
 			];
 		}
 

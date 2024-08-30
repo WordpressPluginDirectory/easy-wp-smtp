@@ -75,6 +75,9 @@ class Options {
 		'sendlayer'            => [
 			'api_key',
 		],
+		'smtp2go'              => [
+			'api_key',
+		],
 		'postmark'             => [
 			'server_api_token',
 			'message_stream',
@@ -124,6 +127,7 @@ class Options {
 		'outlook',
 		'postmark',
 		'sendgrid',
+		'smtp2go',
 		'sparkpost',
 		'smtp',
 	];
@@ -220,7 +224,7 @@ class Options {
 				'auth'    => true,
 			],
 			'general' => [
-				'domain_check_allowed_domains' => wp_parse_url( get_site_url(), PHP_URL_HOST ),
+				'domain_check_allowed_domains'    => wp_parse_url( get_site_url(), PHP_URL_HOST ),
 				SummaryReportEmail::SETTINGS_SLUG => ! is_multisite() ? false : true,
 			],
 		];
@@ -285,7 +289,7 @@ class Options {
 		 * Get the values saved in DB.
 		 * If plugin is configured with constants right from the start - this will not have all the values.
 		 */
-		$options = isset( $this->options[ $group ] ) ? $this->options[ $group ] : array();
+		$options = isset( $this->options[ $group ] ) ? $this->options[ $group ] : [];
 
 		// We need to process certain constants-aware options through actual constants.
 		if ( isset( self::$map[ $group ] ) ) {
@@ -435,7 +439,7 @@ class Options {
 	 *
 	 * @param string $group
 	 * @param string $key
-	 * @param mixed $value
+	 * @param mixed  $value
 	 *
 	 * @return mixed
 	 */
@@ -513,6 +517,16 @@ class Options {
 					case 'api_key':
 						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
 						$return = $this->is_const_defined( $group, $key ) ? EASY_WP_SMTP_SENDLAYER_API_KEY : $value;
+						break;
+				}
+
+				break;
+
+			case 'smtp2go':
+				switch ( $key ) {
+					case 'api_key':
+						/** @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EASY_WP_SMTP_SMTP2GO_API_KEY : $value;
 						break;
 				}
 
@@ -832,6 +846,15 @@ class Options {
 
 				break;
 
+			case 'smtp2go':
+				switch ( $key ) {
+					case 'api_key':
+						$return = defined( 'EASY_WP_SMTP_SMTP2GO_API_KEY' ) && EASY_WP_SMTP_SMTP2GO_API_KEY;
+						break;
+				}
+
+				break;
+
 			case 'outlook':
 				switch ( $key ) {
 					case 'client_id':
@@ -965,9 +988,9 @@ class Options {
 				switch ( $key ) {
 					case 'connections':
 						$return = defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_ACCOUNT_SID' ) && EasyWPSMTP_ALERT_TWILIO_SMS_ACCOUNT_SID &&
-											defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN' ) && EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN &&
-											defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER &&
-											defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER;
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN' ) && EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN &&
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER &&
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER;
 						break;
 				}
 
@@ -1180,7 +1203,7 @@ class Options {
 					case 'user': // smtp.
 					case 'encryption': // smtp.
 					case 'region': // mailgun/amazonses/sparkpost.
-					case 'api_key': // mailgun/sendinblue/smtpcom/sendlayer/sendgrid/sparkpost.
+					case 'api_key': // mailgun/sendinblue/smtpcom/sendlayer/sendgrid/sparkpost/smtp2go.
 					case 'domain': // mailgun/sendinblue/sendgrid.
 					case 'channel': // smtpcom.
 					case 'client_id': // outlook/amazonses.
@@ -1208,7 +1231,8 @@ class Options {
 						if ( $mailer === 'smtp' && ! $this->is_const_defined( 'smtp', 'pass' ) ) {
 							try {
 								$options[ $mailer ][ $option_name ] = Crypto::encrypt( $option_value );
-							} catch ( \Exception $e ) {} // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch, Squiz.Commenting.EmptyCatchComment.Missing, Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
+							} catch ( \Exception $e ) {
+							} // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch, Squiz.Commenting.EmptyCatchComment.Missing, Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
 						}
 						break;
 
@@ -1238,16 +1262,16 @@ class Options {
 		$arrays = func_get_args();
 
 		if ( count( $arrays ) < 2 ) {
-			return isset( $arrays[0] ) ? $arrays[0] : array();
+			return isset( $arrays[0] ) ? $arrays[0] : [];
 		}
 
-		$merged = array();
+		$merged = [];
 
 		while ( $arrays ) {
 			$array = array_shift( $arrays );
 
 			if ( ! is_array( $array ) ) {
-				return array();
+				return [];
 			}
 
 			if ( empty( $array ) ) {
@@ -1301,7 +1325,7 @@ class Options {
 	 * @return bool
 	 */
 	public function is_mailer_smtp() {
-		return apply_filters( 'easy_wp_smtp_options_is_mailer_smtp', in_array( $this->get( 'mail', 'mailer' ), array( 'smtp' ), true ) );
+		return apply_filters( 'easy_wp_smtp_options_is_mailer_smtp', in_array( $this->get( 'mail', 'mailer' ), [ 'smtp' ], true ) );
 	}
 
 	/**

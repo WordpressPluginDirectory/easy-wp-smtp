@@ -354,6 +354,8 @@ class SettingsTab extends PageAbstract {
 							</li>
 						</ul>
 						<ul>
+							<li><?php esc_html_e( 'Backup Connection - send emails through a backup if the primary connection fails', 'easy-wp-smtp' ); ?></li>
+							<li><?php esc_html_e( 'Smart Routing - set specific conditions for how your emails are sent', 'easy-wp-smtp' ); ?></li>
 							<li><?php esc_html_e( 'Pro mailers: Amazon SES and Microsoft 365 / Outlook', 'easy-wp-smtp' ); ?></li>
 							<li><?php esc_html_e( 'Advanced Email Reports', 'easy-wp-smtp' ); ?></li>
 							<li><?php esc_html_e( 'Intuitive Dashboard Widget with email stats', 'easy-wp-smtp' ); ?></li>

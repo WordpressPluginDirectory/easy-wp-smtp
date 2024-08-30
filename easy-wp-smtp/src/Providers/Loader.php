@@ -5,7 +5,6 @@ namespace EasyWPSMTP\Providers;
 use EasyWPSMTP\ConnectionInterface;
 use EasyWPSMTP\Debug;
 use EasyWPSMTP\MailCatcherInterface;
-use EasyWPSMTP\Options;
 
 /**
  * Class Loader.
@@ -31,6 +30,7 @@ class Loader {
 		'postmark'   => 'EasyWPSMTP\Providers\Postmark\\',
 		'sendgrid'   => 'EasyWPSMTP\Providers\Sendgrid\\',
 		'smtpcom'    => 'EasyWPSMTP\Providers\SMTPcom\\',
+		'smtp2go'    => 'EasyWPSMTP\Providers\SMTP2GO\\',
 		'sparkpost'  => 'EasyWPSMTP\Providers\SparkPost\\',
 		'smtp'       => 'EasyWPSMTP\Providers\SMTP\\',
 		'mail'       => 'EasyWPSMTP\Providers\Mail\\',
@@ -96,7 +96,7 @@ class Loader {
 	 */
 	public function get_options_all( $connection = null ) {
 
-		$options = array();
+		$options = [];
 
 		foreach ( $this->get_providers() as $provider => $path ) {
 
@@ -151,17 +151,17 @@ class Loader {
 	/**
 	 * Get a generic entity based on the request.
 	 *
-	 * @uses  \ReflectionClass
-	 *
 	 * @since 2.0.0
 	 *
 	 * @param string $provider
 	 * @param string $request
-	 * @param array  $args     Entity instantiation arguments.
+	 * @param array  $args Entity instantiation arguments.
 	 *
 	 * @return OptionsAbstract|MailerAbstract|AuthAbstract|null
+	 * @uses  \ReflectionClass
+	 *
 	 */
-	protected function get_entity( $provider, $request, $args = []  ) {
+	protected function get_entity( $provider, $request, $args = [] ) {
 
 		$provider = sanitize_key( $provider );
 		$request  = sanitize_text_field( $request );
@@ -179,8 +179,7 @@ class Loader {
 				$class  = $path . $request;
 				$entity = new $class( ...$args );
 			}
-		}
-		catch ( \Exception $e ) {
+		} catch ( \Exception $e ) {
 			Debug::set( "There was a problem while retrieving {$request} for {$provider}: {$e->getMessage()}" );
 			$entity = null;
 		}

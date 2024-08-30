@@ -767,4 +767,23 @@ class WP {
 			return is_string( $var ) ? sanitize_text_field( $var ) : $var;
 		}
 	}
+
+	/**
+	 * Check if the global plugin option in a multisite should be used.
+	 * If the global plugin option "multisite" is set and true.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @return bool
+	 */
+	public static function use_global_plugin_settings() {
+
+		if ( ! is_multisite() ) {
+			return false;
+		}
+
+		$main_site_options = get_blog_option( get_main_site_id(), Options::META_KEY, [] );
+
+		return ! empty( $main_site_options['general']['network_wide'] );
+	}
 }
