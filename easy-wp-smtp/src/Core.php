@@ -6,13 +6,14 @@ use EasyWPSMTP\Admin\Area as AdminArea;
 use EasyWPSMTP\Admin\DashboardWidget;
 use EasyWPSMTP\Admin\DebugEvents\DebugEvents;
 use EasyWPSMTP\Admin\Notifications;
+use EasyWPSMTP\Compatibility\Compatibility;
 use EasyWPSMTP\Migrations\Migrations;
 use EasyWPSMTP\Providers\Loader as ProvidersLoader;
-use EasyWPSMTP\Tasks\Tasks;
-use EasyWPSMTP\Tasks\Meta;
-use EasyWPSMTP\UsageTracking\UsageTracking;
-use EasyWPSMTP\Compatibility\Compatibility;
+use EasyWPSMTP\Queue\Queue;
 use EasyWPSMTP\Reports\Reports;
+use EasyWPSMTP\Tasks\Meta;
+use EasyWPSMTP\Tasks\Tasks;
+use EasyWPSMTP\UsageTracking\UsageTracking;
 use Exception;
 use ReflectionFunction;
 
@@ -139,6 +140,13 @@ class Core {
 		add_action( 'plugins_loaded', [ $this, 'get_db_repair' ] );
 		add_action( 'plugins_loaded', [ $this, 'get_connections_manager' ], 20 );
 		add_action( 'plugins_loaded', [ $this, 'get_wp_mail_initiator' ] );
+		add_action( 'plugins_loaded', [ $this, 'get_queue' ] );
+		add_action(
+			'plugins_loaded',
+			function() {
+				( new OptimizedEmailSending() )->hooks();
+			}
+		);
 	}
 
 	/**
@@ -849,6 +857,10 @@ class Core {
 			DebugEvents::get_table_name(),
 		];
 
+		if ( $this->get_queue()->is_enabled() ) {
+			$tables[] = Queue::get_table_name();
+		}
+
 		return apply_filters( 'easy_wp_smtp_core_get_custom_db_tables', $tables );
 	}
 
@@ -1301,5 +1313,30 @@ class Core {
 		 * @param string $capability The default capability to manage everything for Easy WP SMTP.
 		 */
 		return apply_filters( 'easy_wp_smtp_core_get_capability_manage_options', 'manage_options' );
+	}
+
+	/**
+	 * Load the queue functionality.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return Queue
+	 */
+	public function get_queue() {
+
+		static $queue;
+
+		if ( ! isset( $queue ) ) {
+			/**
+			 * Filter the Queue object.
+			 *
+			 * @since 2.6.0
+			 *
+			 * @param Queue $queue The Queue object.
+			 */
+			$queue = apply_filters( 'easy_wp_smtp_core_get_queue', new Queue() );
+		}
+
+		return $queue;
 	}
 }

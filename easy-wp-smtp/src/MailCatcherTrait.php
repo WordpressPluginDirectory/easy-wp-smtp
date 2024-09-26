@@ -2,10 +2,10 @@
 
 namespace EasyWPSMTP;
 
-use EasyWPSMTP\Helpers\Helpers;
-use Exception;
 use EasyWPSMTP\Admin\DebugEvents\DebugEvents;
+use EasyWPSMTP\Helpers\Helpers;
 use EasyWPSMTP\Providers\MailerAbstract;
+use Exception;
 
 /**
  * Trait MailCatcherTrait.
@@ -127,6 +127,35 @@ trait MailCatcherTrait {
 
 		if ( Helpers::is_domain_blocked() && ! $this->is_test_email ) {
 			return $this->handle_blocked_domain();
+		}
+
+		// If it's not a test email,
+		// check if the email should be enqueued
+		// instead of being sent immediately.
+		if ( ! $this->is_test_email && ! $this->is_setup_wizard_test_email ) {
+
+			/**
+			 * Filters whether an email should be enqueued or sent immediately.
+			 *
+			 * @since 2.6.0
+			 *
+			 * @param bool  $should_enqueue Whether to enqueue an email, or send it.
+			 * @param array $wp_mail_args   Original arguments of the `wp_mail` call.
+			 */
+			$should_enqueue_email = apply_filters(
+				'easy_wp_smtp_mail_catcher_send_enqueue_email',
+				false,
+				easy_wp_smtp()->get_processor()->get_filtered_wp_mail_args()
+			);
+
+			$queue = easy_wp_smtp()->get_queue();
+
+			// If we should enqueue the email,
+			// and the email has been enqueued,
+			// bail.
+			if ( $should_enqueue_email && $queue->enqueue_email() ) {
+				return true;
+			}
 		}
 
 		// Define a custom header, that will be used to identify the plugin and the mailer.
@@ -441,5 +470,85 @@ trait MailCatcherTrait {
 	public function is_emailing_blocked() {
 
 		return $this->is_emailing_blocked;
+	}
+
+	/**
+	 * Return the list of properties representing
+	 * this class' state.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array State of this class.
+	 */
+	private function get_state_properties() {
+
+		return [
+			'CharSet',
+			'ContentType',
+			'Encoding',
+			'CustomHeader',
+			'Subject',
+			'Body',
+			'AltBody',
+			'ReplyTo',
+			'to',
+			'cc',
+			'bcc',
+			'attachment',
+		];
+	}
+
+	/**
+	 * Return an array of relevant properties.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array State of this class.
+	 */
+	public function get_state() {
+
+		$state = [];
+
+		foreach ( $this->get_state_properties() as $property ) {
+			$state[ $property ] = $this->{$property};
+		}
+
+		return $state;
+	}
+
+	/**
+	 * Set properties from a provided array of data.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $state Array of properties to apply.
+	 */
+	public function set_state( $state ) { // phpcs:ignore Generic.Metrics.NestingLevel.MaxExceeded
+
+		// Filter out non-allowed properties.
+		$state = array_intersect_key(
+			$state,
+			array_flip( $this->get_state_properties() )
+		);
+
+		foreach ( $state as $property => $value ) {
+			if ( $property !== 'attachment' ) {
+				$this->{$property} = $value;
+			} else {
+				// Handle potential I/O exceptions
+				// in PHPMailer when attaching files.
+				$this->clearAttachments();
+
+				foreach ( $state['attachment'] as $attachment ) {
+					[ $path, , $name ] = $attachment;
+
+					try {
+						$this->addAttachment( $path, $name );
+					} catch ( Exception $e ) {
+						continue;
+					}
+				}
+			}
+		}
 	}
 }

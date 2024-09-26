@@ -60,6 +60,24 @@ class Processor {
 	private $filtered_wp_mail_args;
 
 	/**
+	 * This attribute will hold the From address filtered via the `wp_mail_from` filter.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @var string
+	 */
+	private $filtered_from_email;
+
+	/**
+	 * This attribute will hold the From name filtered via the `wp_mail_from_name` filter.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @var string
+	 */
+	private $filtered_from_name;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @since 2.0.0
@@ -229,6 +247,9 @@ class Processor {
 	 */
 	public function filter_mail_from_email( $wp_email ) {
 
+		// Save the original from address.
+		$this->filtered_from_email = filter_var( $wp_email, FILTER_VALIDATE_EMAIL );
+
 		if ( $this->skip_processing() ) {
 			return $wp_email;
 		}
@@ -276,6 +297,9 @@ class Processor {
 	 * @return string
 	 */
 	public function filter_mail_from_name( $name ) {
+
+		// Save the original from name.
+		$this->filtered_from_name = $name;
 
 		if ( $this->skip_processing() ) {
 			return $name;
@@ -544,5 +568,29 @@ class Processor {
 	public function get_filtered_wp_mail_args() {
 
 		return $this->filtered_wp_mail_args;
+	}
+
+	/**
+	 * Get the filtered `wp_mail_from` value.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+	public function get_filtered_from_email() {
+
+		return $this->filtered_from_email;
+	}
+
+	/**
+	 * Get the filtered `wp_mail_from_name` value.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+	public function get_filtered_from_name() {
+
+		return $this->filtered_from_name;
 	}
 }

@@ -6,6 +6,8 @@ use EasyWPSMTP\Admin\Area;
 use EasyWPSMTP\Admin\DebugEvents\DebugEvents;
 use EasyWPSMTP\Admin\DebugEvents\Migration as DebugMigration;
 use EasyWPSMTP\Migrations\GeneralMigration;
+use EasyWPSMTP\Queue\Migration as QueueMigration;
+use EasyWPSMTP\Queue\Queue;
 use EasyWPSMTP\Tasks\Meta;
 
 /**
@@ -83,6 +85,8 @@ class DBRepair {
 			update_option( DebugMigration::OPTION_NAME, 0 );
 		} elseif ( $missing_table === Meta::get_table_name() ) {
 			update_option( GeneralMigration::OPTION_NAME, 0 );
+		} elseif ( $missing_table === Queue::get_table_name() ) {
+			update_option( QueueMigration::OPTION_NAME, 0 );
 		}
 	}
 
@@ -128,6 +132,11 @@ class DBRepair {
 			$reason .= $this->get_reason_output_message(
 				$missing_table,
 				get_option( GeneralMigration::ERROR_OPTION_NAME, $this->get_missing_table_default_error_message() )
+			);
+		} elseif ( $missing_table === Queue::get_table_name() ) {
+			$reason .= $this->get_reason_output_message(
+				$missing_table,
+				get_option( QueueMigration::ERROR_OPTION_NAME, $this->get_missing_table_default_error_message() )
 			);
 		}
 

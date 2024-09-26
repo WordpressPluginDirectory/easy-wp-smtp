@@ -730,6 +730,12 @@ class Options {
 							$this->parse_boolean( EasyWPSMTP_SUMMARY_REPORT_EMAIL_DISABLED ) :
 							$value;
 						break;
+					case OptimizedEmailSending::SETTINGS_SLUG:
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ?
+							$this->parse_boolean( EasyWPSMTP_OPTIMIZED_EMAIL_SENDING_ENABLED ) :
+							$value;
+						break;
 				}
 
 				break;
@@ -1023,6 +1029,9 @@ class Options {
 					case SummaryReportEmail::SETTINGS_SLUG:
 						$return = defined( 'EasyWPSMTP_SUMMARY_REPORT_EMAIL_DISABLED' );
 						break;
+					case OptimizedEmailSending::SETTINGS_SLUG:
+						$return = defined( 'EasyWPSMTP_OPTIMIZED_EMAIL_SENDING_ENABLED' );
+						break;
 				}
 
 				break;
@@ -1148,6 +1157,7 @@ class Options {
 							case 'uninstall':
 							case UsageTracking::SETTINGS_SLUG:
 							case SummaryReportEmail::SETTINGS_SLUG:
+							case OptimizedEmailSending::SETTINGS_SLUG:
 								$options[ $group ][ $option_name ] = (bool) $option_value;
 								break;
 							case 'domain_check_allowed_domains':

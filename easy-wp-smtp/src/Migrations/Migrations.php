@@ -2,9 +2,10 @@
 
 namespace EasyWPSMTP\Migrations;
 
-use WP_Upgrader;
 use EasyWPSMTP\Admin\DebugEvents\Migration as DebugEventsMigration;
+use EasyWPSMTP\Queue\Migration as QueueMigration;
 use EasyWPSMTP\WP;
+use WP_Upgrader;
 
 /**
  * Class Migrations.
@@ -78,6 +79,7 @@ class Migrations {
 			DeprecatedOptionsMigration::class,
 			GeneralMigration::class,
 			DebugEventsMigration::class,
+			QueueMigration::class,
 		];
 
 		/**

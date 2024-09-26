@@ -4,7 +4,7 @@ Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.5.0
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,8 @@ You can resolve your email deliverability issues by configuring one of these mai
 * **Email Alerts** - receive notifications via email, Slack, Microsoft Teams, SMS, or custom webhooks, when email fails to send from your site. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=alerts-readme" rel="friend">[Pro]</a>
 * **Backup Connection** - if your primary connection fails to send an email, your backup connection will make sure your email will still get delivered. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=backup-connection-readme" rel="friend">[Pro]</a>
 * **Smart Conditional Routing** - set up rules to route different types of emails through various mailers, based on many supported filters. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=smart-routing-readme" rel="friend">[Pro]</a>
+* **Rate Limiting** - control the frequency of emails sent from your WordPress site within a given time to stay aligned with your SMTP provider's limitations. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=rate-limiting-readme" rel="friend">[Pro]</a>
+* **Optimized Email Sending** - send emails in background to avoid site slowdowns and bottlenecks. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=optimized-email-sending" rel="friend">[Pro]</a>
 * Generate email and **delivery reports** in your WordPress dashboard - see how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
 * The **Dashboard Widget** shows you sent, delivered, failed, opened and clicked stats at a glance. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=dashboard-widget-readme" rel="friend">[Pro]</a>
 * You can use Gmail, Outlook, Yahoo, Hotmail, Zoho, or any other SMTP server.
@@ -200,6 +202,18 @@ Set up rules to route different types of emails through various mailers. You can
 
 This approach lets you combine transactional and marketing providers for enhanced deliverability.
 
+#### Rate Limiting
+
+Control the frequency of emails sent from your WordPress site within a given time to stay aligned with your SMTP provider's limitations.
+
+Easy WP SMTP lets you set limits on how many emails can be sent each minute, hour, day, week, or month and automatically manages the email queue to keep you within the allowed rate.
+
+#### Optimized Email Sending
+
+Is email sending affecting your site's speed? Easy WP SMTP can queue your emails to enhance performance.
+
+With optimized sending, emails are sent in the background when server resources are available, helping to avoid site slowdowns and bottlenecks.
+
 #### Email Reports
 
 Track email deliverability and engagement with our email reports feature, which displays open and click-through rates grouped by subject line, regardless of mailer or SMTP service. The reports also include information on sent and failed emails each week, ensuring that you're always aware of potential issues. Plus, you can view an email report chart right in your WordPress dashboard for quick and easy access.
@@ -262,14 +276,22 @@ And we will try to help out as soon as possible.
 
 == Screenshots ==
 
-1. Easy WP SMTP Settings - with mailer selection
-2. Selected Other SMTP mailer
-3. Other SMTP mailer settings
-4. General Settings
-5. Email Test page
-6. Debug Events page
+1. Easy WP SMTP Settings - with "Other SMTP" mailer selected
+2. Email Log settings
+3. Alerts settings
+4. Additional Connections settings - Backup Connection configuration using SendLayer mailer
+5. Smart Routing settings
+6. Miscellanous settings
+7. Email Test page
+8. Debug Events page
+9. Setup Wizard - Step 1
+10. Setup Wizard - Step 2
 
 == Changelog ==
+
+= 2.6.0 - 2024-09-26 =
+* Added: Optimized Email Sending - improve your site's performance by handling email requests in the background.
+* Changed: Delete `easy-wp-smtp` uploads folder on plugin uninstall when the Misc -> Uninstall Easy WP SMTP option is enabled.
 
 = 2.5.0 - 2024-08-29 =
 * Added: New SMTP2GO transactional mailer.

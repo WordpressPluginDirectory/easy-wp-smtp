@@ -430,6 +430,10 @@ class Area {
 					esc_url( easy_wp_smtp()->get_utm_url( 'https://easywpsmtp.com/docs/how-to-upgrade-easy-wp-smtp-to-pro-version/', [ 'medium' => 'plugin-settings', 'content' => 'Pro Mailer Popup - Already purchased' ] ) ),
 					esc_html__( 'Already purchased?', 'easy-wp-smtp' )
 				),
+				'rate_limit'        => [
+					'upgrade_title'   => esc_html__( 'Email Rate Limiting is a Pro Feature', 'easy-wp-smtp' ),
+					'upgrade_content' => esc_html__( 'We\'re sorry, Email Rate Limiting is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.', 'easy-wp-smtp' ),
+				],
 			],
 			'all_mailers_supports'    => easy_wp_smtp()->get_providers()->get_supports_all(),
 			'nonce'                   => wp_create_nonce( 'easy-wp-smtp-admin' ),
@@ -821,6 +825,7 @@ class Area {
 				'alerts'      => new Pages\AlertsTab(),
 				'connections' => new Pages\AdditionalConnectionsTab(),
 				'routing'     => new Pages\SmartRoutingTab(),
+				'control'     => new Pages\ControlTab(),
 				'misc'        => new Pages\MiscTab(),
 				'auth'        => new Pages\AuthTab(),
 			];
@@ -1364,6 +1369,6 @@ class Area {
 		// phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		// Output inline styles.
-		echo '<style>a.easy-wp-smtp-sidebar-upgrade-pro { background-color: #00a32a !important; color: #fff !important; font-weight: 600 !important; }</style>';
+		echo '<style>a.easy-wp-smtp-sidebar-upgrade-pro { background-color: #0f8a56 !important; color: #fff !important; font-weight: 600 !important; }</style>';
 	}
 }

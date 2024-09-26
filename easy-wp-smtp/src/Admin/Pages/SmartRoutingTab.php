@@ -300,18 +300,12 @@ class SmartRoutingTab extends PageAbstract {
 						</div>
 					</div>
 				</div>
-				<div class="easy-wp-smtp-row">
-					<a href="<?php echo esc_url( $upgrade_button_url ); ?>" target="_blank" rel="noopener noreferrer" class="easy-wp-smtp-btn easy-wp-smtp-btn--lg easy-wp-smtp-btn--green">
-						<?php esc_html_e( 'Upgrade to Easy WP SMTP Pro', 'easy-wp-smtp' ); ?>
-					</a>
-				</div>
 			</div>
 		</div>
-		<div class="easy-wp-smtp-row easy-wp-smtp-row--inactive">
-			<div class="easy-wp-smtp-smart-routing-routes-note">
-				<img src="<?php echo esc_url( easy_wp_smtp()->assets_url . '/images/icons/lightbulb.svg' ); ?>" alt="<?php esc_attr_e( 'Light bulb icon', 'easy-wp-smtp' ); ?>">
-				<?php esc_html_e( 'Remember, emails that don\'t match the specified conditions will automatically be sent via your Primary Connection.', 'easy-wp-smtp' ); ?>
-			</div>
+		<div class="easy-wp-smtp-row">
+			<a href="<?php echo esc_url( $upgrade_button_url ); ?>" target="_blank" rel="noopener noreferrer" class="easy-wp-smtp-btn easy-wp-smtp-btn--lg easy-wp-smtp-btn--green">
+				<?php esc_html_e( 'Upgrade to Easy WP SMTP Pro', 'easy-wp-smtp' ); ?>
+			</a>
 		</div>
 		<?php
 	}

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
+class ComposerStaticInit11c02380f50d2808e4d8f3a4bb234f17
 {
     public static $files = array (
         '703a8983f7f3d73a3e507ba2561cc7b7' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-mbstring/bootstrap.php',
@@ -156,6 +156,7 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Admin\\Pages\\AdditionalConnectionsTab' => __DIR__ . '/../..' . '/src/Admin/Pages/AdditionalConnectionsTab.php',
         'EasyWPSMTP\\Admin\\Pages\\AlertsTab' => __DIR__ . '/../..' . '/src/Admin/Pages/AlertsTab.php',
         'EasyWPSMTP\\Admin\\Pages\\AuthTab' => __DIR__ . '/../..' . '/src/Admin/Pages/AuthTab.php',
+        'EasyWPSMTP\\Admin\\Pages\\ControlTab' => __DIR__ . '/../..' . '/src/Admin/Pages/ControlTab.php',
         'EasyWPSMTP\\Admin\\Pages\\DebugEventsTab' => __DIR__ . '/../..' . '/src/Admin/Pages/DebugEventsTab.php',
         'EasyWPSMTP\\Admin\\Pages\\EmailReports' => __DIR__ . '/../..' . '/src/Admin/Pages/EmailReports.php',
         'EasyWPSMTP\\Admin\\Pages\\EmailReportsTab' => __DIR__ . '/../..' . '/src/Admin/Pages/EmailReportsTab.php',
@@ -175,6 +176,9 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Compatibility\\Plugin\\Admin2020' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/Admin2020.php',
         'EasyWPSMTP\\Compatibility\\Plugin\\PluginAbstract' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/PluginAbstract.php',
         'EasyWPSMTP\\Compatibility\\Plugin\\PluginInterface' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/PluginInterface.php',
+        'EasyWPSMTP\\Compatibility\\Plugin\\WPForms' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/WPForms.php',
+        'EasyWPSMTP\\Compatibility\\Plugin\\WPFormsLite' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/WPFormsLite.php',
+        'EasyWPSMTP\\Compatibility\\Plugin\\WooCommerce' => __DIR__ . '/../..' . '/src/Compatibility/Plugin/WooCommerce.php',
         'EasyWPSMTP\\Conflicts' => __DIR__ . '/../..' . '/src/Conflicts.php',
         'EasyWPSMTP\\Connect' => __DIR__ . '/../..' . '/src/Connect.php',
         'EasyWPSMTP\\Connection' => __DIR__ . '/../..' . '/src/Connection.php',
@@ -198,13 +202,16 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Migrations\\GeneralMigration' => __DIR__ . '/../..' . '/src/Migrations/GeneralMigration.php',
         'EasyWPSMTP\\Migrations\\MigrationAbstract' => __DIR__ . '/../..' . '/src/Migrations/MigrationAbstract.php',
         'EasyWPSMTP\\Migrations\\Migrations' => __DIR__ . '/../..' . '/src/Migrations/Migrations.php',
+        'EasyWPSMTP\\OptimizedEmailSending' => __DIR__ . '/../..' . '/src/OptimizedEmailSending.php',
         'EasyWPSMTP\\Options' => __DIR__ . '/../..' . '/src/Options.php',
         'EasyWPSMTP\\Pro\\AdditionalConnections\\AdditionalConnections' => __DIR__ . '/../..' . '/src/Pro/AdditionalConnections/AdditionalConnections.php',
         'EasyWPSMTP\\Pro\\AdditionalConnections\\Admin\\SettingsTab' => __DIR__ . '/../..' . '/src/Pro/AdditionalConnections/Admin/SettingsTab.php',
         'EasyWPSMTP\\Pro\\AdditionalConnections\\Admin\\TestTab' => __DIR__ . '/../..' . '/src/Pro/AdditionalConnections/Admin/TestTab.php',
         'EasyWPSMTP\\Pro\\AdditionalConnections\\Connection' => __DIR__ . '/../..' . '/src/Pro/AdditionalConnections/Connection.php',
         'EasyWPSMTP\\Pro\\AdditionalConnections\\ConnectionOptions' => __DIR__ . '/../..' . '/src/Pro/AdditionalConnections/ConnectionOptions.php',
+        'EasyWPSMTP\\Pro\\Admin\\Area' => __DIR__ . '/../..' . '/src/Pro/Admin/Area.php',
         'EasyWPSMTP\\Pro\\Admin\\DashboardWidget' => __DIR__ . '/../..' . '/src/Pro/Admin/DashboardWidget.php',
+        'EasyWPSMTP\\Pro\\Admin\\Pages\\MiscTab' => __DIR__ . '/../..' . '/src/Pro/Admin/Pages/MiscTab.php',
         'EasyWPSMTP\\Pro\\Admin\\PluginsList' => __DIR__ . '/../..' . '/src/Pro/Admin/PluginsList.php',
         'EasyWPSMTP\\Pro\\Alerts\\AbstractOptions' => __DIR__ . '/../..' . '/src/Pro/Alerts/AbstractOptions.php',
         'EasyWPSMTP\\Pro\\Alerts\\Admin\\SettingsTab' => __DIR__ . '/../..' . '/src/Pro/Alerts/Admin/SettingsTab.php',
@@ -230,6 +237,10 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Pro\\ConditionalLogic\\ConditionalLogicSettings' => __DIR__ . '/../..' . '/src/Pro/ConditionalLogic/ConditionalLogicSettings.php',
         'EasyWPSMTP\\Pro\\ConnectionsManager' => __DIR__ . '/../..' . '/src/Pro/ConnectionsManager.php',
         'EasyWPSMTP\\Pro\\DBRepair' => __DIR__ . '/../..' . '/src/Pro/DBRepair.php',
+        'EasyWPSMTP\\Pro\\Emails\\Control\\Admin\\SettingsTab' => __DIR__ . '/../..' . '/src/Pro/Emails/Control/Admin/SettingsTab.php',
+        'EasyWPSMTP\\Pro\\Emails\\Control\\Control' => __DIR__ . '/../..' . '/src/Pro/Emails/Control/Control.php',
+        'EasyWPSMTP\\Pro\\Emails\\Control\\Reload' => __DIR__ . '/../..' . '/src/Pro/Emails/Control/Reload.php',
+        'EasyWPSMTP\\Pro\\Emails\\Control\\Switcher' => __DIR__ . '/../..' . '/src/Pro/Emails/Control/Switcher.php',
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Admin\\ArchivePage' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Admin/ArchivePage.php',
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Admin\\PageAbstract' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Admin/PageAbstract.php',
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Admin\\PrintPreview' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Admin/PrintPreview.php',
@@ -319,6 +330,7 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Webhooks\\Providers\\SparkPost\\Subscriber' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Webhooks/Providers/SparkPost/Subscriber.php',
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Webhooks\\SubscriberInterface' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Webhooks/SubscriberInterface.php',
         'EasyWPSMTP\\Pro\\Emails\\Logs\\Webhooks\\Webhooks' => __DIR__ . '/../..' . '/src/Pro/Emails/Logs/Webhooks/Webhooks.php',
+        'EasyWPSMTP\\Pro\\Emails\\RateLimiting\\RateLimiting' => __DIR__ . '/../..' . '/src/Pro/Emails/RateLimiting/RateLimiting.php',
         'EasyWPSMTP\\Pro\\License\\License' => __DIR__ . '/../..' . '/src/Pro/License/License.php',
         'EasyWPSMTP\\Pro\\License\\Updater' => __DIR__ . '/../..' . '/src/Pro/License/Updater.php',
         'EasyWPSMTP\\Pro\\MailCatcher' => __DIR__ . '/../..' . '/src/Pro/MailCatcher.php',
@@ -393,11 +405,18 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
         'EasyWPSMTP\\Providers\\Sendlayer\\Options' => __DIR__ . '/../..' . '/src/Providers/Sendlayer/Options.php',
         'EasyWPSMTP\\Providers\\SparkPost\\Mailer' => __DIR__ . '/../..' . '/src/Providers/SparkPost/Mailer.php',
         'EasyWPSMTP\\Providers\\SparkPost\\Options' => __DIR__ . '/../..' . '/src/Providers/SparkPost/Options.php',
+        'EasyWPSMTP\\Queue\\Attachments' => __DIR__ . '/../..' . '/src/Queue/Attachments.php',
+        'EasyWPSMTP\\Queue\\Email' => __DIR__ . '/../..' . '/src/Queue/Email.php',
+        'EasyWPSMTP\\Queue\\Migration' => __DIR__ . '/../..' . '/src/Queue/Migration.php',
+        'EasyWPSMTP\\Queue\\Queue' => __DIR__ . '/../..' . '/src/Queue/Queue.php',
         'EasyWPSMTP\\Reports\\Emails\\Summary' => __DIR__ . '/../..' . '/src/Reports/Emails/Summary.php',
         'EasyWPSMTP\\Reports\\Reports' => __DIR__ . '/../..' . '/src/Reports/Reports.php',
         'EasyWPSMTP\\SiteHealth' => __DIR__ . '/../..' . '/src/SiteHealth.php',
         'EasyWPSMTP\\Tasks\\DebugEventsCleanupTask' => __DIR__ . '/../..' . '/src/Tasks/DebugEventsCleanupTask.php',
         'EasyWPSMTP\\Tasks\\Meta' => __DIR__ . '/../..' . '/src/Tasks/Meta.php',
+        'EasyWPSMTP\\Tasks\\Queue\\CleanupQueueTask' => __DIR__ . '/../..' . '/src/Tasks/Queue/CleanupQueueTask.php',
+        'EasyWPSMTP\\Tasks\\Queue\\ProcessQueueTask' => __DIR__ . '/../..' . '/src/Tasks/Queue/ProcessQueueTask.php',
+        'EasyWPSMTP\\Tasks\\Queue\\SendEnqueuedEmailTask' => __DIR__ . '/../..' . '/src/Tasks/Queue/SendEnqueuedEmailTask.php',
         'EasyWPSMTP\\Tasks\\Reports\\SummaryEmailTask' => __DIR__ . '/../..' . '/src/Tasks/Reports/SummaryEmailTask.php',
         'EasyWPSMTP\\Tasks\\Task' => __DIR__ . '/../..' . '/src/Tasks/Task.php',
         'EasyWPSMTP\\Tasks\\Tasks' => __DIR__ . '/../..' . '/src/Tasks/Tasks.php',
@@ -427,9 +446,9 @@ class ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf6a30f02c0860aebcd365f8e172f41a7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit11c02380f50d2808e4d8f3a4bb234f17::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit11c02380f50d2808e4d8f3a4bb234f17::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit11c02380f50d2808e4d8f3a4bb234f17::$classMap;
 
         }, null, ClassLoader::class);
     }

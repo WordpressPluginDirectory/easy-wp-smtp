@@ -142,12 +142,6 @@ class AdditionalConnectionsTab extends PageAbstract {
 				$this->display_education_screenshots();
 				$this->display_education_features_list();
 				?>
-
-				<div class="easy-wp-smtp-row">
-					<a href="<?php echo esc_url( $button_upgrade_link ); ?>" target="_blank" rel="noopener noreferrer" class="easy-wp-smtp-btn easy-wp-smtp-btn--lg easy-wp-smtp-btn--green">
-						<?php esc_html_e( 'Upgrade to Easy WP SMTP Pro', 'easy-wp-smtp' ); ?>
-					</a>
-				</div>
 			</div>
 		</div>
 		<?php
@@ -212,7 +206,33 @@ class AdditionalConnectionsTab extends PageAbstract {
 					<li><?php esc_html_e( 'Implement advanced routing rules', 'easy-wp-smtp' ); ?></li>
 				</ul>
 			</div>
+
+			<?php $this->display_action_button(); ?>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Output the action button.
+	 *
+	 * @since 2.6.0
+	 */
+	protected function display_action_button() {
+
+		$button_upgrade_link = add_query_arg(
+			[ 'discount' => 'LITEUPGRADE' ],
+			easy_wp_smtp()->get_upgrade_link(
+				[
+					'medium'  => 'additional-connections',
+					'content' => 'Upgrade to Pro Button',
+				]
+			)
+		);
+
+		?>
+		<a href="<?php echo esc_url( $button_upgrade_link ); ?>" target="_blank" rel="noopener noreferrer" class="easy-wp-smtp-btn easy-wp-smtp-btn--lg easy-wp-smtp-btn--green">
+			<?php esc_html_e( 'Upgrade to Easy WP SMTP Pro', 'easy-wp-smtp' ); ?>
+		</a>
 		<?php
 	}
 }

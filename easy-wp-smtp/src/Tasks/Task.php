@@ -342,4 +342,45 @@ class Task {
 
 		return true;
 	}
+
+	/**
+	 * Cancel all occurrences of this task,
+	 * preventing it from re-registering itself.
+	 *
+	 * @since 2.6.0
+	 */
+	public function cancel_force() { // phpcs:ignore WPForms.PHP.HooksMethod.InvalidPlaceForAddingHooks
+
+		add_action( 'shutdown', [ $this, 'cancel' ], PHP_INT_MAX );
+	}
+
+	/**
+	 * Remove completed occurrences of this task.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param int $limit The amount of rows to remove.
+	 */
+	protected function remove_completed( $limit = 0 ) {
+
+		global $wpdb;
+
+		$limit = max( 0, intval( $limit ) );
+		$query = $wpdb->prepare(
+			"DELETE FROM {$wpdb->prefix}actionscheduler_actions WHERE hook = %s AND status = %s",
+			$this->action,
+			'complete'
+		);
+
+		if ( $limit > 0 ) {
+			$query .= $wpdb->prepare(
+				' LIMIT %d',
+				$limit
+			);
+		}
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query( $query );
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
+	}
 }
