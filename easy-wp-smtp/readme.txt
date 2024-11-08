@@ -4,7 +4,7 @@ Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,7 @@ You can resolve your email deliverability issues by configuring one of these mai
 * Postmark
 * SparkPost
 * SMTP2GO
+* Zoho Mail <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=zoho-readme" rel="friend">[Pro]</a>
 * Other SMTP - configure any SMTP mail server
 
 ### Easy WP SMTP Features
@@ -142,6 +143,12 @@ SMTP2GO delivers a powerful and reliable email service for transactional emails,
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-smtp2go-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SMTP2GO documentation</a> for more details.
 
+#### Zoho Mail
+
+If you use Zoho Mail for email communication, our Zoho mailer integration offers a robust solution to streamline your WordPress email delivery. This integration allows you to send emails directly through your Zoho account, leveraging its reliable infrastructure for improved deliverability.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-zoho-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Zoho Mail documentation</a> for more details.
+
 #### Other SMTP
 
 With our Other SMTP mailer, you can configure any SMTP server to send your WordPress emails. You can use your own SMTP server, or any of the popular email providers: Gmail, Outlook, Yahoo, Zoho, Hotmail, ...
@@ -222,6 +229,16 @@ Track email deliverability and engagement with our email reports feature, which 
 
 Stay on top of your WordPress email statistics with our weekly email reports, sent to your inbox. These reports provide in-depth information on the number of emails sent, as well as opens and clicks. The Summary also shows failed email delivery stats, allowing you to quickly identify any potential issues without having to log into WordPress.
 
+#### WordPress Multisite
+
+*WordPress Multisite Network Settings*
+
+Manage WP Mail SMTP settings for all your multisite subsites in one place, simplifying administration for your multisite network.
+
+*Easily Manage Multisite Emails*
+
+Network administrators can easily monitor and manage email logs, email reports, debug events, and exports for all subsites in the network from a central dashboard.
+
 ### Easy WP SMTP Plugin Usage
 
 Once you have installed the plugin there are a few options that you need to configure.
@@ -288,6 +305,11 @@ And we will try to help out as soon as possible.
 10. Setup Wizard - Step 2
 
 == Changelog ==
+
+= 2.7.0 - 2024-11-07 =
+* Changed: Improved security for sensitive data (API keys).
+* Fixed: SMTP2GO mailer special characters handling in from name.
+* Fixed: Fatal error on the Alerts screen when alert title translations are missing.
 
 = 2.6.0 - 2024-09-26 =
 * Added: Optimized Email Sending - improve your site's performance by handling email requests in the background.

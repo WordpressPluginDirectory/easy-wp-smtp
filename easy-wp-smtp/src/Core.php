@@ -74,6 +74,10 @@ class Core {
 		if ( $this->is_not_loadable() ) {
 			add_action( 'admin_notices', 'easy_wp_smtp_insecure_php_version_notice' );
 
+			if ( WP::use_global_plugin_settings() ) {
+				add_action( 'network_admin_notices', 'easy_wp_smtp_insecure_php_version_notice' );
+			}
+
 			return;
 		}
 
@@ -182,6 +186,11 @@ class Core {
 		if ( current_user_can( easy_wp_smtp()->get_capability_manage_options() ) ) {
 			add_action( 'admin_notices', array( '\EasyWPSMTP\WP', 'display_admin_notices' ) );
 			add_action( 'admin_notices', array( $this, 'display_general_notices' ) );
+
+			if ( WP::use_global_plugin_settings() ) {
+				add_action( 'network_admin_notices', [ '\EasyWPSMTP\WP', 'display_admin_notices' ] );
+				add_action( 'network_admin_notices', [ $this, 'display_general_notices' ] );
+			}
 		}
 	}
 
@@ -527,7 +536,7 @@ class Core {
 						if ( ! easy_wp_smtp()->get_admin()->is_admin_page() ) {
 							printf(
 								wp_kses( /* translators: %s - plugin admin page URL. */
-									__( 'Please review your Easy WP SMTP settings in <a href="%s">plugin admin area</a>.' ) . ' ',
+									__( 'Please review your Easy WP SMTP settings in <a href="%s">plugin admin area</a>.', 'easy-wp-smtp' ) . ' ',
 									array(
 										'a' => array(
 											'href' => array(),
@@ -540,7 +549,7 @@ class Core {
 
 						printf(
 							wp_kses( /* translators: %s - URL to the debug events page. */
-								__( 'For more details please try running an Email Test or reading the latest <a href="%s">error event</a>.' ),
+								__( 'For more details please try running an Email Test or reading the latest <a href="%s">error event</a>.', 'easy-wp-smtp' ),
 								[
 									'a' => [
 										'href' => [],

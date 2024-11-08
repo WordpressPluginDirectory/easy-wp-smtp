@@ -3,6 +3,7 @@
 namespace EasyWPSMTP\Providers\Mailgun;
 
 use EasyWPSMTP\ConnectionInterface;
+use EasyWPSMTP\Helpers\UI;
 use EasyWPSMTP\Providers\OptionsAbstract;
 
 /**
@@ -65,11 +66,19 @@ class Options extends OptionsAbstract {
 					/>
 					<?php $this->display_const_set_message( 'EASY_WP_SMTP_MAILGUN_API_KEY' ); ?>
 				<?php else : ?>
-					<input type="password" spellcheck="false"
-						name="easy-wp-smtp[<?php echo esc_attr( $this->get_slug() ); ?>][api_key]"
-						value="<?php echo esc_attr( $this->connection_options->get( $this->get_slug(), 'api_key' ) ); ?>"
-						id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-api_key"
-					/>
+					<?php
+					$slug  = $this->get_slug();
+					$value = $this->connection_options->get( $slug, 'api_key' );
+
+					UI::hidden_password_field(
+						[
+							'name'       => "easy-wp-smtp[{$slug}][api_key]",
+							'id'         => "easy-wp-smtp-setting-{$slug}-api_key",
+							'value'      => $value,
+							'clear_text' => esc_html__( 'Remove API Key', 'easy-wp-smtp' ),
+						]
+					);
+					?>
 				<?php endif; ?>
 				<p class="desc">
 					<?php
@@ -107,7 +116,7 @@ class Options extends OptionsAbstract {
 					printf(
 						/* translators: %s - Domain Name link. */
 						esc_html__( 'Follow this link to get a Domain Name from Mailgun: %s.', 'easy-wp-smtp' ),
-						'<a href="https://app.mailgun.com/app/sending/domains" target="_blank" rel="noopener noreferrer">' .
+						'<a href="https://app.mailgun.com/mg/sending/domains" target="_blank" rel="noopener noreferrer">' .
 						esc_html__( 'Get a Domain Name', 'easy-wp-smtp' ) .
 						'</a>'
 					);

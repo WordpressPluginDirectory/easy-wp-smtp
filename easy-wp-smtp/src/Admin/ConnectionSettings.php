@@ -53,8 +53,9 @@ class ConnectionSettings {
 		$mailer             = $this->connection->get_mailer_slug();
 		$connection_options = $this->connection->get_options();
 
-		$disabled_email = in_array( $mailer, [], true ) ? 'disabled' : '';
-		$disabled_name  = in_array( $mailer, [ 'outlook' ], true ) ? 'disabled' : '';
+		$disabled_email    = in_array( $mailer, [ 'zoho' ], true ) ? 'disabled' : '';
+		$disabled_name     = in_array( $mailer, [ 'outlook' ], true ) ? 'disabled' : '';
+		$disabled_reply_to = in_array( $mailer, [ 'zoho' ], true ) ? 'disabled' : '';
 
 		if ( empty( $mailer ) || ! in_array( $mailer, Options::$mailers, true ) ) {
 			$mailer = 'mail';
@@ -219,16 +220,18 @@ class ConnectionSettings {
 							<p class="desc">
 								<?php esc_html_e( 'The email address that emails are sent from.', 'easy-wp-smtp' ); ?>
 							</p>
-							<p class="desc">
-								<?php esc_html_e( 'Please note that other plugins can change this. Enable the Force From Email setting below to prevent them from doing so.', 'easy-wp-smtp' ); ?>
-							</p>
+							<?php if ( ! $disabled_email ) : ?>
+								<p class="desc">
+									<?php esc_html_e( 'Please note that other plugins can change this. Enable the Force From Email setting below to prevent them from doing so.', 'easy-wp-smtp' ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 
 						<div class="easy-wp-smtp-setting-row__sub-row js-easy-wp-smtp-setting-from_email_force" style="display: <?php echo empty( $mailer_supported_settings['from_email_force'] ) ? 'none' : 'block'; ?>;">
 							<label for="easy-wp-smtp-setting-from_email_force" class="easy-wp-smtp-toggle">
 								<input name="easy-wp-smtp[mail][from_email_force]" type="checkbox"
 								       value="true" id="easy-wp-smtp-setting-from_email_force"
-									<?php checked( true, (bool) $connection_options->get( 'mail', 'from_email_force' ) ); ?>
+									<?php checked( true, (bool) $connection_options->get( 'mail', 'from_email_force' ) || ! empty( $disabled_email ) ); ?>
 									<?php disabled( $connection_options->is_const_defined( 'mail', 'from_email_force' ) || ! empty( $disabled_email ) ); ?>
 								/>
 								<span class="easy-wp-smtp-toggle__switch"></span>
@@ -236,9 +239,15 @@ class ConnectionSettings {
 									<?php esc_html_e( 'Force From Email', 'easy-wp-smtp' ); ?>
 								</span>
 							</label>
-							<p class="desc">
-								<?php esc_html_e( 'If enabled, your specified From Email Address will be used for all outgoing emails, regardless of values set by other plugins.', 'easy-wp-smtp' ); ?>
-							</p>
+							<?php if ( ! $disabled_email ) : ?>
+								<p class="desc">
+									<?php esc_html_e( 'If enabled, your specified From Email Address will be used for all outgoing emails, regardless of values set by other plugins.', 'easy-wp-smtp' ); ?>
+								</p>
+							<?php else : ?>
+								<p class="desc">
+									<?php esc_html_e( 'Current provider will automatically force From Email to be the email address that you use to set up the OAuth connection above.', 'easy-wp-smtp' ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -323,7 +332,7 @@ class ConnectionSettings {
 							<div class="easy-wp-smtp-setting-row__sub-row">
 								<input name="easy-wp-smtp[mail][reply_to_email]" type="text"
 								       value="<?php echo esc_attr( $connection_options->get( 'mail', 'reply_to_email' ) ); ?>"
-									<?php echo $connection_options->is_const_defined( 'mail', 'reply_to_email' ) ? 'disabled' : ''; ?>
+									<?php echo $connection_options->is_const_defined( 'mail', 'reply_to_email' ) || ! empty( $disabled_reply_to ) ? 'disabled' : ''; ?>
 									   id="easy-wp-smtp-setting-reply_to_email" spellcheck="false"
 								/>
 								<p class="desc">
@@ -334,7 +343,7 @@ class ConnectionSettings {
 								<label class="easy-wp-smtp-toggle" for="easy-wp-smtp-setting-reply_to_replace_from">
 									<input name="easy-wp-smtp[mail][reply_to_replace_from]" type="checkbox" value="true"
 									       id="easy-wp-smtp-setting-reply_to_replace_from"
-										<?php echo $connection_options->is_const_defined( 'mail', 'reply_to_replace_from' ) ? 'disabled' : ''; ?>
+										<?php echo $connection_options->is_const_defined( 'mail', 'reply_to_replace_from' ) || ! empty( $disabled_reply_to ) ? 'disabled' : ''; ?>
 										<?php checked( true, $connection_options->get( 'mail', 'reply_to_replace_from' ) ); ?>
 									/>
 									<span class="easy-wp-smtp-toggle__switch"></span>
@@ -435,12 +444,20 @@ class ConnectionSettings {
 		) {
 			// Remove all debug messages when switching mailers.
 			Debug::clear();
+
+			// Save correct from email address if Zoho mailer is already configured.
+			if (
+				in_array( $data['mail']['mailer'], [ 'zoho' ], true ) &&
+				! empty( $old_data[ $data['mail']['mailer'] ]['user_details']['email'] )
+			) {
+				$data['mail']['from_email'] = $old_data[ $data['mail']['mailer'] ]['user_details']['email'];
+			}
 		}
 
 		// Prevent redirect to setup wizard from settings page after successful auth.
 		if (
 			! empty( $data['mail']['mailer'] ) &&
-			in_array( $data['mail']['mailer'], [ 'gmail', 'outlook' ], true )
+			in_array( $data['mail']['mailer'], [ 'gmail', 'outlook', 'zoho' ], true )
 		) {
 			$data[ $data['mail']['mailer'] ]['is_setup_wizard_auth'] = false;
 		}

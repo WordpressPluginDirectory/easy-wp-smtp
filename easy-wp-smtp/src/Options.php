@@ -86,6 +86,11 @@ class Options {
 			'api_key',
 			'region',
 		],
+		'zoho'                 => [
+			'domain',
+			'client_id',
+			'client_secret',
+		],
 		'license'              => [
 			'key',
 		],
@@ -130,6 +135,7 @@ class Options {
 		'smtp2go',
 		'sparkpost',
 		'smtp',
+		'zoho',
 	];
 
 	/**
@@ -652,6 +658,24 @@ class Options {
 
 				break;
 
+			case 'zoho':
+				switch ( $key ) {
+					case 'domain':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_ZOHO_DOMAIN : $value;
+						break;
+					case 'client_id':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_ZOHO_CLIENT_ID : $value;
+						break;
+					case 'client_secret':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_ZOHO_CLIENT_SECRET : $value;
+						break;
+				}
+
+				break;
+
 			case 'alert_email':
 				switch ( $key ) {
 					case 'connections':
@@ -963,6 +987,21 @@ class Options {
 
 				break;
 
+			case 'zoho':
+				switch ( $key ) {
+					case 'domain':
+						$return = defined( 'EasyWPSMTP_ZOHO_DOMAIN' ) && EasyWPSMTP_ZOHO_DOMAIN;
+						break;
+					case 'client_id':
+						$return = defined( 'EasyWPSMTP_ZOHO_CLIENT_ID' ) && EasyWPSMTP_ZOHO_CLIENT_ID;
+						break;
+					case 'client_secret':
+						$return = defined( 'EasyWPSMTP_ZOHO_CLIENT_SECRET' ) && EasyWPSMTP_ZOHO_CLIENT_SECRET;
+						break;
+				}
+
+				break;
+
 			case 'alert_email':
 				switch ( $key ) {
 					case 'connections':
@@ -1088,7 +1127,11 @@ class Options {
 		if ( $once ) {
 			add_option( static::META_KEY, $options, '', 'no' ); // Do not autoload these options.
 		} else {
-			update_option( static::META_KEY, $options, 'no' );
+			if ( is_multisite() && WP::use_global_plugin_settings() ) {
+				update_blog_option( get_main_site_id(), static::META_KEY, $options );
+			} else {
+				update_option( static::META_KEY, $options, 'no' );
+			}
 		}
 
 		// Now we need to re-cache values of all instances.
@@ -1214,10 +1257,10 @@ class Options {
 					case 'encryption': // smtp.
 					case 'region': // mailgun/amazonses/sparkpost.
 					case 'api_key': // mailgun/sendinblue/smtpcom/sendlayer/sendgrid/sparkpost/smtp2go.
-					case 'domain': // mailgun/sendinblue/sendgrid.
+					case 'domain': // mailgun/sendinblue/sendgrid/zoho.
 					case 'channel': // smtpcom.
-					case 'client_id': // outlook/amazonses.
-					case 'client_secret': // outlook/amazonses.
+					case 'client_id': // outlook/amazonses/zoho.
+					case 'client_secret': // outlook/amazonses/zoho.
 					case 'auth_code': // outlook.
 					case 'server_api_token': // postmark.
 					case 'message_stream': // postmark.
@@ -1246,8 +1289,8 @@ class Options {
 						}
 						break;
 
-					case 'access_token': // outlook, is an array.
-					case 'user_details': // gmail/outlook, is an array.
+					case 'access_token': // outlook/zoho, is an array.
+					case 'user_details': // gmail/outlook/zoho, is an array.
 					case 'relay_credentials': // gmail is an array.
 						// These options don't support constants.
 						$options[ $mailer ][ $option_name ] = $option_value;

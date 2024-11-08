@@ -126,7 +126,7 @@ class SetupWizard {
 		}
 
 		// Only do this for single site installs.
-		if ( isset( $_GET['activate-multi'] ) || is_network_admin() ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['activate-multi'] ) || is_network_admin() || WP::use_global_plugin_settings() ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
 		}
 
@@ -1223,6 +1223,9 @@ class SetupWizard {
 			'EasyWPSMTP_POSTMARK_MESSAGE_STREAM'       => [ 'postmark', 'message_stream' ],
 			'EasyWPSMTP_SPARKPOST_API_KEY'             => [ 'sparkpost', 'api_key' ],
 			'EasyWPSMTP_SPARKPOST_REGION'              => [ 'sparkpost', 'region' ],
+			'EasyWPSMTP_ZOHO_DOMAIN'                   => [ 'zoho', 'domain' ],
+			'EasyWPSMTP_ZOHO_CLIENT_ID'                => [ 'zoho', 'client_id' ],
+			'EasyWPSMTP_ZOHO_CLIENT_SECRET'            => [ 'zoho', 'client_secret' ],
 			'EasyWPSMTP_SMTP_HOST'                     => [ 'smtp', 'host' ],
 			'EasyWPSMTP_SMTP_PORT'                     => [ 'smtp', 'port' ],
 			'EasyWPSMTP_SSL'                           => [ 'smtp', 'encryption' ],

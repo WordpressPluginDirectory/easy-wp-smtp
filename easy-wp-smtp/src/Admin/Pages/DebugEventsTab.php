@@ -179,23 +179,62 @@ class DebugEventsTab extends PageAbstract {
 	 */
 	public function display() {
 
+		$can_manage_settings = (
+			! is_multisite() ||
+			( ! is_network_admin() && ! WP::use_global_plugin_settings() ) ||
+			( is_network_admin() && current_user_can( 'manage_network_options' ) && WP::use_global_plugin_settings() )
+		);
 		?>
-		<form method="POST" action="<?php echo esc_url( $this->get_link() ); ?>">
+		<?php if ( $can_manage_settings ) : ?>
+			<form method="POST" action="<?php echo esc_url( $this->get_link() ); ?>">
 			<?php $this->wp_nonce_field(); ?>
+		<?php endif; ?>
 
-			<div class="easy-wp-smtp-meta-box">
-				<div class="easy-wp-smtp-meta-box__header">
-					<div class="easy-wp-smtp-meta-box__heading">
-						<?php esc_html_e( 'Debug Events', 'easy-wp-smtp' ); ?>
+		<div class="easy-wp-smtp-meta-box">
+			<div class="easy-wp-smtp-meta-box__header">
+				<div class="easy-wp-smtp-meta-box__heading">
+					<?php esc_html_e( 'Debug Events', 'easy-wp-smtp' ); ?>
+				</div>
+
+				<?php
+				/**
+				 * Fires after export Debug Events metabox title.
+				 *
+				 * @since 2.7.0
+				 */
+				do_action( 'easy_wp_smtp_admin_page_tools_debug_events_metabox_heading_after' );
+				?>
+			</div>
+			<div class="easy-wp-smtp-meta-box__content">
+				<div class="easy-wp-smtp-row">
+					<div class="easy-wp-smtp-row__desc">
+						<p>
+							<?php esc_html_e( 'Here, you can view and configure plugin debugging events to find and resolve email sending issues. You’ll also see any email sending errors that occur.', 'easy-wp-smtp' ); ?>
+						</p>
+
+						<?php if ( ! $can_manage_settings && is_network_admin() && current_user_can( 'manage_network_options' ) ) : ?>
+							<p>
+								<?php
+								echo wp_kses(
+									sprintf( /* translators: %1$s - create missing tables link; %2$s - contact support link. */
+										__( 'To configure debugging events for the whole network, <a href="%1$s">activate network-wide Settings Control</a>.', 'easy-wp-smtp' ),
+										esc_url( easy_wp_smtp()->get_admin()->get_admin_page_url() )
+									),
+									[
+										'a' => [
+											'href'   => [],
+											'target' => [],
+											'rel'    => [],
+										],
+									]
+								);
+								?>
+							</p>
+						<?php endif; ?>
 					</div>
 				</div>
-				<div class="easy-wp-smtp-meta-box__content">
-					<div class="easy-wp-smtp-row">
-						<div class="easy-wp-smtp-row__desc">
-							<?php esc_html_e( 'Here, you can view and configure plugin debugging events to find and resolve email sending issues. You’ll also see any email sending errors that occur.', 'easy-wp-smtp' ); ?>
-						</div>
-					</div>
 
+				<?php if ( $can_manage_settings ) : ?>
 					<!-- Debug Events -->
 					<div id="easy-wp-smtp-setting-row-debug_event_types" class="easy-wp-smtp-row easy-wp-smtp-setting-row">
 						<div class="easy-wp-smtp-setting-row__label">
@@ -207,7 +246,7 @@ class DebugEventsTab extends PageAbstract {
 							<div class="easy-wp-smtp-setting-row__sub-row">
 								<label class="easy-wp-smtp-toggle" for="easy-wp-smtp-setting-debug_events_email_errors">
 									<input name="easy-wp-smtp[debug_events][email_errors]" type="checkbox"
-												 value="true" checked disabled id="easy-wp-smtp-setting-debug_events_email_errors"
+									       value="true" checked disabled id="easy-wp-smtp-setting-debug_events_email_errors"
 									/>
 									<span class="easy-wp-smtp-toggle__switch"></span>
 									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--static"><?php esc_html_e( 'Email Sending Errors', 'easy-wp-smtp' ); ?></span>
@@ -220,8 +259,8 @@ class DebugEventsTab extends PageAbstract {
 							<div class="easy-wp-smtp-setting-row__sub-row">
 								<label class="easy-wp-smtp-toggle" for="easy-wp-smtp-setting-debug_events_email_debug">
 									<input name="easy-wp-smtp[debug_events][email_debug]" type="checkbox"
-												 value="true" <?php checked( true, $this->options->get( 'debug_events', 'email_debug' ) ); ?>
-												 id="easy-wp-smtp-setting-debug_events_email_debug"
+									       value="true" <?php checked( true, $this->options->get( 'debug_events', 'email_debug' ) ); ?>
+									       id="easy-wp-smtp-setting-debug_events_email_debug"
 									/>
 									<span class="easy-wp-smtp-toggle__switch"></span>
 									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--static"><?php esc_html_e( 'Debug Email Sending', 'easy-wp-smtp' ); ?></span>
@@ -261,11 +300,15 @@ class DebugEventsTab extends PageAbstract {
 							</p>
 						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 			</div>
+		</div>
 
+		<?php if ( $can_manage_settings ) : ?>
 			<?php $this->display_save_btn(); ?>
-		</form>
+			</form>
+		<?php endif; ?>
+
 		<?php
 
 		if ( ! DebugEvents::is_valid_db() ) {
@@ -344,6 +387,10 @@ class DebugEventsTab extends PageAbstract {
 	public function process_post( $data ) {
 
 		$this->check_admin_referer();
+
+		if ( WP::use_global_plugin_settings() && ! current_user_can( 'manage_network_options' ) ) {
+			wp_die( esc_html__( 'You don\'t have the capability to perform this action.', 'easy-wp-smtp' ) );
+		}
 
 		// Unchecked checkboxes doesn't exist in $_POST, so we need to ensure we actually have them in data to save.
 		if ( empty( $data['debug_events']['email_debug'] ) ) {

@@ -3,6 +3,7 @@
 namespace EasyWPSMTP\Providers\Postmark;
 
 use EasyWPSMTP\ConnectionInterface;
+use EasyWPSMTP\Helpers\UI;
 use EasyWPSMTP\Providers\OptionsAbstract;
 
 /**
@@ -92,10 +93,19 @@ class Options extends OptionsAbstract {
 						   id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-server_api_token"/>
 					<?php $this->display_const_set_message( 'EasyWPSMTP_POSTMARK_SERVER_API_TOKEN' ); ?>
 				<?php else : ?>
-					<input type="password" spellcheck="false"
-						   name="easy-wp-smtp[<?php echo esc_attr( $this->get_slug() ); ?>][server_api_token]"
-						   value="<?php echo esc_attr( $this->connection_options->get( $this->get_slug(), 'server_api_token' ) ); ?>"
-						   id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-server_api_token"/>
+					<?php
+					$slug  = $this->get_slug();
+					$value = $this->connection_options->get( $slug, 'server_api_token' );
+
+					UI::hidden_password_field(
+						[
+							'name'       => "easy-wp-smtp[{$slug}][server_api_token]",
+							'id'         => "easy-wp-smtp-setting-{$slug}-server_api_token",
+							'value'      => $value,
+							'clear_text' => esc_html__( 'Remove Server API Token', 'easy-wp-smtp' ),
+						]
+					);
+					?>
 				<?php endif; ?>
 				<p class="desc">
 					<?php

@@ -32,6 +32,7 @@ class Loader {
 		'smtpcom'    => 'EasyWPSMTP\Providers\SMTPcom\\',
 		'smtp2go'    => 'EasyWPSMTP\Providers\SMTP2GO\\',
 		'sparkpost'  => 'EasyWPSMTP\Providers\SparkPost\\',
+		'zoho'       => 'EasyWPSMTP\Providers\Zoho\\',
 		'smtp'       => 'EasyWPSMTP\Providers\SMTP\\',
 		'mail'       => 'EasyWPSMTP\Providers\Mail\\',
 	];

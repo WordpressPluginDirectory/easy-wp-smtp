@@ -318,6 +318,9 @@ class MiscTab extends PageAbstract {
 
 							<div class="desc">
 								<?php esc_html_e( 'Enabling this will condense navigation and move Easy WP SMTP under the WordPress Settings menu.', 'easy-wp-smtp' ); ?>
+								<?php if ( is_network_admin() ) : ?>
+									<?php esc_html_e( 'This setting will be applied only to subsites.', 'easy-wp-smtp' ); ?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>

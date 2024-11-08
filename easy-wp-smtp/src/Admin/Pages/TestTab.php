@@ -649,7 +649,7 @@ https://easywpsmtp.com/lite-upgrade/
 Unlock These Powerful Features with Easy WP SMTP Pro:
 
 + Log all emails and export your email logs in different formats
-+ Send emails with Amazon SES / Microsoft 365
++ Send emails with Amazon SES / Microsoft 365/ Zoho Mail
 + Track opens and clicks to measure engagement
 + Resend failed emails from your email log
 + Create email reports and graphs
@@ -1066,7 +1066,7 @@ CEO, SendLayer';
 								],
 							]
 						),
-						'https://app.mailgun.com/app/sending/domains'
+						'https://app.mailgun.com/mg/sending/domains'
 					),
 					esc_html__( 'Verify your domain Region is correct.', 'easy-wp-smtp' ),
 				],
