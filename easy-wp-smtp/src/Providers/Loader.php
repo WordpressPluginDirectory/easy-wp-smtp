@@ -21,20 +21,22 @@ class Loader {
 	 * @var array
 	 */
 	protected $providers = [
-		'sendlayer'  => 'EasyWPSMTP\Providers\Sendlayer\\',
-		'amazonses'  => 'EasyWPSMTP\Providers\AmazonSES\\',
-		'sendinblue' => 'EasyWPSMTP\Providers\Sendinblue\\',
-		'gmail'      => 'EasyWPSMTP\Providers\Gmail\\',
-		'mailgun'    => 'EasyWPSMTP\Providers\Mailgun\\',
-		'outlook'    => 'EasyWPSMTP\Providers\Outlook\\',
-		'postmark'   => 'EasyWPSMTP\Providers\Postmark\\',
-		'sendgrid'   => 'EasyWPSMTP\Providers\Sendgrid\\',
-		'smtpcom'    => 'EasyWPSMTP\Providers\SMTPcom\\',
-		'smtp2go'    => 'EasyWPSMTP\Providers\SMTP2GO\\',
-		'sparkpost'  => 'EasyWPSMTP\Providers\SparkPost\\',
-		'zoho'       => 'EasyWPSMTP\Providers\Zoho\\',
-		'smtp'       => 'EasyWPSMTP\Providers\SMTP\\',
-		'mail'       => 'EasyWPSMTP\Providers\Mail\\',
+		'sendlayer'    => 'EasyWPSMTP\Providers\Sendlayer\\',
+		'amazonses'    => 'EasyWPSMTP\Providers\AmazonSES\\',
+		'sendinblue'   => 'EasyWPSMTP\Providers\Sendinblue\\',
+		'elasticemail' => 'EasyWPSMTP\Providers\ElasticEmail\\',
+		'gmail'        => 'EasyWPSMTP\Providers\Gmail\\',
+		'mailgun'      => 'EasyWPSMTP\Providers\Mailgun\\',
+		'mailjet'      => 'EasyWPSMTP\Providers\Mailjet\\',
+		'outlook'      => 'EasyWPSMTP\Providers\Outlook\\',
+		'postmark'     => 'EasyWPSMTP\Providers\Postmark\\',
+		'sendgrid'     => 'EasyWPSMTP\Providers\Sendgrid\\',
+		'smtpcom'      => 'EasyWPSMTP\Providers\SMTPcom\\',
+		'smtp2go'      => 'EasyWPSMTP\Providers\SMTP2GO\\',
+		'sparkpost'    => 'EasyWPSMTP\Providers\SparkPost\\',
+		'zoho'         => 'EasyWPSMTP\Providers\Zoho\\',
+		'smtp'         => 'EasyWPSMTP\Providers\SMTP\\',
+		'mail'         => 'EasyWPSMTP\Providers\Mail\\',
 	];
 
 	/**
@@ -185,7 +187,7 @@ class Loader {
 			$entity = null;
 		}
 
-		return apply_filters( 'easy_wp_smtp_providers_loader_get_entity', $entity, $provider, $request );
+		return apply_filters( 'easy_wp_smtp_providers_loader_get_entity', $entity, $provider, $request, $args );
 	}
 
 	/**

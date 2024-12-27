@@ -2,9 +2,9 @@
 Contributors: sendlayer, jaredatch, smub, capuderg
 Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 2.7.0
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,7 @@ You can resolve your email deliverability issues by configuring one of these mai
 * Amazon SES <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=amazon-ses-readme" rel="friend">[Pro]</a>
 * Gmail / Google Mail / Google Workspace <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=gmail-readme" rel="friend">[Pro]</a>
 * Mailgun
+* Mailjet
 * Microsoft 365 / Outlook <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=outlook-readme" rel="friend">[Pro]</a>
 * SendGrid
 * Brevo (formerly Sendinblue)
@@ -43,7 +44,7 @@ You can resolve your email deliverability issues by configuring one of these mai
 * The fastest **Gmail / Google** mail integration on the market (configure it in just a couple of clicks).
 * You can use different **transactional mailers** or SMTP: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
 * **Powerful Email Logging** - log all mail sent from your WordPress site, resend emails, store attachments, and more. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
-* **Email Alerts** - receive notifications via email, Slack, Microsoft Teams, SMS, or custom webhooks, when email fails to send from your site. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=alerts-readme" rel="friend">[Pro]</a>
+* **Email Alerts** - receive notifications via email, Slack, Microsoft Teams, Discord, SMS, or custom webhooks, when email fails to send from your site. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=alerts-readme" rel="friend">[Pro]</a>
 * **Backup Connection** - if your primary connection fails to send an email, your backup connection will make sure your email will still get delivered. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=backup-connection-readme" rel="friend">[Pro]</a>
 * **Smart Conditional Routing** - set up rules to route different types of emails through various mailers, based on many supported filters. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=smart-routing-readme" rel="friend">[Pro]</a>
 * **Rate Limiting** - control the frequency of emails sent from your WordPress site within a given time to stay aligned with your SMTP provider's limitations. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=rate-limiting-readme" rel="friend">[Pro]</a>
@@ -90,6 +91,12 @@ Read our <a href="https://easywpsmtp.com/docs/setting-up-the-gmail-mailer/?utm_s
 Easy WP SMTP uses Mailgun API to reliably and quickly send out your WordPress emails.
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-mailgun-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Mailgun documentation</a> for more details.
+
+#### Mailjet
+
+Enhance your WordPress email deliverability with Easy WP SMTP's seamless Mailjet integration. Send transactional emails effortlessly, enjoying 6000 free emails per month via Mailjet.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-mailjet-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Mailjet documentation</a> for more details.
 
 #### Microsoft 365 (Outlook and Office 365)
 
@@ -195,7 +202,7 @@ Our email logging feature allows you to easily print any email in a clear and ea
 
 #### Email Alerts
 
-Receive instant notifications if your emails fail to send, with alerts available through Slack, Microsoft Teams, SMS/Twilio, webhooks, or email via a secure API.
+Receive instant notifications if your emails fail to send, with alerts available through Slack, Microsoft Teams, Discord, SMS/Twilio, webhooks, or email via a secure API.
 
 Combined with our email logging and resending capabilities, Email Alerts guarantee that no critical email will ever be overlooked.
 
@@ -305,6 +312,15 @@ And we will try to help out as soon as possible.
 10. Setup Wizard - Step 2
 
 == Changelog ==
+
+= 2.9.0 - 2024-12-26 =
+* Added: New Elastic Email transactional mailer.
+* Added: Ability to configure credentials through constants.
+* Changed: Improved keyboard navigation styles in Setup Wizard.
+
+= 2.8.0 - 2024-12-12 =
+* Added: New Mailjet transactional mailer.
+* Changed: The "Tools -> Scheduled Actions" menu is now always visible when WooCommerce or the Action Scheduler plugin is active.
 
 = 2.7.0 - 2024-11-07 =
 * Changed: Improved security for sensitive data (API keys).

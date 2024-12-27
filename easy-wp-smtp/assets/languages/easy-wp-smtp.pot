@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy WP SMTP 2.7.0\n"
+"Project-Id-Version: Easy WP SMTP 2.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-wp-smtp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-06T10:02:53+00:00\n"
+"POT-Creation-Date: 2024-12-23T09:23:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: easy-wp-smtp\n"
@@ -237,43 +237,43 @@ msgstr ""
 msgid "Save and Continue"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:153
+#: assets/languages/easy-wp-smtp-vue.php:154
 msgid "Previous Step"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:156
+#: assets/languages/easy-wp-smtp-vue.php:157
 msgid "Your mailer is already configured in a Easy WP SMTP constant, so the options below have been disabled. To change your mailer, please edit or remove the <code>EasyWPSMTP_MAILER</code> constant in your <code>wp-config.php</code> file."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:159
+#: assets/languages/easy-wp-smtp-vue.php:160
 msgid "is a PRO Feature"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:162
+#: assets/languages/easy-wp-smtp-vue.php:163
 msgid " - Send your first 200 emails for free."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:165
+#: assets/languages/easy-wp-smtp-vue.php:166
 msgid "Microsoft 365 / Outlook"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:168
+#: assets/languages/easy-wp-smtp-vue.php:169
 #: src/Providers/Postmark/Options.php:88
 msgid "Server API Token"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:171
+#: assets/languages/easy-wp-smtp-vue.php:172
 #: src/Providers/Postmark/Options.php:126
 msgid "Message Stream ID"
 msgstr ""
 
 #. Translators: Link to the Postmark API settings.
-#: assets/languages/easy-wp-smtp-vue.php:175
+#: assets/languages/easy-wp-smtp-vue.php:176
 msgid "%1$sFollow this link%2$s to get a Server API Token for Postmark."
 msgstr ""
 
 #. Translators: Link to the Postmark Message Stream ID settings.
-#: assets/languages/easy-wp-smtp-vue.php:179
+#: assets/languages/easy-wp-smtp-vue.php:180
 msgid "Message Stream ID is <strong>optional</strong>. By default <strong>outbound</strong> (Default Transactional Stream) will be used. More information can be found in our %1$sPostmark documentation%2$s."
 msgstr ""
 
@@ -284,48 +284,50 @@ msgstr ""
 msgid "From Name"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:191
+#: assets/languages/easy-wp-smtp-vue.php:190
 msgid "Force From Name"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:197
+#: assets/languages/easy-wp-smtp-vue.php:195
 #: src/Admin/Pages/SmartRoutingTab.php:187
 #: src/Admin/Pages/SmartRoutingTab.php:217
 msgid "From Email"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:203
+#: assets/languages/easy-wp-smtp-vue.php:200
 #: src/Admin/ConnectionSettings.php:239
 msgid "Force From Email"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:207
+#: assets/languages/easy-wp-smtp-vue.php:204
 msgid "If enabled, the From Name setting above will be used for all emails, ignoring values set by other plugins."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:210
+#: assets/languages/easy-wp-smtp-vue.php:207
 msgid "If enabled, the From Email setting above will be used for all emails, ignoring values set by other plugins."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:216
+#: assets/languages/easy-wp-smtp-vue.php:212
 #: src/Admin/ConnectionSettings.php:271
 msgid "The name that emails are sent from."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:222
+#: assets/languages/easy-wp-smtp-vue.php:217
 #: src/Admin/ConnectionSettings.php:221
 msgid "The email address that emails are sent from."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:225
+#: assets/languages/easy-wp-smtp-vue.php:220
 msgid "Read how to set up Postmark"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:228
+#: assets/languages/easy-wp-smtp-vue.php:223
 msgid "Close and exit the Setup Wizard"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:231
+#: assets/languages/easy-wp-smtp-vue.php:227
+#: src/Providers/ElasticEmail/Options.php:93
+#: src/Providers/Mailjet/Options.php:92
 #: src/Providers/Sendgrid/Options.php:67
 #: src/Providers/Sendinblue/Options.php:98
 #: src/Providers/Sendlayer/Options.php:91
@@ -335,858 +337,917 @@ msgstr ""
 msgid "API Key"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:235
+#: assets/languages/easy-wp-smtp-vue.php:230
 #: src/Providers/Sendgrid/Options.php:115
 #: src/Providers/Sendinblue/Options.php:138
 msgid "Sending Domain"
 msgstr ""
 
 #. Translators: Link to the SendGrid API settings.
-#: assets/languages/easy-wp-smtp-vue.php:239
+#: assets/languages/easy-wp-smtp-vue.php:234
 msgid "%1$sFollow this link%2$s to get an API Key for SendGrid."
 msgstr ""
 
 #. Translators: italic styling.
-#: assets/languages/easy-wp-smtp-vue.php:243
+#: assets/languages/easy-wp-smtp-vue.php:238
 msgid "To send emails you will need only a %1$sMail Send%2$s access level for this API key."
 msgstr ""
 
 #. Translators: Link to the SendGrid doc page on easywpsmtp.com.
-#: assets/languages/easy-wp-smtp-vue.php:247
+#: assets/languages/easy-wp-smtp-vue.php:242
 msgid "Please input the sending domain/subdomain you configured in your SendGrid dashboard. More information can be found in our %1$sSendGrid documentation%2$s"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:250
+#: assets/languages/easy-wp-smtp-vue.php:245
 msgid "Read how to set up SendGrid"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:253
+#: assets/languages/easy-wp-smtp-vue.php:248
 msgid "Configure Mailer Settings"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:256
+#: assets/languages/easy-wp-smtp-vue.php:251
 msgid "Fill out the required settings below to set up this mailer."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:259
+#: assets/languages/easy-wp-smtp-vue.php:254
 msgid "Checking Mailer Configuration"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:262
+#: assets/languages/easy-wp-smtp-vue.php:257
 msgid "We're running some tests in the background to make sure everything is set up properly."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:265
+#: assets/languages/easy-wp-smtp-vue.php:260
 msgid "Checking mailer configuration image"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:268
+#: assets/languages/easy-wp-smtp-vue.php:263
 msgid "Help Us Improve Easy WP SMTP"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:271
+#: assets/languages/easy-wp-smtp-vue.php:266
 msgid "Enter your email address to receive helpful suggestions from Easy WP SMTP. We’ll help you optimize your email deliverability and grow your business."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:274
+#: assets/languages/easy-wp-smtp-vue.php:269
 msgid "Skip this Step"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:277
+#: assets/languages/easy-wp-smtp-vue.php:272
 msgid "Your Email Address"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:280
+#: assets/languages/easy-wp-smtp-vue.php:275
 msgid "Your email address is needed if you want to receive recommendations."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:283
+#: assets/languages/easy-wp-smtp-vue.php:278
 msgid "Help make Easy WP SMTP better for everyone"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:286
+#: assets/languages/easy-wp-smtp-vue.php:281
 msgid "Yes, count me in"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:289
+#: assets/languages/easy-wp-smtp-vue.php:284
 msgid "Allowing us to track usage data enables us to better help you because we know with which WordPress configurations, themes, and plugins to test."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:292
+#: assets/languages/easy-wp-smtp-vue.php:287
 msgid "Which email features do you want to enable?"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:295
+#: assets/languages/easy-wp-smtp-vue.php:290
 msgid "The following plugin will be installed for free:"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:298
+#: assets/languages/easy-wp-smtp-vue.php:293
 msgid "Get more value out of Easy WP SMTP! Select which of the following features you’d like to use, and we’ll enable them for you."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:301
+#: assets/languages/easy-wp-smtp-vue.php:296
 msgid "Improved Email Deliverability"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:304
+#: assets/languages/easy-wp-smtp-vue.php:299
 msgid "Send emails from your website successfully and reliably."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:307
+#: assets/languages/easy-wp-smtp-vue.php:302
 msgid "Email Error Tracking"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:310
+#: assets/languages/easy-wp-smtp-vue.php:305
 msgid "Monitor email delivery issues so you can easily resolve them."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:313
+#: assets/languages/easy-wp-smtp-vue.php:308
 msgid "Smart Contact Form"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:316
+#: assets/languages/easy-wp-smtp-vue.php:311
 msgid "Install the WPForms plugin and create beautiful contact forms with just a few clicks."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:319
+#: assets/languages/easy-wp-smtp-vue.php:314
 msgid "Detailed Email Logs"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:322
+#: assets/languages/easy-wp-smtp-vue.php:317
 msgid "Store information from all emails sent from your site."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:325
+#: assets/languages/easy-wp-smtp-vue.php:320
 msgid "Complete Email Reports"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:328
+#: assets/languages/easy-wp-smtp-vue.php:323
 msgid "View your emails’ delivery status, open & click tracking, and deliverability charts."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:331
+#: assets/languages/easy-wp-smtp-vue.php:326
 msgid "Weekly Email Summary"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:334
+#: assets/languages/easy-wp-smtp-vue.php:329
 msgid "Receive a weekly email delivery report in your inbox."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:337
+#: assets/languages/easy-wp-smtp-vue.php:332
 msgid "Whoops, looks like something isn’t configured quite right."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:340
+#: assets/languages/easy-wp-smtp-vue.php:335
 msgid "We tried sending a test email, but we’re not able to do so. For more details about the issue we’ve found, as well as steps for resolving it, please begin troubleshooting."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:343
+#: assets/languages/easy-wp-smtp-vue.php:338
 msgid "Start Troubleshooting"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:346
+#: assets/languages/easy-wp-smtp-vue.php:341
 msgid "Send us Feedback"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:349
+#: assets/languages/easy-wp-smtp-vue.php:344
 msgid "Finish Setup"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:352
+#: assets/languages/easy-wp-smtp-vue.php:347
 msgid "Configure Email Logs"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:355
+#: assets/languages/easy-wp-smtp-vue.php:350
 msgid "You’ve chosen to enable email logging. Please select which additional email logging features you would like to use."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:358
+#: assets/languages/easy-wp-smtp-vue.php:353
 msgid "Store the content for all sent emails"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:361
+#: assets/languages/easy-wp-smtp-vue.php:356
 msgid "Email content may include sensitive information, such as plain text passwords. For security purposes, consider carefully whether to enable this option. All email content will be stored in your site's database. To resend emails from our Email Log, this option must be enabled."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:364
+#: assets/languages/easy-wp-smtp-vue.php:359
 msgid "Save file attachments sent from WordPress"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:367
+#: assets/languages/easy-wp-smtp-vue.php:362
 msgid "When enabled, all sent attachments will be saved to your WordPress Uploads folder. For sites that send a high volume of unique large attachments, this option could result in a disk space issue."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:370
+#: assets/languages/easy-wp-smtp-vue.php:365
 msgid "Track when an email is opened"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:373
+#: assets/languages/easy-wp-smtp-vue.php:368
 msgid "When enabled, the email log will note whether or not an email has been opened."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:376
+#: assets/languages/easy-wp-smtp-vue.php:371
 msgid "Track when a link in an email is clicked"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:379
+#: assets/languages/easy-wp-smtp-vue.php:374
 msgid "When enabled, the email log will note whether or not a link has been clicked in the specified email."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:382
+#: assets/languages/easy-wp-smtp-vue.php:377
 msgid "Access Key ID"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:385
+#: assets/languages/easy-wp-smtp-vue.php:380
 msgid "Secret Access Key"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:388
+#: assets/languages/easy-wp-smtp-vue.php:384
 #: src/Providers/Mailgun/Options.php:131
 #: src/Providers/SparkPost/Options.php:128
 msgid "Region"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:391
+#: assets/languages/easy-wp-smtp-vue.php:387
 msgid "SES Identities"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:394
+#: assets/languages/easy-wp-smtp-vue.php:390
 msgid "Please select the Amazon SES API region which is the closest to where your website is hosted. This can help to decrease network latency between your site and Amazon SES, which will speed up email sending."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:398
+#: assets/languages/easy-wp-smtp-vue.php:395
 #: src/Admin/ConnectionSettings.php:295
 msgid "If enabled, your specified From Name will be used for all outgoing emails, regardless of values set by other plugins."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:403
+#: assets/languages/easy-wp-smtp-vue.php:400
 #: src/Admin/ConnectionSettings.php:244
 msgid "If enabled, your specified From Email Address will be used for all outgoing emails, regardless of values set by other plugins."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:406
+#: assets/languages/easy-wp-smtp-vue.php:403
 msgid "Read how to set up Amazon SES"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:409
+#: assets/languages/easy-wp-smtp-vue.php:406
 msgid "Amazon SES requires an SSL certificate, and so is not currently compatible with your site. Please contact your host to request a SSL certificate, or check out "
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:412
+#: assets/languages/easy-wp-smtp-vue.php:409
 msgid "WPBeginner's tutorial on how to set up SSL"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:415
+#: assets/languages/easy-wp-smtp-vue.php:412
 msgid "If you'd prefer not to set up SSL, or need an SMTP solution in the meantime, please go back and select a different mailer option."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:418
+#: assets/languages/easy-wp-smtp-vue.php:415
 msgid "Application ID"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:421
+#: assets/languages/easy-wp-smtp-vue.php:418
 msgid "Application Password"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:424
+#: assets/languages/easy-wp-smtp-vue.php:421
 msgid "Redirect URI"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:427
+#: assets/languages/easy-wp-smtp-vue.php:424
 msgid "Authorization"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:430
+#: assets/languages/easy-wp-smtp-vue.php:427
 msgid "Read how to set up Microsoft Outlook / 365"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:433
+#: assets/languages/easy-wp-smtp-vue.php:430
 msgid "Outlook / 365 requires an SSL certificate, and so is not currently compatible with your site. Please contact your host to request a SSL certificate, or check out "
 msgstr ""
 
 #. Translators: Link to the SendLayer API settings.
-#: assets/languages/easy-wp-smtp-vue.php:437
+#: assets/languages/easy-wp-smtp-vue.php:434
 msgid "%1$sFollow this link%2$s to get an API Key for SendLayer."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:440
+#: assets/languages/easy-wp-smtp-vue.php:437
 msgid "Get Started with SendLayer"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:443
+#: assets/languages/easy-wp-smtp-vue.php:440
 msgid "Read how to set up SendLayer"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:446
+#: assets/languages/easy-wp-smtp-vue.php:443
 msgid "Verification Error!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:449
+#: assets/languages/easy-wp-smtp-vue.php:446
 msgid "Read how to set up the Gmail mailer"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:452
+#: assets/languages/easy-wp-smtp-vue.php:449
 msgid "Gmail mailer requires a valid Easy WP SMTP Pro license. Please activate your license key."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:455
+#: assets/languages/easy-wp-smtp-vue.php:452
 msgid "Paste your license key here"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:458
+#: assets/languages/easy-wp-smtp-vue.php:455
 msgid "License key input"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:461
+#: assets/languages/easy-wp-smtp-vue.php:458
 msgid "Verify License Key"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:464
+#: assets/languages/easy-wp-smtp-vue.php:461
 msgid "The License Key format is incorrect. Please enter a valid key and try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:467
+#: assets/languages/easy-wp-smtp-vue.php:464
 msgid "Successful Verification!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:470
+#: assets/languages/easy-wp-smtp-vue.php:467
 msgid "Now you can continue mailer configuration."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:473
+#: assets/languages/easy-wp-smtp-vue.php:470
 #: src/Providers/SMTPcom/Options.php:132
 msgid "Sender Name"
 msgstr ""
 
 #. Translators: Link to the SMTP.com API settings.
-#: assets/languages/easy-wp-smtp-vue.php:477
+#: assets/languages/easy-wp-smtp-vue.php:474
 msgid "%1$sFollow this link%2$s to get an API Key for SMTP.com."
 msgstr ""
 
 #. Translators: Link to the SMTP.com Senders/Channel settings.
-#: assets/languages/easy-wp-smtp-vue.php:481
+#: assets/languages/easy-wp-smtp-vue.php:478
 msgid "%1$sFollow this link%2$s to get a Sender Name for SMTP.com."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:484
+#: assets/languages/easy-wp-smtp-vue.php:481
 msgid "Get Started with SMTP.com"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:487
+#: assets/languages/easy-wp-smtp-vue.php:484
 msgid "Read how to set up SMTP.com"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:490
+#: assets/languages/easy-wp-smtp-vue.php:487
 #: src/Providers/Sendinblue/Options.php:56
 #: src/Providers/SMTPcom/Options.php:62
 msgid "Transparency and Disclosure"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:493
+#: assets/languages/easy-wp-smtp-vue.php:490
 #: src/Providers/SMTPcom/Options.php:64
 msgid "We believe in full transparency. The SMTP.com links above are tracking links as part of our partnership with SMTP (j2 Global). We can recommend just about any SMTP service, but we only recommend products that we believe will add value to our users."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:496
+#: assets/languages/easy-wp-smtp-vue.php:493
 msgid "Congrats, you’ve successfully set up Easy WP SMTP."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:499
+#: assets/languages/easy-wp-smtp-vue.php:496
 #: src/SiteHealth.php:352
 msgid "Send a Test Email"
 msgstr ""
 
 #. Translators: Different bold styles and discount value (%5$s).
-#: assets/languages/easy-wp-smtp-vue.php:503
+#: assets/languages/easy-wp-smtp-vue.php:500
 msgid "Star icon"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:506
+#: assets/languages/easy-wp-smtp-vue.php:503
 msgid "Thanks for the feedback!"
 msgstr ""
 
 #. Translators: %1$s and %2$s are HTML bold tags; %3$s is a new line HTML tag; %4$s are 5 golden star icons in HTML.
-#: assets/languages/easy-wp-smtp-vue.php:510
+#: assets/languages/easy-wp-smtp-vue.php:507
 msgid "Help us spread the word %1$sby giving Easy WP SMTP a 5-star rating %3$s(%4$s) on WordPress.org%2$s. Thanks for your support and we look forward to bringing you more awesome features."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:513
+#: assets/languages/easy-wp-smtp-vue.php:510
 msgid "Rate on WordPress.org"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:516
+#: assets/languages/easy-wp-smtp-vue.php:513
 msgid "What could we do to improve?"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:519
+#: assets/languages/easy-wp-smtp-vue.php:516
 msgid "We're sorry things didn't go smoothly for you, and want to keep improving. Please let us know any specific parts of this process that you think could be better. We really appreciate any details you're willing to share!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:522
+#: assets/languages/easy-wp-smtp-vue.php:519
 msgid "Yes, I give Easy WP SMTP permission to contact me for any follow up questions."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:525
+#: assets/languages/easy-wp-smtp-vue.php:522
 msgid "Submit Feedback"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:528
+#: assets/languages/easy-wp-smtp-vue.php:525
 msgid "How was your Easy WP SMTP setup experience?"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:531
+#: assets/languages/easy-wp-smtp-vue.php:528
 msgid "Our goal is to make your SMTP setup as simple and straightforward as possible. We'd love to know how this process went for you!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:534
+#: assets/languages/easy-wp-smtp-vue.php:531
 msgid "Enter your Easy WP SMTP License Key"
 msgstr ""
 
 #. Translators: %1$s and %2$s are bold tags.
-#: assets/languages/easy-wp-smtp-vue.php:538
+#: assets/languages/easy-wp-smtp-vue.php:535
 #: src/Admin/Pages/SettingsTab.php:163
 msgid "You're using Easy WP SMTP Lite - no license key required. Enjoy!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:541
+#: assets/languages/easy-wp-smtp-vue.php:538
 msgid "Continue"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:544
+#: assets/languages/easy-wp-smtp-vue.php:541
 msgid "Would you like to purchase the following features now?"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:547
+#: assets/languages/easy-wp-smtp-vue.php:544
 msgid "These features are available as part of Easy WP SMTP Pro plan."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:550
+#: assets/languages/easy-wp-smtp-vue.php:547
 msgid "Purchase Now"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:553
+#: assets/languages/easy-wp-smtp-vue.php:550
 msgid "I'll do it later"
 msgstr ""
 
 #. Translators: Link to the EasyWPSMTP.com pricing page.
-#: assets/languages/easy-wp-smtp-vue.php:557
+#: assets/languages/easy-wp-smtp-vue.php:554
 msgid "To unlock the following features, %1$sUpgrade to Pro%2$s and enter your license key below."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:560
+#: assets/languages/easy-wp-smtp-vue.php:557
 msgid "Enhanced Weekly Email Summary"
 msgstr ""
 
 #. Translators: bold HTML tags.
-#: assets/languages/easy-wp-smtp-vue.php:564
+#: assets/languages/easy-wp-smtp-vue.php:561
 msgid "Already purchased %1$sEasy WP SMTP Pro%2$s? Enter your license key below!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:567
+#: assets/languages/easy-wp-smtp-vue.php:564
 msgid "Add your license key here to access plugin updates and support."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:570
+#: assets/languages/easy-wp-smtp-vue.php:567
 #: src/Admin/Pages/SettingsTab.php:218
 msgid "Connect"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:573
+#: assets/languages/easy-wp-smtp-vue.php:570
 msgid "Your license was successfully verified! You are ready for the next step."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:576
+#: assets/languages/easy-wp-smtp-vue.php:573
 msgid "Pro badge"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:579
+#: assets/languages/easy-wp-smtp-vue.php:576
 msgid "Successful Upgrade!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:582
+#: assets/languages/easy-wp-smtp-vue.php:579
 msgid "Upgrade Failed!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:585
+#: assets/languages/easy-wp-smtp-vue.php:582
 #: inc/deprecated/class-easywpsmtp-admin.php:261
 #: src/Providers/OptionsAbstract.php:293
 msgid "SMTP Host"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:588
+#: assets/languages/easy-wp-smtp-vue.php:585
 msgid "Encryption"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:591
+#: assets/languages/easy-wp-smtp-vue.php:588
 #: inc/deprecated/class-easywpsmtp-admin.php:292
 #: src/Providers/OptionsAbstract.php:354
 msgid "SMTP Port"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:594
+#: assets/languages/easy-wp-smtp-vue.php:591
 #: src/Providers/OptionsAbstract.php:371
 msgid "Auto TLS"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:597
+#: assets/languages/easy-wp-smtp-vue.php:594
 msgid "Enable Auto TLS"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:600
+#: assets/languages/easy-wp-smtp-vue.php:597
 #: src/Providers/OptionsAbstract.php:385
 msgid "By default, TLS encryption is automatically used if the server supports it (recommended). In some cases, due to server misconfigurations, this can cause issues and may need to be disabled."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:603
+#: assets/languages/easy-wp-smtp-vue.php:600
 msgid "Authentication"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:606
+#: assets/languages/easy-wp-smtp-vue.php:603
 #: src/Admin/Pages/TestTab.php:935
 msgid "Enable Authentication"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:609
+#: assets/languages/easy-wp-smtp-vue.php:606
 #: inc/deprecated/class-easywpsmtp-admin.php:317
 #: src/Providers/OptionsAbstract.php:415
 msgid "SMTP Username"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:612
+#: assets/languages/easy-wp-smtp-vue.php:609
 #: inc/deprecated/class-easywpsmtp-admin.php:324
 #: src/Providers/OptionsAbstract.php:432
 msgid "SMTP Password"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:615
+#: assets/languages/easy-wp-smtp-vue.php:612
 msgid "For most servers TLS is the recommended option. If your SMTP provider offers both SSL and TLS options, we recommend using TLS."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:618
+#: assets/languages/easy-wp-smtp-vue.php:615
 #: inc/deprecated/class-easywpsmtp-admin.php:275
 #: src/Admin/Pages/SettingsTab.php:454
 #: src/Providers/OptionsAbstract.php:321
 msgid "None"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:621
+#: assets/languages/easy-wp-smtp-vue.php:618
 #: src/Providers/OptionsAbstract.php:331
 msgid "SSL"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:624
+#: assets/languages/easy-wp-smtp-vue.php:621
 #: src/Providers/OptionsAbstract.php:341
 msgid "TLS"
 msgstr ""
 
 #. Translators: Link to the Brevo API settings.
-#: assets/languages/easy-wp-smtp-vue.php:628
+#: assets/languages/easy-wp-smtp-vue.php:625
 msgid "%1$sFollow this link%2$s to get an API Key for Brevo."
 msgstr ""
 
 #. Translators: Link to the Brevo doc page on easywpsmtp.com.
-#: assets/languages/easy-wp-smtp-vue.php:632
+#: assets/languages/easy-wp-smtp-vue.php:629
 msgid "Please input the sending domain/subdomain you configured in your Brevo dashboard. More information can be found in our %1$sBrevo documentation%2$s"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:635
+#: assets/languages/easy-wp-smtp-vue.php:632
 msgid "Get Started with Brevo"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:638
+#: assets/languages/easy-wp-smtp-vue.php:635
 msgid "Read how to set up Brevo"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:641
+#: assets/languages/easy-wp-smtp-vue.php:638
 msgid "We believe in full transparency. The Brevo links above are tracking links as part of our partnership with Brevo. We can recommend just about any SMTP service, but we only recommend products that we believe will add value to our users."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:644
+#: assets/languages/easy-wp-smtp-vue.php:641
 #: src/Providers/Mailgun/Options.php:60
 msgid "Mailgun API Key"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:647
+#: assets/languages/easy-wp-smtp-vue.php:644
 #: src/Providers/Mailgun/Options.php:106
 msgid "Domain Name"
 msgstr ""
 
 #. Translators: Link to the Mailgun API settings.
-#: assets/languages/easy-wp-smtp-vue.php:651
+#: assets/languages/easy-wp-smtp-vue.php:648
 msgid "%1$sFollow this link%2$s to get a Mailgun API Key. Generate a key in the \"Mailgun API Keys\" section."
 msgstr ""
 
 #. Translators: Link to the Mailgun Domain settings.
-#: assets/languages/easy-wp-smtp-vue.php:655
+#: assets/languages/easy-wp-smtp-vue.php:652
 msgid "%1$sFollow this link%2$s to get a Domain Name from Mailgun."
 msgstr ""
 
 #. Translators: Link to the Mailgun documentation.
-#: assets/languages/easy-wp-smtp-vue.php:659
+#: assets/languages/easy-wp-smtp-vue.php:656
 msgid "Define which endpoint you want to use for sending messages. If you are operating under EU laws, you may be required to use EU region. %1$sMore information%2$s on Mailgun.com."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:662
+#: assets/languages/easy-wp-smtp-vue.php:659
 msgid "Read how to set up Mailgun"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:665
+#: assets/languages/easy-wp-smtp-vue.php:662
 #: src/Providers/Mailgun/Options.php:143
 #: src/Providers/SparkPost/Options.php:140
 msgid "US"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:668
+#: assets/languages/easy-wp-smtp-vue.php:665
 #: src/Providers/Mailgun/Options.php:154
 #: src/Providers/SparkPost/Options.php:151
 msgid "EU"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:671
+#: assets/languages/easy-wp-smtp-vue.php:668
 #: src/Admin/SetupWizard.php:487
 msgid "Easy WP SMTP logo"
 msgstr ""
 
 #. Translators: %1$s - the number of current step, %2$s - number of all steps.
-#: assets/languages/easy-wp-smtp-vue.php:675
+#: assets/languages/easy-wp-smtp-vue.php:672
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:678
+#: assets/languages/easy-wp-smtp-vue.php:675
 #: src/Admin/ConnectionSettings.php:136
 msgid "Recommended"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:685
+#: assets/languages/easy-wp-smtp-vue.php:682
 msgid "This setting is already configured with the Easy WP SMTP constant. To change it, please edit or remove the <code></code> constant in your <code>wp-config.php</code> file."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:688
+#: assets/languages/easy-wp-smtp-vue.php:685
 msgid "Copy input value"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:691
+#: assets/languages/easy-wp-smtp-vue.php:688
 msgid "Copied!"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:694
+#: assets/languages/easy-wp-smtp-vue.php:691
 msgid "The value entered does not match the required format"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:697
+#: assets/languages/easy-wp-smtp-vue.php:694
 msgid "Please enter a domain"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:700
+#: assets/languages/easy-wp-smtp-vue.php:697
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:703
+#: assets/languages/easy-wp-smtp-vue.php:700
 msgid "Enter the domain name to verify it on Amazon SES and generate the required DNS CNAME records."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:706
+#: assets/languages/easy-wp-smtp-vue.php:703
 msgid "Enter a valid email address. A verification email will be sent to the email address you entered."
 msgstr ""
 
 #. Translators: Email address.
-#: assets/languages/easy-wp-smtp-vue.php:710
+#: assets/languages/easy-wp-smtp-vue.php:707
 msgid "Please check the inbox of <b>%s</b> for a confirmation email."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:713
+#: assets/languages/easy-wp-smtp-vue.php:710
 msgid "Verify Email"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:716
+#: assets/languages/easy-wp-smtp-vue.php:713
 msgid "No registered domains or emails."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:719
+#: assets/languages/easy-wp-smtp-vue.php:716
 msgid "You will not be able to send emails until you verify at least one domain or email address for the selected Amazon SES Region."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:722
+#: assets/languages/easy-wp-smtp-vue.php:719
 msgid "View DNS"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:725
+#: assets/languages/easy-wp-smtp-vue.php:722
 msgid "Resend"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:728
+#: assets/languages/easy-wp-smtp-vue.php:725
 msgid "Here are the domains and email addresses that have been verified and can be used as the From Email."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:731
+#: assets/languages/easy-wp-smtp-vue.php:728
 msgid "Verify SES Identity"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:734
+#: assets/languages/easy-wp-smtp-vue.php:731
 msgid "Add New SES Identity"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:737
+#: assets/languages/easy-wp-smtp-vue.php:734
 #: src/Admin/DebugEvents/Table.php:169
 msgid "Name"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:740
+#: assets/languages/easy-wp-smtp-vue.php:737
 msgid "Value"
 msgstr ""
 
 #. Translators: Link to Amazon SES documentation.
-#: assets/languages/easy-wp-smtp-vue.php:744
+#: assets/languages/easy-wp-smtp-vue.php:741
 msgid "Please add these CNAME records to your domain's DNS settings. For information on how to add CNAME DNS records, please refer to the %1$sAmazon SES documentation%2$s."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:747
+#: assets/languages/easy-wp-smtp-vue.php:744
 msgid "Verify Domain"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:750
+#: assets/languages/easy-wp-smtp-vue.php:747
 msgid "Verify Email Address"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:753
+#: assets/languages/easy-wp-smtp-vue.php:750
 #: src/Admin/Area.php:196
 msgid "There was an error while processing the authentication request. The state key is invalid. Please try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:756
+#: assets/languages/easy-wp-smtp-vue.php:753
 msgid "There was an error while processing the authentication request."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:759
+#: assets/languages/easy-wp-smtp-vue.php:756
 msgid "There was an error while processing the authentication request. Please recheck your Client ID and Client Secret and try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:762
+#: assets/languages/easy-wp-smtp-vue.php:759
 msgid "There was an error while processing the authentication request. The nonce is invalid. Please try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:765
+#: assets/languages/easy-wp-smtp-vue.php:762
 msgid "There was an error while processing the authentication request. The authorization code is missing. Please try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:768
+#: assets/languages/easy-wp-smtp-vue.php:765
 msgid "You have successfully connected your site with your Gmail account. This site will now send emails via your Gmail account."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:771
+#: assets/languages/easy-wp-smtp-vue.php:768
 msgid "You have successfully linked the current site with your Microsoft API project. Now you can start sending emails through Outlook."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:774
+#: assets/languages/easy-wp-smtp-vue.php:771
 msgid "Successful Authorization"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:777
+#: assets/languages/easy-wp-smtp-vue.php:774
 msgid "Authorization Error!"
 msgstr ""
 
 #. Translators: name of the oAuth provider (Google, Microsoft, ...).
-#: assets/languages/easy-wp-smtp-vue.php:781
+#: assets/languages/easy-wp-smtp-vue.php:778
 msgid "Connect to %s"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:784
+#: assets/languages/easy-wp-smtp-vue.php:781
 msgid "Sign in with Google"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:787
+#: assets/languages/easy-wp-smtp-vue.php:784
 msgid "Before continuing, you'll need to allow this plugin to send emails using your %s account."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:790
+#: assets/languages/easy-wp-smtp-vue.php:787
 msgid "Remove OAuth Connection"
 msgstr ""
 
 #. Translators: link to the Google documentation page.
-#: assets/languages/easy-wp-smtp-vue.php:794
+#: assets/languages/easy-wp-smtp-vue.php:791
 msgid "If you want to use a different From Email address you can setup a Google email alias. %1$sFollow these instructions%2$s, then input the alias address in the From Email section below."
 msgstr ""
 
 #. Translators: name of the oAuth provider (Google, Microsoft, ...).
-#: assets/languages/easy-wp-smtp-vue.php:798
+#: assets/languages/easy-wp-smtp-vue.php:795
 msgid "Removing this OAuth connection will give you the ability to redo the OAuth connection or connect to different %s account."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:801
+#: assets/languages/easy-wp-smtp-vue.php:798
 msgid "Connected as"
 msgstr ""
 
 #. Translators: Minimum and maximum number that can be used.
-#: assets/languages/easy-wp-smtp-vue.php:805
+#: assets/languages/easy-wp-smtp-vue.php:802
 msgid "Please enter a value between %1$s and %2$s"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:808
+#: assets/languages/easy-wp-smtp-vue.php:805
 msgid "Value has to be a round number"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:811
-#: src/Core.php:1026
+#: assets/languages/easy-wp-smtp-vue.php:808
+#: src/Core.php:1028
 msgid "Loading"
 msgstr ""
 
 #. Translators: Link to the SparkPost documentation.
-#: assets/languages/easy-wp-smtp-vue.php:815
+#: assets/languages/easy-wp-smtp-vue.php:812
 msgid "Select your SparkPost account region. %1$sMore information%2$s on SparkPost."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:818
+#: assets/languages/easy-wp-smtp-vue.php:815
 msgid "Read how to set up SparkPost"
 msgstr ""
 
 #. Translators: Link to the SparkPost Account API section.
-#: assets/languages/easy-wp-smtp-vue.php:822
+#: assets/languages/easy-wp-smtp-vue.php:819
 msgid "%1$sFollow this link%2$s to get an API Key for SparkPost."
 msgstr ""
 
 #. Translators: Link to the SMTP2GO API settings.
-#: assets/languages/easy-wp-smtp-vue.php:826
+#: assets/languages/easy-wp-smtp-vue.php:823
 msgid "Generate an API key on the Sending → API Keys page in your %1$scontrol panel%2$s."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:829
+#: assets/languages/easy-wp-smtp-vue.php:826
 msgid "Read how to set up SMTP2GO"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:832
+#: assets/languages/easy-wp-smtp-vue.php:829
 msgid "Instant Email Alerts"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:835
+#: assets/languages/easy-wp-smtp-vue.php:832
 msgid "Get notifications via email, SMS, Slack, or webhook when emails fail to send."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:838
+#: assets/languages/easy-wp-smtp-vue.php:835
 msgid "The data center location used by your Zoho account."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:841
+#: assets/languages/easy-wp-smtp-vue.php:838
 msgid "Client ID"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:844
+#: assets/languages/easy-wp-smtp-vue.php:841
 msgid "Client Secret"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:847
+#: assets/languages/easy-wp-smtp-vue.php:844
 msgid "Read how to set up Zoho Mail"
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:850
+#: assets/languages/easy-wp-smtp-vue.php:847
 msgid "There was an error while processing the authentication request. Please try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:853
+#: assets/languages/easy-wp-smtp-vue.php:850
 msgid "There was an error while processing the authentication request. Please recheck your Region, Client ID and Client Secret and try again."
 msgstr ""
 
-#: assets/languages/easy-wp-smtp-vue.php:856
+#: assets/languages/easy-wp-smtp-vue.php:853
 msgid "You have successfully linked the current site with your Zoho Mail API project. Now you can start sending emails through Zoho Mail."
+msgstr ""
+
+#. Translators: Link to the SMTP2GO API settings.
+#: assets/languages/easy-wp-smtp-vue.php:857
+msgid "Follow this link to get the API key from Mailjet: %1$sAPI Key Management%2$s."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:860
+#: src/Providers/Mailjet/Options.php:132
+msgid "Secret Key"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:863
+msgid "Follow this link to get the Secret key from Mailjet: %1$sAPI Key Management%2$s."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:866
+msgid "Read how to set up Mailjet"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:869
+msgid "Your mailer is already configured in a Easy WP SMTP constant, so the options below have been disabled. To change your mailer, please edit or remove the <code>EASY_WP_SMTP_MAILER</code> constant in your <code>wp-config.php</code> file."
+msgstr ""
+
+#. Translators: Link to the Elastic Email API settings.
+#: assets/languages/easy-wp-smtp-vue.php:873
+msgid "%1$sFollow this link%2$s to get an API Key for Elastic Email."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:876
+msgid "Read how to set up Elastic Email"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:879
+msgid "One-Click Setup"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:882
+msgid "Provides a quick and easy way to connect to Outlook that doesn't require creating your own app."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:885
+msgid "Enabled"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:888
+msgid "Disabled"
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:891
+msgid "One-Click Setup for Microsoft Outlook requires an active license. Verify your license to proceed with this One-Click Setup, please."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:894
+msgid "You have successfully connected your site with your Outlook account. Now you can start sending emails through Outlook."
+msgstr ""
+
+#: assets/languages/easy-wp-smtp-vue.php:897
+msgid "Sign in with Outlook"
 msgstr ""
 
 #: easy-wp-smtp.php:129
@@ -1779,7 +1840,7 @@ msgstr ""
 #: src/Admin/Area.php:1552
 #: src/Admin/DashboardWidget.php:257
 #: src/Admin/Pages/AdditionalConnectionsTab.php:234
-#: src/Admin/Pages/AlertsTab.php:355
+#: src/Admin/Pages/AlertsTab.php:389
 #: src/Admin/Pages/ControlTab.php:329
 #: src/Admin/Pages/EmailReportsTab.php:185
 #: src/Admin/Pages/ExportTab.php:322
@@ -2148,19 +2209,19 @@ msgstr ""
 msgid "%s icon"
 msgstr ""
 
-#: src/Admin/Notifications.php:473
+#: src/Admin/Notifications.php:480
 msgid "Notifications"
 msgstr ""
 
-#: src/Admin/Notifications.php:477
+#: src/Admin/Notifications.php:484
 msgid "Dismiss this message"
 msgstr ""
 
-#: src/Admin/Notifications.php:482
+#: src/Admin/Notifications.php:493
 msgid "Previous message"
 msgstr ""
 
-#: src/Admin/Notifications.php:486
+#: src/Admin/Notifications.php:497
 msgid "Next message"
 msgstr ""
 
@@ -2264,9 +2325,10 @@ msgstr ""
 
 #: src/Admin/Pages/AlertsTab.php:162
 #: src/Admin/Pages/AlertsTab.php:198
-#: src/Admin/Pages/AlertsTab.php:234
-#: src/Admin/Pages/AlertsTab.php:270
-#: src/Admin/Pages/AlertsTab.php:332
+#: src/Admin/Pages/AlertsTab.php:233
+#: src/Admin/Pages/AlertsTab.php:268
+#: src/Admin/Pages/AlertsTab.php:304
+#: src/Admin/Pages/AlertsTab.php:366
 #: src/Admin/Pages/MiscTab.php:100
 #: src/Admin/Pages/MiscTab.php:180
 #: src/Admin/Pages/MiscTab.php:207
@@ -2281,6 +2343,7 @@ msgstr ""
 #: src/Admin/Pages/MiscTab.php:546
 #: src/Admin/Pages/TestTab.php:187
 #: src/Admin/Pages/TestTab.php:205
+#: src/Helpers/UI.php:86
 #: src/Providers/OptionsAbstract.php:381
 #: src/Providers/OptionsAbstract.php:403
 msgid "On"
@@ -2288,9 +2351,10 @@ msgstr ""
 
 #: src/Admin/Pages/AlertsTab.php:163
 #: src/Admin/Pages/AlertsTab.php:199
-#: src/Admin/Pages/AlertsTab.php:235
-#: src/Admin/Pages/AlertsTab.php:271
-#: src/Admin/Pages/AlertsTab.php:333
+#: src/Admin/Pages/AlertsTab.php:234
+#: src/Admin/Pages/AlertsTab.php:269
+#: src/Admin/Pages/AlertsTab.php:305
+#: src/Admin/Pages/AlertsTab.php:367
 #: src/Admin/Pages/MiscTab.php:101
 #: src/Admin/Pages/MiscTab.php:181
 #: src/Admin/Pages/MiscTab.php:208
@@ -2305,6 +2369,7 @@ msgstr ""
 #: src/Admin/Pages/MiscTab.php:547
 #: src/Admin/Pages/TestTab.php:188
 #: src/Admin/Pages/TestTab.php:206
+#: src/Helpers/UI.php:87
 #: src/Providers/OptionsAbstract.php:382
 #: src/Providers/OptionsAbstract.php:404
 msgid "Off"
@@ -2328,60 +2393,70 @@ msgid "Slack Alerts"
 msgstr ""
 
 #: src/Admin/Pages/AlertsTab.php:208
-#: src/Admin/Pages/AlertsTab.php:244
-#: src/Admin/Pages/AlertsTab.php:343
+#: src/Admin/Pages/AlertsTab.php:243
+#: src/Admin/Pages/AlertsTab.php:278
+#: src/Admin/Pages/AlertsTab.php:377
 msgid "Webhook URL"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:219
+#: src/Admin/Pages/AlertsTab.php:218
+#: src/Admin/Pages/AlertsTab.php:227
+msgid "Discord"
+msgstr ""
+
+#: src/Admin/Pages/AlertsTab.php:221
+msgid "Paste in the Discord webhook URL you’d like to use to receive alerts when email sending fails. Read our documentation on setting up Discord alerts."
+msgstr ""
+
+#: src/Admin/Pages/AlertsTab.php:253
 msgid "Microsoft Teams"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:222
+#: src/Admin/Pages/AlertsTab.php:256
 msgid "Paste in the Microsoft Teams webhook URL you’d like to use to receive alerts when email sending fails. Read our documentation on setting up Microsoft Teams alerts."
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:228
+#: src/Admin/Pages/AlertsTab.php:262
 msgid "Microsoft Teams Alerts"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:255
+#: src/Admin/Pages/AlertsTab.php:289
 msgid "SMS via Twilio"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:258
+#: src/Admin/Pages/AlertsTab.php:292
 msgid "To receive SMS alerts, you’ll need a Twilio account. Read our documentation to learn how to set up Twilio SMS, then enter your connection details below."
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:264
+#: src/Admin/Pages/AlertsTab.php:298
 msgid "SMS via Twilio Alerts"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:281
+#: src/Admin/Pages/AlertsTab.php:315
 msgid "Twilio Account ID"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:289
+#: src/Admin/Pages/AlertsTab.php:323
 msgid "Twilio Auth Token"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:297
+#: src/Admin/Pages/AlertsTab.php:331
 msgid "From Phone Number"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:305
+#: src/Admin/Pages/AlertsTab.php:339
 msgid "To Phone Number"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:317
+#: src/Admin/Pages/AlertsTab.php:351
 msgid "Webhook"
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:320
+#: src/Admin/Pages/AlertsTab.php:354
 msgid "Paste in the webhook URL you’d like to use to receive alerts when email sending fails. Read our documentation on setting up webhook alerts."
 msgstr ""
 
-#: src/Admin/Pages/AlertsTab.php:326
+#: src/Admin/Pages/AlertsTab.php:360
 msgid "Webhook Alerts"
 msgstr ""
 
@@ -4108,58 +4183,58 @@ msgid "Primary"
 msgstr ""
 
 #. translators: %s - plugin name and its version.
-#: src/Core.php:457
+#: src/Core.php:459
 msgid "<strong>EMAILING DISABLED:</strong> The %s is currently blocking all emails from being sent."
 msgstr ""
 
 #. translators: %1$s - constant name; %2$s - constant value.
-#: src/Core.php:464
+#: src/Core.php:466
 msgid "To send emails, change the value of the %1$s constant to %2$s."
 msgstr ""
 
 #. translators: %s - plugin Misc settings page URL.
-#: src/Core.php:471
+#: src/Core.php:473
 msgid "To send emails, go to plugin <a href=\"%s\">Misc settings</a> and disable the \"Do Not Send\" option."
 msgstr ""
 
-#: src/Core.php:483
+#: src/Core.php:485
 msgid "If you create a test email on this page, it will still be sent."
 msgstr ""
 
-#: src/Core.php:522
+#: src/Core.php:524
 msgid "<strong>Heads up!</strong> The last email your site attempted to send was unsuccessful."
 msgstr ""
 
 #. translators: %s - plugin admin page URL.
-#: src/Core.php:539
+#: src/Core.php:541
 msgid "Please review your Easy WP SMTP settings in <a href=\"%s\">plugin admin area</a>."
 msgstr ""
 
 #. translators: %s - URL to the debug events page.
-#: src/Core.php:552
+#: src/Core.php:554
 msgid "For more details please try running an Email Test or reading the latest <a href=\"%s\">error event</a>."
 msgstr ""
 
-#: src/Core.php:1273
+#: src/Core.php:1275
 msgid "Easy WP SMTP has detected incorrect \"wp_mail\" function location. Usually, this means that emails will not be sent successfully!"
 msgstr ""
 
 #. translators: %s - plugin name.
-#: src/Core.php:1278
+#: src/Core.php:1280
 msgid "It looks like the \"%s\" plugin is overwriting the \"wp_mail\" function. Please reach out to the plugin developer on how to disable or remove the \"wp_mail\" function overwrite to prevent conflicts with Easy WP SMTP."
 msgstr ""
 
 #. translators: %s - must-use plugin name.
-#: src/Core.php:1284
+#: src/Core.php:1286
 msgid "It looks like the \"%s\" must-use plugin is overwriting the \"wp_mail\" function. Please reach out to your hosting provider on how to disable or remove the \"wp_mail\" function overwrite to prevent conflicts with Easy WP SMTP."
 msgstr ""
 
-#: src/Core.php:1288
+#: src/Core.php:1290
 msgid "It looks like it's overwritten in the \"wp-config.php\" file. Please reach out to your hosting provider on how to disable or remove the \"wp_mail\" function overwrite to prevent conflicts with Easy WP SMTP."
 msgstr ""
 
 #. translators: %s - path.
-#: src/Core.php:1293
+#: src/Core.php:1295
 msgid "Current function path: %s"
 msgstr ""
 
@@ -4214,7 +4289,7 @@ msgid "Deprecated options were already removed from DB and can't be migrated."
 msgstr ""
 
 #. translators: %1$s - constant that was used; %2$s - file where it was used.
-#: src/Options.php:1437
+#: src/Options.php:1529
 msgid "The value of this field was set using a constant %1$s most likely inside %2$s of your WordPress installation."
 msgstr ""
 
@@ -4228,6 +4303,44 @@ msgstr ""
 
 #: src/Providers/AmazonSES/Options.php:39
 msgid "Sorry, but the Amazon SES mailer isn’t available in the lite version. Please upgrade to PRO to unlock this mailer and much more."
+msgstr ""
+
+#. translators: %1$s - URL to ElasticEmail.com site.
+#: src/Providers/ElasticEmail/Options.php:37
+msgid "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Elastic Email</a> is a cloud-based platform designed for email marketing, offering features for campaign management, email automation, transactional messages, and detailed analytics, suitable for businesses of any size.<br><br>New users can take advantage of Elastic Email's free plan, which lets you send emails to your account from a verified email address without needing a credit card. You can upgrade to a paid plan when you're ready to expand your capabilities."
+msgstr ""
+
+#. translators: %2$s - URL to easywpsmtp.com doc.
+#: src/Providers/ElasticEmail/Options.php:40
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Elastic Email documentation</a>."
+msgstr ""
+
+#: src/Providers/ElasticEmail/Options.php:59
+msgid "Elastic Email"
+msgstr ""
+
+#: src/Providers/ElasticEmail/Options.php:111
+#: src/Providers/Mailgun/Options.php:78
+#: src/Providers/Mailjet/Options.php:110
+#: src/Providers/Sendgrid/Options.php:85
+#: src/Providers/Sendinblue/Options.php:116
+#: src/Providers/Sendlayer/Options.php:109
+#: src/Providers/SMTP2GO/Options.php:111
+#: src/Providers/SMTPcom/Options.php:111
+#: src/Providers/SparkPost/Options.php:103
+msgid "Remove API Key"
+msgstr ""
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/ElasticEmail/Options.php:120
+msgid "Follow this link to get an API Key from Elastic Email: %s."
+msgstr ""
+
+#: src/Providers/ElasticEmail/Options.php:122
+#: src/Providers/Sendlayer/Options.php:120
+#: src/Providers/SMTPcom/Options.php:121
+#: src/Providers/SparkPost/Options.php:117
+msgid "Get API Key"
 msgstr ""
 
 #: src/Providers/Gmail/Options.php:25
@@ -4256,16 +4369,6 @@ msgstr ""
 msgid "<p><a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailgun</a> is a transactional email provider that offers a generous 3-month free trial. After that, it offers a 'Pay As You Grow' plan that allows you to pay for what you use without committing to a fixed monthly rate.</p><p>To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailgun documentation</a>.</p>"
 msgstr ""
 
-#: src/Providers/Mailgun/Options.php:78
-#: src/Providers/Sendgrid/Options.php:85
-#: src/Providers/Sendinblue/Options.php:116
-#: src/Providers/Sendlayer/Options.php:109
-#: src/Providers/SMTP2GO/Options.php:111
-#: src/Providers/SMTPcom/Options.php:111
-#: src/Providers/SparkPost/Options.php:103
-msgid "Remove API Key"
-msgstr ""
-
 #. translators: %s - API key URL.
 #: src/Providers/Mailgun/Options.php:87
 msgid "Follow this link to <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">get a Mailgun API Key</a>. Generate a key in the \"Mailgun API Keys\" section."
@@ -4291,6 +4394,39 @@ msgstr ""
 #. translators: %s - URL to Mailgun.com page.
 #: src/Providers/Mailgun/Options.php:165
 msgid "<a href=\"%s\" rel=\"\" target=\"_blank\">More information</a> on Mailgun.com."
+msgstr ""
+
+#. translators: %1$s - URL to Mailjet.com site.
+#: src/Providers/Mailjet/Options.php:37
+msgid "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailjet</a> is a cloud-based email solution that allows businesses to send marketing and transactional emails. With features like automated email campaigns, real-time reporting, and responsive templates, it’s an ideal platform for email communication. As a new user, you can send up to 200 emails per day without a credit card."
+msgstr ""
+
+#. translators: %2$s - URL to easywpsmtp.com doc.
+#: src/Providers/Mailjet/Options.php:40
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailjet documentation</a>."
+msgstr ""
+
+#: src/Providers/Mailjet/Options.php:59
+msgid "Mailjet"
+msgstr ""
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/Mailjet/Options.php:119
+msgid "Follow this link to get the API key from Mailjet: %s."
+msgstr ""
+
+#: src/Providers/Mailjet/Options.php:121
+#: src/Providers/Mailjet/Options.php:161
+msgid "API Key Management"
+msgstr ""
+
+#: src/Providers/Mailjet/Options.php:150
+msgid "Remove Secret Key"
+msgstr ""
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/Mailjet/Options.php:159
+msgid "Follow this link to get the Secret key from Mailjet: %s."
 msgstr ""
 
 #: src/Providers/OptionsAbstract.php:302
@@ -4359,6 +4495,16 @@ msgstr ""
 
 #: src/Providers/Outlook/Options.php:39
 msgid "Sorry, but the Microsoft Outlook mailer isn’t available in the lite version. Please upgrade to PRO to unlock this mailer and much more."
+msgstr ""
+
+#. translators: %1$s - documentation link.
+#: src/Providers/Outlook/Provider.php:77
+msgid "Heads up! Microsoft is <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">discontinuing support for basic SMTP connections</a>. To continue using Outlook or Hotmail, switch to our Outlook mailer for uninterrupted email sending."
+msgstr ""
+
+#. translators: %1$s - Notice message; %2$s - upgrade link.
+#: src/Providers/Outlook/Provider.php:98
+msgid "%1$s <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Upgrade to Pro now for easy, one-click Outlook setup</a>."
 msgstr ""
 
 #: src/Providers/Postmark/Mailer.php:414
@@ -4473,12 +4619,6 @@ msgstr ""
 #. translators: %s - API key link.
 #: src/Providers/Sendlayer/Options.php:118
 msgid "Follow this link to get an API Key from SendLayer: %s."
-msgstr ""
-
-#: src/Providers/Sendlayer/Options.php:120
-#: src/Providers/SMTPcom/Options.php:121
-#: src/Providers/SparkPost/Options.php:117
-msgid "Get API Key"
 msgstr ""
 
 #: src/Providers/SMTP/Options.php:28

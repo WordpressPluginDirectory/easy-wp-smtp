@@ -420,7 +420,7 @@ class MiscTab extends PageAbstract {
 								}
 
 								if ( $options->is_const_defined( 'general', SummaryReportEmail::SETTINGS_SLUG ) ) {
-									echo '<br>' . $options->get_const_set_message( 'EasyWPSMTP_SUMMARY_REPORT_EMAIL_DISABLED' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									echo '<br>' . $options->get_const_set_message( 'EASY_WP_SMTP_SUMMARY_REPORT_EMAIL_DISABLED' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}
 								?>
 							</p>
@@ -472,7 +472,7 @@ class MiscTab extends PageAbstract {
 								);
 
 								if ( $options->is_const_defined( 'general', OptimizedEmailSending::SETTINGS_SLUG ) ) {
-									echo '<br>' . $options->get_const_set_message( 'EasyWPSMTP_OPTIMIZED_EMAIL_SENDING_ENABLED' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									echo '<br>' . $options->get_const_set_message( 'EASY_WP_SMTP_OPTIMIZED_EMAIL_SENDING_ENABLED' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}
 								?>
 							</p>

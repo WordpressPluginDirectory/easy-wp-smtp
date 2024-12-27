@@ -71,7 +71,7 @@ class Options extends OptionsAbstract {
 					<input type="text" disabled value="****************************************"
 						id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-api_key"
 					/>
-					<?php $this->display_const_set_message( 'EasyWPSMTP_SENDGRID_API_KEY' ); ?>
+					<?php $this->display_const_set_message( 'EASY_WP_SMTP_SENDGRID_API_KEY' ); ?>
 				<?php else : ?>
 					<?php
 					$slug  = $this->get_slug();

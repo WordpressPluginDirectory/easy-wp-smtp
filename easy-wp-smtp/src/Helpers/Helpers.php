@@ -32,6 +32,8 @@ class Helpers {
 				'postmark',
 				'smtp2go',
 				'sparkpost',
+				'mailjet',
+				'elasticemail',
 			],
 			true
 		);

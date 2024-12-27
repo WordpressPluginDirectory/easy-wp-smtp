@@ -462,6 +462,16 @@ class ConnectionSettings {
 			$data[ $data['mail']['mailer'] ]['is_setup_wizard_auth'] = false;
 		}
 
+		/**
+		 * Filters connection data.
+		 *
+		 * @since 2.9.0
+		 *
+		 * @param array $data     Connection data.
+		 * @param array $old_data Old connection data.
+		 */
+		return apply_filters( 'easy_wp_smtp_admin_connection_settings_process_data', $data, $old_data );
+
 		return $data;
 	}
 
@@ -473,7 +483,35 @@ class ConnectionSettings {
 	 * @param array $data     Connection data.
 	 * @param array $old_data Old connection data.
 	 */
-	public function post_process( $data, $old_data ) {}
+	public function post_process( $data, $old_data ) {
+
+		// When switching mailers.
+		if (
+			! empty( $old_data['mail']['mailer'] ) &&
+			! empty( $data['mail']['mailer'] ) &&
+			$old_data['mail']['mailer'] !== $data['mail']['mailer']
+		) {
+
+			// Save correct from email address if Outlook mailer is already configured.
+			if ( $data['mail']['mailer'] === 'outlook' ) {
+				$auth      = easy_wp_smtp()->get_providers()->get_auth( $data['mail']['mailer'], $this->connection );
+				$user_info = ! $auth->is_auth_required() ? $auth->get_user_info() : false;
+
+				if (
+					! empty( $user_info['email'] ) &&
+					is_email( $user_info['email'] ) !== false &&
+					(
+						empty( $data['mail']['from_email'] ) ||
+						$data['mail']['from_email'] !== $user_info['email']
+					)
+				) {
+					$data['mail']['from_email'] = $user_info['email'];
+
+					$this->connection->get_options()->set( $data, false, false );
+				}
+			}
+		}
+	}
 
 	/**
 	 * Get connection settings admin page URL.

@@ -4,7 +4,6 @@ namespace EasyWPSMTP\Admin;
 
 use EasyWPSMTP\Helpers\Helpers;
 use EasyWPSMTP\Options;
-use EasyWPSMTP\Tasks\Tasks;
 use EasyWPSMTP\WP;
 
 /**
@@ -21,7 +20,7 @@ class Notifications {
 	 *
 	 * @var string
 	 */
-	const SOURCE_URL = 'https://plugin.easywpsmtp.com/wp-content/notifications.json';
+	const SOURCE_URL = 'https://easywpsmtpapi.com/feeds/v1/notifications';
 
 	/**
 	 * The WP option key for storing the notification options.
@@ -60,8 +59,19 @@ class Notifications {
 
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 		add_action( 'easy_wp_smtp_admin_pages_before_content', [ $this, 'output' ] );
-		add_action( 'easy_wp_smtp_admin_notifications_update', [ $this, 'update' ] );
 		add_action( 'wp_ajax_easy_wp_smtp_notification_dismiss', [ $this, 'dismiss' ] );
+	}
+
+	/**
+	 * Check if notifications are enabled.
+	 *
+	 * @since 2.8.0
+	 *
+	 * @return bool
+	 */
+	public function is_enabled() {
+
+		return ! Options::init()->get( 'general', 'am_notifications_hidden' );
 	}
 
 	/**
@@ -77,7 +87,7 @@ class Notifications {
 
 		if (
 			current_user_can( easy_wp_smtp()->get_capability_manage_options() ) &&
-			! Options::init()->get( 'general', 'am_notifications_hidden' )
+			$this->is_enabled()
 		) {
 			$access = true;
 		}
@@ -121,8 +131,10 @@ class Notifications {
 	 */
 	protected function fetch_feed() {
 
+		$feed_url = self::SOURCE_URL . '/' . easy_wp_smtp()->get_license_type();
+
 		$response = wp_remote_get(
-			self::SOURCE_URL,
+			$feed_url,
 			[
 				'user-agent' => Helpers::get_default_user_agent(),
 			]
@@ -243,19 +255,6 @@ class Notifications {
 		}
 
 		$option = $this->get_option();
-
-		// Update notifications a recurring task.
-		if ( Tasks::is_scheduled( 'easy_wp_smtp_admin_notifications_update' ) === false ) {
-			easy_wp_smtp()->get_tasks()
-				->create( 'easy_wp_smtp_admin_notifications_update' )
-				->recurring(
-					strtotime( '+1 minute' ),
-					$this->get_notification_update_task_interval()
-				)
-				->params()
-				->register();
-		}
-
 		$events = ! empty( $option['events'] ) ? $this->verify_active( $option['events'] ) : [];
 		$feed   = ! empty( $option['feed'] ) ? $this->verify_active( $option['feed'] ) : [];
 
@@ -269,7 +268,7 @@ class Notifications {
 	 *
 	 * @return int
 	 */
-	private function get_notification_update_task_interval() {
+	public function get_notification_update_task_interval() {
 
 		/**
 		 * Filters the interval for the notifications update task.
@@ -338,8 +337,14 @@ class Notifications {
 	 */
 	public function update() {
 
-		$feed   = $this->fetch_feed();
 		$option = $this->get_option();
+
+		// Bail if feed was updated less than an interval ago.
+		if ( time() - (int) $option['update'] < $this->get_notification_update_task_interval() ) {
+			return;
+		}
+
+		$feed = $this->fetch_feed();
 
 		update_option(
 			self::OPTION_KEY,
@@ -468,13 +473,19 @@ class Notifications {
 
 			<div class="easy-wp-smtp-notifications-header">
 				<div class="easy-wp-smtp-notifications-bell">
-					<svg width="17" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.434 13.012c-.668-.739-1.97-1.828-1.97-5.45 0-2.707-1.898-4.886-4.5-5.449v-.738C9.965.777 9.474.25 8.876.25 8.242.25 7.75.777 7.75 1.375v.738c-2.602.563-4.5 2.742-4.5 5.45 0 3.62-1.3 4.71-1.969 5.449-.21.21-.316.492-.281.738 0 .598.422 1.125 1.125 1.125H15.59c.703 0 1.125-.527 1.16-1.125 0-.246-.105-.527-.316-.738zm-13.079.175c.739-.949 1.547-2.601 1.583-5.59v-.035c0-2.144 1.757-3.937 3.937-3.937 2.145 0 3.938 1.793 3.938 3.938 0 .035-.036.035-.036.035.036 2.988.844 4.64 1.582 5.59H3.355zm5.52 5.063c1.23 0 2.215-.984 2.215-2.25H6.625c0 1.266.984 2.25 2.25 2.25z" fill="#DF2A4A"/></svg>
+					<svg width="17" height="19" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M16.434 13.012c-.668-.739-1.97-1.828-1.97-5.45 0-2.707-1.898-4.886-4.5-5.449v-.738C9.965.777 9.474.25 8.876.25 8.242.25 7.75.777 7.75 1.375v.738c-2.602.563-4.5 2.742-4.5 5.45 0 3.62-1.3 4.71-1.969 5.449-.21.21-.316.492-.281.738 0 .598.422 1.125 1.125 1.125H15.59c.703 0 1.125-.527 1.16-1.125 0-.246-.105-.527-.316-.738zm-13.079.175c.739-.949 1.547-2.601 1.583-5.59v-.035c0-2.144 1.757-3.937 3.937-3.937 2.145 0 3.938 1.793 3.938 3.938 0 .035-.036.035-.036.035.036 2.988.844 4.64 1.582 5.59H3.355zm5.52 5.063c1.23 0 2.215-.984 2.215-2.25H6.625c0 1.266.984 2.25 2.25 2.25z" fill="#DF2A4A"/>
+					</svg>
 				</div>
 				<div class="easy-wp-smtp-notifications-title"><?php esc_html_e( 'Notifications', 'easy-wp-smtp' ); ?></div>
 			</div>
 
 			<div class="easy-wp-smtp-notifications-body">
-				<a class="dismiss" title="<?php echo esc_attr__( 'Dismiss this message', 'easy-wp-smtp' ); ?>"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 .25A7.749 7.749 0 0 0 .25 8 7.749 7.749 0 0 0 8 15.75 7.749 7.749 0 0 0 15.75 8 7.749 7.749 0 0 0 8 .25zm0 14A6.228 6.228 0 0 1 1.75 8 6.248 6.248 0 0 1 8 1.75c3.438 0 6.25 2.813 6.25 6.25A6.248 6.248 0 0 1 8 14.25zm3.156-8.188c.156-.125.156-.375 0-.53l-.687-.688c-.156-.157-.406-.157-.531 0L8 6.78 6.031 4.844c-.125-.157-.375-.157-.531 0l-.688.687c-.156.157-.156.407 0 .532L6.75 8 4.812 9.969c-.156.125-.156.375 0 .531l.688.688c.156.156.406.156.531 0L8 9.25l1.938 1.938c.124.156.374.156.53 0l.688-.688c.156-.156.156-.406 0-.531L9.22 8l1.937-1.938z" fill="currentColor"/></svg></a>
+				<a class="dismiss" title="<?php echo esc_attr__( 'Dismiss this message', 'easy-wp-smtp' ); ?>">
+					<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8 .25A7.749 7.749 0 0 0 .25 8 7.749 7.749 0 0 0 8 15.75 7.749 7.749 0 0 0 15.75 8 7.749 7.749 0 0 0 8 .25zm0 14A6.228 6.228 0 0 1 1.75 8 6.248 6.248 0 0 1 8 1.75c3.438 0 6.25 2.813 6.25 6.25A6.248 6.248 0 0 1 8 14.25zm3.156-8.188c.156-.125.156-.375 0-.53l-.687-.688c-.156-.157-.406-.157-.531 0L8 6.78 6.031 4.844c-.125-.157-.375-.157-.531 0l-.688.687c-.156.157-.156.407 0 .532L6.75 8 4.812 9.969c-.156.125-.156.375 0 .531l.688.688c.156.156.406.156.531 0L8 9.25l1.938 1.938c.124.156.374.156.53 0l.688-.688c.156-.156.156-.406 0-.531L9.22 8l1.937-1.938z" fill="currentColor"/>
+					</svg>
+				</a>
 
 				<?php if ( count( $notifications ) > 1 ) : ?>
 					<div class="navigation">

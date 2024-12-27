@@ -89,7 +89,7 @@ class Options extends OptionsAbstract {
 					<input type="text" disabled value="****************************************"
 								 id="easy-wp-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-api_key"
 					/>
-					<?php $this->display_const_set_message( 'EasyWPSMTP_SPARKPOST_API_KEY' ); ?>
+					<?php $this->display_const_set_message( 'EASY_WP_SMTP_SPARKPOST_API_KEY' ); ?>
 				<?php else : ?>
 					<?php
 					$slug  = $this->get_slug();
@@ -154,7 +154,7 @@ class Options extends OptionsAbstract {
 
 				<?php
 				if ( $this->connection_options->is_const_defined( $this->get_slug(), 'region' ) ) {
-					$this->display_const_set_message( 'EasyWPSMTP_SPARKPOST_REGION' );
+					$this->display_const_set_message( 'EASY_WP_SMTP_SPARKPOST_REGION' );
 				}
 				?>
 				<p class="desc">

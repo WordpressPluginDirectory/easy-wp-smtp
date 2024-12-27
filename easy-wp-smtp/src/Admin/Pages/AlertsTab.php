@@ -212,7 +212,41 @@ class AlertsTab extends PageAbstract {
 						</div>
 					</div>
 				</div>
-
+				<div class="easy-wp-smtp-row easy-wp-smtp-row--has-divider easy-wp-smtp-row--inactive easy-wp-smtp-alert-setting-row">
+					<div class="easy-wp-smtp-row">
+						<div class="easy-wp-smtp-row__heading">
+							<?php esc_html_e( 'Discord', 'easy-wp-smtp' ); ?>
+						</div>
+						<div class="easy-wp-smtp-row__desc">
+							<?php esc_html_e( 'Paste in the Discord webhook URL you’d like to use to receive alerts when email sending fails. Read our documentation on setting up Discord alerts.', 'easy-wp-smtp' ); ?>
+						</div>
+					</div>
+					<div class="easy-wp-smtp-row">
+						<div class="easy-wp-smtp-setting-row">
+							<div class="easy-wp-smtp-setting-row__label">
+								<label><?php esc_html_e( 'Discord', 'easy-wp-smtp' ); ?></label>
+							</div>
+							<div class="easy-wp-smtp-setting-row__field">
+								<label class="easy-wp-smtp-toggle">
+									<input type="checkbox"/>
+									<span class="easy-wp-smtp-toggle__switch"></span>
+									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--checked"><?php esc_html_e( 'On', 'easy-wp-smtp' ); ?></span>
+									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--unchecked"><?php esc_html_e( 'Off', 'easy-wp-smtp' ); ?></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="easy-wp-smtp-row easy-wp-smtp-alert-setting-row-options">
+						<div class="easy-wp-smtp-row easy-wp-smtp-alert-setting-row-connection-options">
+							<div class="easy-wp-smtp-setting-row easy-wp-smtp-setting-row--text">
+								<div class="easy-wp-smtp-setting-row__label">
+									<label><?php esc_html_e( 'Webhook URL', 'easy-wp-smtp' ); ?></label>
+								</div>
+								<div class="easy-wp-smtp-setting-row__field"><input type="text"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="easy-wp-smtp-row easy-wp-smtp-row--has-divider easy-wp-smtp-row--inactive easy-wp-smtp-alert-setting-row">
 					<div class="easy-wp-smtp-row">
 						<div class="easy-wp-smtp-row__heading">
