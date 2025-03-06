@@ -1632,7 +1632,7 @@ CEO, SendLayer';
 		}
 		?>
 		<?php if ( $this->domain_checker->is_supported_mailer() ) : ?>
-			<div class="notice-warning notice-inline">
+			<div class="notice-warning notice-inline easy-wp-smtp-notice">
 				<p><?php esc_html_e( 'The test email might have sent, but its deliverability should be improved.', 'easy-wp-smtp' ); ?></p>
 			</div>
 		<?php endif; ?>

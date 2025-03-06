@@ -104,7 +104,7 @@ class UserFeedback {
 		}
 
 		?>
-		<div class="notice notice-info is-dismissible easy-wp-smtp-review-notice">
+		<div class="notice notice-info is-dismissible easy-wp-smtp-notice easy-wp-smtp-review-notice">
 			<div class="easy-wp-smtp-review-step easy-wp-smtp-review-step-1">
 				<p><?php esc_html_e( 'Are you enjoying Easy WP SMTP?', 'easy-wp-smtp' ); ?></p>
 				<p>

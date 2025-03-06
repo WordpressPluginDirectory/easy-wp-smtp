@@ -184,7 +184,7 @@ class DomainChecker {
 			<h2><?php esc_html_e( 'Domain Check Results', 'easy-wp-smtp' ); ?></h2>
 
 			<?php if ( empty( $results['success'] ) ) : ?>
-				<div class="notice-inline <?php echo $this->is_supported_mailer() ? 'notice-error' : 'notice-warning'; ?>">
+				<div class="easy-wp-smtp-notice notice-inline <?php echo $this->is_supported_mailer() ? 'notice-error' : 'notice-warning'; ?>">
 					<p><?php echo wp_kses( $results['message'], $allowed_html ); ?></p>
 				</div>
 			<?php endif; ?>

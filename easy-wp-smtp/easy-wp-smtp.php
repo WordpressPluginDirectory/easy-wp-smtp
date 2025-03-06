@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Easy WP SMTP
- * Version: 2.9.0
+ * Version: 2.10.0
  * Requires at least: 5.2
  * Requires PHP: 7.2
  * Plugin URI: https://easywpsmtp.com/
@@ -13,7 +13,7 @@
  */
 
 if ( ! defined( 'EasyWPSMTP_PLUGIN_VERSION' ) ) {
-	define( 'EasyWPSMTP_PLUGIN_VERSION', '2.9.0' );
+	define( 'EasyWPSMTP_PLUGIN_VERSION', '2.10.0' );
 }
 if ( ! defined( 'EasyWPSMTP_PHP_VERSION' ) ) {
 	define( 'EasyWPSMTP_PHP_VERSION', '7.2' );
@@ -121,7 +121,7 @@ if ( function_exists( 'easy_wp_smtp' ) || class_exists( 'EasyWPSMTP' ) ) {
 
 			// Currently tried to activate Lite with Pro still active, so display the message.
 			printf(
-				'<div class="notice notice-warning">
+				'<div class="notice notice-warning easy-wp-smtp-notice">
 					<p>%1$s</p>
 					<p>%2$s</p>
 				</div>',
@@ -151,7 +151,7 @@ if ( ! function_exists( 'easy_wp_smtp_insecure_php_version_notice' ) ) {
 	function easy_wp_smtp_insecure_php_version_notice() {
 
 		?>
-		<div class="notice notice-error">
+		<div class="notice notice-error easy-wp-smtp-notice">
 			<p>
 				<?php
 				printf(
@@ -218,7 +218,7 @@ if ( ! function_exists( 'easy_wp_smtp_unsupported_wp_version_notice' ) ) {
 	function easy_wp_smtp_unsupported_wp_version_notice() {
 
 		?>
-		<div class="notice notice-error">
+		<div class="notice notice-error easy-wp-smtp-notice">
 			<p>
 				<?php
 				printf(

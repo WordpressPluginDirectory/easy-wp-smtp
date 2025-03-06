@@ -9,6 +9,7 @@ use EasyWPSMTP\Debug;
 use EasyWPSMTP\Helpers\Helpers;
 use EasyWPSMTP\OptimizedEmailSending;
 use EasyWPSMTP\Options;
+use EasyWPSMTP\WP;
 
 /**
  * Usage Tracker functionality to understand what's going on on client's sites.
@@ -152,6 +153,15 @@ class UsageTracking {
 			$data['easy_wp_smtp_other_smtp_port']       = $options->get( 'smtp', 'port' );
 			$data['easy_wp_smtp_other_smtp_auth']       = (bool) $options->get( 'smtp', 'auth' );
 			$data['easy_wp_smtp_other_smtp_autotls']    = (bool) $options->get( 'smtp', 'autotls' );
+		}
+
+		if ( is_multisite() ) {
+			$use_global_settings                         = WP::use_global_plugin_settings();
+			$data['easy_wp_smtp_multisite_network_wide'] = $use_global_settings;
+
+			if ( ! $use_global_settings ) {
+				$data['easy_wp_smtp_multisite_is_subsite'] = ! is_main_site();
+			}
 		}
 
 		return apply_filters( 'easy_wp_smtp_usage_tracking_get_data', $data );

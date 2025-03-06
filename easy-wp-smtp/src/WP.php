@@ -101,14 +101,16 @@ class WP {
 	 * @param string $message        Message text (HTML is OK).
 	 * @param string $class          Display class (severity).
 	 * @param bool   $is_dismissible Whether the message should be dismissible.
+	 * @param string $key            Unique key for the notice. If defined, dismissible notice will be dismissed permanently.
 	 */
-	public static function add_admin_notice( $message, $class = self::ADMIN_NOTICE_INFO, $is_dismissible = true ) {
+	public static function add_admin_notice( $message, $class = self::ADMIN_NOTICE_INFO, $is_dismissible = true, $key = '' ) {
 
-		self::$admin_notices[] = array(
+		self::$admin_notices[] = [
 			'message'        => $message,
 			'class'          => $class,
 			'is_dismissible' => (bool) $is_dismissible,
-		);
+			'key'            => sanitize_key( $key ),
+		];
 	}
 
 	/**
@@ -118,18 +120,49 @@ class WP {
 	 */
 	public static function display_admin_notices() {
 
+		$has_notices = false;
+
 		foreach ( (array) self::$admin_notices as $notice ) :
-			$dismissible = $notice['is_dismissible'] ? 'is-dismissible' : '';
+			$is_dismissible = $notice['is_dismissible'];
+			$dismissible    = $is_dismissible ? 'is-dismissible' : '';
+
+			if (
+				$is_dismissible &&
+				! empty( $notice['key'] ) &&
+				(bool) get_user_meta( get_current_user_id(), "easy_wp_smtp_notice_{$notice['key']}_dismissed", true )
+			) {
+				continue;
+			}
+
+			$has_notices = true;
 			?>
 
-			<div class="notice <?php echo esc_attr( $notice['class'] ); ?> notice <?php echo esc_attr( $dismissible ); ?>">
+			<div class="notice easy-wp-smtp-notice <?php echo esc_attr( $notice['class'] ); ?> notice <?php echo esc_attr( $dismissible ); ?>" <?php echo ! empty( $notice['key'] ) ? 'data-notice="' . esc_attr( $notice['key'] ) . '"' : ''; ?>>
 				<p>
 					<?php echo wp_kses_post( $notice['message'] ); ?>
 				</p>
 			</div>
 
-			<?php
+		<?php
 		endforeach;
+
+		if ( $has_notices ) {
+			wp_enqueue_script(
+				'easy-wp-smtp-admin-notices',
+				easy_wp_smtp()->assets_url . '/js/smtp-admin-notices' . self::asset_min() . '.js',
+				[ 'jquery' ],
+				EasyWPSMTP_PLUGIN_VERSION,
+				true
+			);
+
+			wp_localize_script(
+				'easy-wp-smtp-admin-notices',
+				'easy_wp_smtp_admin_notices',
+				[
+					'nonce' => wp_create_nonce( 'easy-wp-smtp-admin' ),
+				]
+			);
+		}
 	}
 
 	/**
@@ -785,5 +818,24 @@ class WP {
 		$main_site_options = get_blog_option( get_main_site_id(), Options::META_KEY, [] );
 
 		return ! empty( $main_site_options['general']['network_wide'] );
+	}
+
+	/**
+	 * Get the current site URL,
+	 * or the network URL if using network-wide settings.
+	 *
+	 * @since 2.10.0
+	 *
+	 * @return string
+	 */
+	public static function get_site_url() {
+
+		$site_id = null;
+
+		if ( self::use_global_plugin_settings() ) {
+			$site_id = get_main_site_id();
+		}
+
+		return get_site_url( $site_id );
 	}
 }

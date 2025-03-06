@@ -435,11 +435,42 @@ class Core {
 	}
 
 	/**
-	 * Display various notifications to a user
+	 * Display various notifications to a user.
 	 *
 	 * @since 2.0.0
 	 */
-	public function init_notifications() {}
+	public function init_notifications() {
+
+		// Old PHP version notification.
+		if (
+			version_compare( phpversion(), '7.4', '<' ) &&
+			is_super_admin() &&
+			(
+				(
+					isset( $GLOBALS['pagenow'] ) &&
+					$GLOBALS['pagenow'] === 'index.php'
+				) ||
+				easy_wp_smtp()->get_admin()->is_admin_page()
+			)
+		) {
+			WP::add_admin_notice(
+				sprintf(
+					wp_kses( /* translators: %1$s - WP Mail SMTP plugin name. */
+						__( 'Your site is running an outdated version of PHP. In an upcoming %1$s plugin release, the minimum required PHP version will be increased to <strong>7.4</strong>. If no further action is taken, you will not be able to update the plugin and receive new features and security updates.', 'easy-wp-smtp' ),
+						[
+							'strong' => [],
+						]
+					),
+					'<strong>Easy WP SMTP</strong>'
+				) .
+				'<br><br>' .
+				esc_html__( 'For better security and performance, we recommend upgrading your site to PHP version 8.0 or higher, as it is faster and more secure than version 7.4.', 'easy-wp-smtp' ),
+				WP::ADMIN_NOTICE_ERROR,
+				true,
+				'outdated_php_version_below_74'
+			);
+		}
+	}
 
 	/**
 	 * Display all debug mail-delivery related notices.
@@ -451,7 +482,7 @@ class Core {
 		if ( easy_wp_smtp()->is_blocked() ) {
 			?>
 
-			<div class="notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
+			<div class="notice easy-wp-smtp-notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
 				<p>
 					<?php
 					$notices[] = sprintf(
@@ -517,7 +548,7 @@ class Core {
 			if ( ! empty( $notice ) ) {
 				?>
 
-				<div class="notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
+				<div class="notice easy-wp-smtp-notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
 					<p>
 						<?php
 						echo wp_kses(
@@ -1297,7 +1328,7 @@ class Core {
 				);
 
 			printf(
-				'<div class="notice %1$s"><p>%2$s</p></div>',
+				'<div class="notice easy-wp-smtp-notice %1$s"><p>%2$s</p></div>',
 				esc_attr( WP::ADMIN_NOTICE_ERROR ),
 				wp_kses( $message, [ 'br' => [] ] )
 			);

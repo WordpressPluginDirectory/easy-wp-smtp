@@ -116,7 +116,7 @@ class AlertsTab extends PageAbstract {
 						<div class="easy-wp-smtp-setting-row__sub-row">
 							<label class="easy-wp-smtp-toggle" for="easy-wp-smtp-setting-alert_events_email_fails">
 								<input name="easy-wp-smtp[alert_events][email_fails]" type="checkbox"
-									   value="true" checked disabled id="easy-wp-smtp-setting-alert_events_email_fails"
+								       value="true" checked disabled id="easy-wp-smtp-setting-alert_events_email_fails"
 								/>
 								<span class="easy-wp-smtp-toggle__switch"></span>
 								<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--static"><?php esc_html_e( 'The initial email sending request fails', 'easy-wp-smtp' ); ?></span>
@@ -129,7 +129,7 @@ class AlertsTab extends PageAbstract {
 						<div class="easy-wp-smtp-setting-row__sub-row">
 							<label class="easy-wp-smtp-toggle" for="easy-wp-smtp-setting-alerts_hard_bounced">
 								<input name="easy-wp-smtp[alert_events][email_hard_bounced]" type="checkbox"
-									   value="true" disabled id="easy-wp-smtp-setting-alert_events_email_hard_bounced"
+								       value="true" disabled id="easy-wp-smtp-setting-alert_events_email_hard_bounced"
 								/>
 								<span class="easy-wp-smtp-toggle__switch"></span>
 								<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--static"><?php esc_html_e( 'The deliverability verification process detects a hard bounce', 'easy-wp-smtp' ); ?></span>
@@ -375,6 +375,44 @@ class AlertsTab extends PageAbstract {
 								<div class="easy-wp-smtp-setting-row easy-wp-smtp-setting-row--text">
 									<div class="easy-wp-smtp-setting-row__label">
 										<label><?php esc_html_e( 'Webhook URL', 'easy-wp-smtp' ); ?></label>
+									</div>
+									<div class="easy-wp-smtp-setting-row__field"><input type="text"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="easy-wp-smtp-row easy-wp-smtp-row--has-divider easy-wp-smtp-row--inactive easy-wp-smtp-alert-setting-row">
+					<div class="easy-wp-smtp-row">
+						<div class="easy-wp-smtp-row__heading">
+							<?php esc_html_e( 'Push Notifications', 'easy-wp-smtp' ); ?>
+						</div>
+						<div class="easy-wp-smtp-row__desc">
+							<?php esc_html_e( 'To receive push notifications on this device, you\'ll need to allow our plugin to send notifications via this browser. Read our documentation on setting up Push Notification alerts.', 'easy-wp-smtp' ); ?>
+						</div>
+					</div>
+					<div class="easy-wp-smtp-row">
+						<div class="easy-wp-smtp-setting-row">
+							<div class="easy-wp-smtp-setting-row__label">
+								<label><?php esc_html_e( 'Push Notifications Alerts', 'easy-wp-smtp' ); ?></label>
+							</div>
+							<div class="easy-wp-smtp-setting-row__field">
+								<label class="easy-wp-smtp-toggle">
+									<input type="checkbox"/>
+									<span class="easy-wp-smtp-toggle__switch"></span>
+									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--checked"><?php esc_html_e( 'On', 'easy-wp-smtp' ); ?></span>
+									<span class="easy-wp-smtp-toggle__label easy-wp-smtp-toggle__label--unchecked"><?php esc_html_e( 'Off', 'easy-wp-smtp' ); ?></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="easy-wp-smtp-row easy-wp-smtp-alert-setting-row-options">
+						<div class="easy-wp-smtp-row easy-wp-smtp-alert-setting-row-connection-options">
+							<div class="easy-wp-smtp-row">
+								<div class="easy-wp-smtp-setting-row easy-wp-smtp-setting-row--text">
+									<div class="easy-wp-smtp-setting-row__label">
+										<label><?php esc_html_e( 'Connection Name', 'easy-wp-smtp' ); ?></label>
 									</div>
 									<div class="easy-wp-smtp-setting-row__field"><input type="text"></div>
 								</div>

@@ -26,7 +26,7 @@ class Options {
 	 * @var array Map of all the default options of the plugin.
 	 */
 	private static $map = [
-		'mail'                  => [
+		'mail'                     => [
 			'from_name',
 			'from_email',
 			'mailer',
@@ -37,7 +37,7 @@ class Options {
 			'reply_to_replace_from',
 			'bcc_emails',
 		],
-		'smtp'                  => [
+		'smtp'                     => [
 			'host',
 			'port',
 			'encryption',
@@ -46,83 +46,87 @@ class Options {
 			'user',
 			'pass',
 		],
-		'outlook'               => [
+		'outlook'                  => [
 			'one_click_setup_enabled',
 			'client_id',
 			'client_secret',
 		],
-		'amazonses'             => [
+		'amazonses'                => [
 			'client_id',
 			'client_secret',
 			'region',
 		],
-		'mailgun'               => [
+		'mailgun'                  => [
 			'api_key',
 			'domain',
 			'region',
 		],
-		'mailjet'               => [
+		'mailjet'                  => [
 			'api_key',
 			'secret_key',
 		],
-		'sendgrid'              => [
+		'sendgrid'                 => [
 			'api_key',
 			'domain',
 		],
-		'smtpcom'               => [
+		'smtpcom'                  => [
 			'api_key',
 			'channel',
 		],
-		'sendinblue'            => [
+		'sendinblue'               => [
 			'api_key',
 			'domain',
 		],
-		'sendlayer'             => [
+		'sendlayer'                => [
 			'api_key',
 		],
-		'elasticemail'          => [
+		'elasticemail'             => [
 			'api_key',
 		],
-		'smtp2go'               => [
+		'smtp2go'                  => [
 			'api_key',
 		],
-		'postmark'              => [
+		'postmark'                 => [
 			'server_api_token',
 			'message_stream',
 		],
-		'sparkpost'             => [
+		'sparkpost'                => [
 			'api_key',
 			'region',
 		],
-		'zoho'                  => [
+		'zoho'                     => [
 			'domain',
 			'client_id',
 			'client_secret',
 		],
-		'license'               => [
+		'license'                  => [
 			'key',
 		],
-		'alert_email'           => [
+		'alert_email'              => [
 			'enabled',
 			'connections',
 		],
-		'alert_slack_webhook'   => [
+		'alert_slack_webhook'      => [
 			'enabled',
 			'connections',
 		],
-		'alert_discord_webhook' => [
+		'alert_discord_webhook'    => [
 			'enabled',
 			'connections',
 		],
-		'alert_twilio_sms'      => [
+		'alert_twilio_sms'         => [
 			'enabled',
 			'connections',
 		],
-		'alert_custom_webhook'  => [
+		'alert_custom_webhook'     => [
 			'enabled',
 			'connections',
 		],
-		'alert_events'          => [
+		'alert_push_notifications' => [
+			'enabled',
+			'connections',
+		],
+		'alert_events'             => [
 			'email_hard_bounced',
 		],
 	];
@@ -1470,6 +1474,7 @@ class Options {
 	 * @return bool
 	 */
 	public function is_mailer_smtp() {
+
 		return apply_filters( 'easy_wp_smtp_options_is_mailer_smtp', in_array( $this->get( 'mail', 'mailer' ), [ 'smtp' ], true ) );
 	}
 
